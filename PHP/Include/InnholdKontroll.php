@@ -80,6 +80,7 @@ function sjekk_navn($navn){
 
 if(!$row){
   legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
+  include("innholdinclude.php");
    header("location: ../innhold.php");
 }else{
   $tall ="1";

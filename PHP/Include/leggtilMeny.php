@@ -52,6 +52,7 @@ elseif (!is_numeric($menyrekke))
 		$sql2 = "INSERT INTO meny (tekst,side, rekke) VALUES (?, ?,?)";
 		sjekktittel2($sql, $sql2, $menynavn, $menynavn, $menyrekke);
 		header('Location: ../EndreMeny.php');
+
 		$sideInsert = "../../".$menynavn.".html";
 		$fh = fopen($sideInsert, 'w');
 		$includes = lagSide();
