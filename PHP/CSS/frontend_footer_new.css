@@ -7,12 +7,16 @@ Sist sett på av Alex 03.02.2017
 }
 
 footer{
-  margin-top: 15px !important;
   display: table;
   background-color: #333;
   border-top: thick;
   color: #f2f2f2;
   font-family: "Kreon";
+  position: relative;
+  margin-top: 0px; /* negative value of footer height */
+  height: 0px;
+  clear: both;
+
 }
 
 footer label, ul, h3 {
@@ -127,8 +131,8 @@ definerer vi 11 seperate kolonne-diver */
     padding-top: 0;
   }
 
-  .row::after {
+html, body {height: 100%;}
+  .rowfooter::after {
     content: "";
-    clear: both;
     display: table;
   }

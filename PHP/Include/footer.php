@@ -5,7 +5,7 @@
 echo('
 <!--Footer-->
 <footer class="fcol-12">
-  <div class="row">
+  <div class="rowfooter">
     <!--  <img src="Bilder/footerbilde.jpg"> -->
     <div class="fcol-2">
       <section class="nyhetsbrev_sosiale_medier">
@@ -55,7 +55,7 @@ echo('
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="rowfooter">
     <div class="sub_footer">
       <div class="fcol-2">
         <img src="PHP/Bilder/logofooter.png">
