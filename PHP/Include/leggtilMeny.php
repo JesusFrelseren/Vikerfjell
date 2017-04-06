@@ -3,6 +3,16 @@
 Sist endret av Erik 30.03.2017
 Sist sett på av Alex 30.03.2017
 */
+
+function lagSide() {
+			ob_start();
+			include 'header.php';
+			include 'meny.php';
+			include 'footer.php';
+			$includes = ob_get_clean();
+			ob_end_clean();
+			return $includes;
+		}
 include 'mysqlcon.php';
 //Henter informasjon hvor vi ser på om valgt rekke finnes
 $rekke = mysqli_real_escape_string($mysqli, $_POST["menurow"]);
@@ -42,13 +52,23 @@ elseif (!is_numeric($menyrekke))
 		$sql2 = "INSERT INTO meny (tekst,side, rekke) VALUES (?, ?,?)";
 		sjekktittel2($sql, $sql2, $menynavn, $menynavn, $menyrekke);
 		header('Location: ../EndreMeny.php');
+		$sideInsert = "../../".$menynavn.".html";
+		$fh = fopen($sideInsert, 'w');
+		$includes = lagSide();
+		fwrite($fh, $includes);	
+
 		}
 	  else
 		{
-		$sql = "SELECT * FROM vikerfjell.submeny where sub_side =?;";
-		$sql2 = "INSERT INTO submeny (sub_tekst,sub_side, sub_rekke , meny_idmeny) VALUES (?, ?, ?, ?)";
-		sjekktittel($sql, $sql2, $menynavn, $menynavn, $menyrekke, $typemeny);
-		header('Location: ../EndreMeny.php');
+			$sql = "SELECT * FROM vikerfjell.submeny where sub_side =?;";
+			$sql2 = "INSERT INTO submeny (sub_tekst,sub_side, sub_rekke , meny_idmeny) VALUES (?, ?, ?, ?)";
+			sjekktittel($sql, $sql2, $menynavn, $menynavn, $menyrekke, $typemeny);
+			header('Location: ../EndreMeny.php');
+			
+			$sideInsert = "../../".$menynavn.".html";
+			$fh = fopen($sideInsert, 'w');
+			$includes = lagSide();
+			fwrite($fh, $includes);
 		}
 	}
 //Funksjon for select og insert for submeny

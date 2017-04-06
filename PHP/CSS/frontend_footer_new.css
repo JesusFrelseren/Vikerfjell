@@ -10,15 +10,12 @@ Sist sett på av Alex 03.02.2017
 }
 
 footer{
+
   display: table;
   background-color: #333;
   border-top: thick;
   color: #f2f2f2;
   font-family: "Kreon";
-  position: relative;
-  margin-top: 0px; /* negative value of footer height */
-  height: 0px;
-  clear: both;
 
 }
 
@@ -135,5 +132,10 @@ Fiks for footer plassering - hkjhasd
 */
 html, body {height: 100%;}
   .rowfooter::after {
-    content: "";
-    display: table; }
+     content: "";
+    clear: both;
+    display: table;
+    position: relative;
+  margin-top: 0px; /* negative value of footer height */
+  height: 0px;
+    }

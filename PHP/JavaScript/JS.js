@@ -9,13 +9,13 @@
 function changeFunc() {
     var selectBox = document.getElementById("listeinnhold");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/html/VikerfjellV3/PHP/innhold.php?id="+selectedValue);
+    window.location.assign("http://localhost/html/GitProsjekt/Vikerfjell/PHP/innhold.php?id="+selectedValue);
 }
 //OnChange funksjon for select i endring av meny
 function changeMenyFunc() {
     var selectBox = document.getElementById("listetest");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/html/VikerfjellV3/PHP/EndreMeny.php?id="+selectedValue);
+    window.location.assign("http://localhost/html/GitProsjekt/Vikerfjell/PHP/EndreMeny.php?id="+selectedValue);
 }
 
 // Redigere innhold med bold/italic/underline
