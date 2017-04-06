@@ -3,6 +3,7 @@
 <!--Sett over av Erik 30.03.2017 */
 //Her lager vi hele footeren
 echo('
+</div>
 <!--Footer-->
 <footer class="fcol-12">
   <div class="rowfooter">

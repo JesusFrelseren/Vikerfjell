@@ -60,6 +60,7 @@ while($row = $result->fetch_assoc()){
   </ul>
   </nav>
 </header>
-</div>");
+</div>
+<div class='wrap'>");
 
 ?>
