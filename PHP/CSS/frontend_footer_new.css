@@ -132,7 +132,8 @@ definerer vi 11 seperate kolonne-diver */
   }
 
 /*
-Fiks for footer plassering - hkjh
+Fiks for footer plassering - Test2
+Heisann nå jobber jeg her
 */
 html, body {height: 100%;}
   .rowfooter::after {
