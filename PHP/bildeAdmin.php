@@ -76,14 +76,29 @@ function hent_linkede_bilder() {
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $stmt = $mysqli->prepare(
+
+        if (strpos($id, 'SUB') !== false) {
+            $subid = substr($id, 3);
+            $stmt = $mysqli->prepare(
                 "select *
-                      from bilder inner join bilderinnhold
-                      on bilder.idbilder = $id");
-        mysqli_set_charset($mysqli, "UTF8");
-        $stmt->execute();
-        $img_linked_result = $stmt->get_result();
-        return $img_linked_result;
+                          from bilder inner join bilderinnhold
+                          on bilder.idbilder = $subid");
+            mysqli_set_charset($mysqli, "UTF8");
+            $stmt->execute();
+            $img_linked_result = $stmt->get_result();
+            return $img_linked_result;
+
+        } else {
+            $stmt = $mysqli->prepare(
+                "select *
+                          from bilder inner join bilderinnhold
+                          on bilder.idbilder = $id");
+            mysqli_set_charset($mysqli, "UTF8");
+            $stmt->execute();
+            $img_linked_result = $stmt->get_result();
+            return $img_linked_result;
+
+        }
     }
 }
 
