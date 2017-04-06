@@ -18,6 +18,13 @@ function changeMenyFunc() {
     window.location.assign("http://localhost/html/VikerfjellV3/PHP/EndreMeny.php?id="+selectedValue);
 }
 
+//OnChange funksjon for select i endring av meny
+function changeMenyFuncBilder() {
+    var selectBox = document.getElementById("listetest");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    window.location.assign("http://localhost/vikerfjell/PHP/bildeAdmin.php?id="+selectedValue);
+}
+
 // Redigere innhold med bold/italic/underline
 function formatText(tag) {
    var myTextArea = document.getElementById('innh');
