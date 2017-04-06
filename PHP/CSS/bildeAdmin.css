@@ -29,8 +29,8 @@
 }
 
 .søk_knapp:hover {
-    background: white;
-    color: #16aa56;
+    background: #61aa74;
+    color: white;
 }
 .search_form {
     display: inline-block;
@@ -39,9 +39,11 @@
 .plassering {
     width: 70% !important;
     margin: 0 !important;
-
-
 }
 
+.lenkerDropdown {
+    width: 100% !important;
+    margin: 0 !important;
+}
 
 
