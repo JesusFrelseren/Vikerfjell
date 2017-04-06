@@ -1,0 +1,80 @@
+/* CSS for "oversiktssidene" for de ulike menyene */
+/* Altså der hvor vi har oversikt over de ulike artiklene innenfor hvert menyelement */
+/* Sindre 05.04.2017 */
+
+/* Class - Hoveddiv : 100% bredde */
+.content100Prosent {
+  width: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+  font-family:sans-serif;
+  overflow:auto
+}
+
+.content100Prosent h1 {
+  margin: 0;
+  padding: 20px 10px 10px 10px ;
+  text-align: center;
+}
+
+/* Class - Linje: Lager en linje til to innnhold */
+.contentLinje {
+  width: 99%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Class - Artikkel: Lager en div for hver enkel artikkel som skal inn */
+.contentArtikkel {
+  padding: 5px;
+  width: 48.9%;
+  float: left;
+  margin: 0.5%;
+  height: auto;
+  background-color: #FFF;
+  border: #C7CDB6 1px solid;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow:hidden
+}
+
+/* MEDIAQUERYS: Endrer artikklene til full bredde og gjør om teksten til leselig uansett størrelse på skjerm. */
+@media only screen and (max-width: 1300px) {
+  .contentArtikkel {
+    width: 99%;
+  }
+  .contentTekst {
+    font-size: 1.3vw !important;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .contentTekst {
+    font-size: 1.7vw !important;
+  }
+}
+
+
+/* Sindre 06.04.2017 */
+/* Laget egene content div's for å gjøre skalering av de ulike artiklene og bildene bedre */
+.contentBilde {
+  width: 40%;
+  height: auto;
+}
+
+.contentBilde img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  float: left;
+  padding-right: 10px;
+}
+
+.contentTekst {
+  font-family:sans-serif;
+  font-size: 0.85vw;
+}
