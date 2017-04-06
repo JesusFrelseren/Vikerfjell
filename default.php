@@ -7,7 +7,7 @@ Sett på av Erik 03.03.2017
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vikerfjellss</title>
+  <title>Vikerfjell</title>
   <link type="text/css" href="PHP/CSS/frontend_header.css?v=12345" rel="stylesheet">
   <link type="text/css" href="PHP/CSS/frontend_slider.css?v=12345" rel="stylesheet">
   <link type="text/css" href="PHP/CSS/frontend_mediaquerys.css?v=12345" rel="stylesheet">
