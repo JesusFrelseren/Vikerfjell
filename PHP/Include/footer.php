@@ -72,5 +72,8 @@ echo('
       </div>
     </div>
   </div>
-</footer>');
+</footer>
+</div>
+</body>
+</html>');
 ?>
