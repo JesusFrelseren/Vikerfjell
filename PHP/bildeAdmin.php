@@ -71,7 +71,6 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 
 <?php
-
 function hent_linkede_bilder() {
     global $mysqli;
     $stmt = $mysqli->prepare("select *
