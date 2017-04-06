@@ -111,10 +111,6 @@ definerer vi 11 seperate kolonne-diver */
     padding: 15px;
   }
 
-  footer [class*="fcol-"] {
-
-  }
-
   .sub_footer {
     border-top: 1px solid gray;
     margin-right: 20px;
@@ -137,5 +133,4 @@ Fiks for footer plassering - hkjhasd
 html, body {height: 100%;}
   .rowfooter::after {
     content: "";
-    display: table;
-  }
+    display: table; }
