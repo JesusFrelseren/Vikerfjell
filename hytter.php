@@ -16,12 +16,12 @@ Sett på av Erik 03.03.2017
   <link type="text/css" href="PHP/CSS/menybar.css?v=12345" rel="stylesheet">
   <script src="PHP/JavaScript/JS.js?v=12345" type="text/javascript" defer></script>
 </head>
-<body >
+<body>
 
   <?php
   include("PHP/Include/header.php");
   include("PHP/Include/meny.php");
-  include("PHP/Include/footer.php");
+  include("PHP/Include/footer.php" );
   ?>
 
 
