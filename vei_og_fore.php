@@ -25,7 +25,11 @@ Sett på av Erik 03.03.2017
   <!--Sindre 05.04.2017-->
   <div class="content100Prosent">
 		<h1>Vei og føre</h1>
-		<div class="contentArtikkel">
+    <!--<img src="PHP/Bilder/bakgrunn.jpg">-->
+    <?php
+    include("PHP/Include/Oversiktspørring.php");
+    ?>
+		<!--<div class="contentArtikkel">
 			<div class="contentBilde"><img src="PHP/Bilder/kj%C3%B8pehytte.jpg"></div>
 			<div class="contentTekst">
 				<h2>Veibeskrivelse</h2>
@@ -49,6 +53,7 @@ Sett på av Erik 03.03.2017
 				<p>Veien til Vikerfjell er ganske enkel, her kan du kjøre fort. Dette er da noen få linjer fra selve artikkelen.</p><a href="url">Les mer..</a>
 			</div>
 		</div>
+  -->
 	</div>
   <?php
   include("PHP/Include/footer.php");
