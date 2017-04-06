@@ -5,10 +5,10 @@
 /* Class - Hoveddiv : 100% bredde */
 .content100Prosent {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: #F5F5F5;
   font-family:sans-serif;
-  overflow:auto
+  overflow:auto;
 }
 
 .content100Prosent h1 {
