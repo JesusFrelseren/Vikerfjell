@@ -81,7 +81,7 @@ function hent_linkede_bilder() {
             $subid = substr($id, 3);
             $stmt = $mysqli->prepare(
                 "select *
-                          from bilder inner join bilderinnhold
+                          from bilder join bilderinnhold
                           on bilder.idbilder = $subid");
             mysqli_set_charset($mysqli, "UTF8");
             $stmt->execute();
