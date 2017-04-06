@@ -63,7 +63,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
     <p> Velg side for å inkludere valgte bilder<p>
     <div id="sidevalg">
         <?php
-        include ("Include/ListeInnholdPlassering.php");
+        include ("Include/BilderMenyInnhold.php");
         ?>
     </div>
 </section>
@@ -73,9 +73,14 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <?php
 function hent_linkede_bilder() {
     global $mysqli;
+
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    }
     $stmt = $mysqli->prepare("select *
 from bilder inner join bilderinnhold
-    on bilder.idbilder = bilderinnhold.`_idbilder`");
+    on bilder.idbilder = $id");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
     $img_linked_result = $stmt->get_result();
