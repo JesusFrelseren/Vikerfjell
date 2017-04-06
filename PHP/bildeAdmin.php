@@ -60,7 +60,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
         <input type='text' id='bildebeskrivelse' size="30" placeholder="Maks 30 tegn" maxlength="30">
         <input type='submit' class="søk_knapp" value='Last opp'>
     </form>
-    <p> Velg side for å inkludere valgte bilder<p>
+    <p> Velg side for å inkludere bilder i<p>
     <div id="sidevalg">
         <?php
         include ("Include/BilderMenyInnhold.php");
@@ -73,19 +73,19 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <?php
 function hent_linkede_bilder() {
     global $mysqli;
-
+    $id = "";
 
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-    }
-    $stmt = $mysqli->prepare("select *
+
+        $stmt = $mysqli->prepare("select *
 from bilder inner join bilderinnhold
     on bilder.idbilder = $id");
-    mysqli_set_charset($mysqli, "UTF8");
-    $stmt->execute();
-    $img_linked_result = $stmt->get_result();
-    return $img_linked_result;
-
+        mysqli_set_charset($mysqli, "UTF8");
+        $stmt->execute();
+        $img_linked_result = $stmt->get_result();
+        return $img_linked_result;
+    }
 }
 
 function hent_alle_bilder() {

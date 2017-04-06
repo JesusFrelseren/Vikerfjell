@@ -1,14 +1,16 @@
 <?php
 include 'mysqlcon.php';
-$id = $_GET['id'];
-$sql = "SELECT *
-FROM meny inner join innhold on meny.idmeny = innhold.idmeny
-WHERE meny.idmeny = $id";
-$result = mysqli_query($mysqli, $sql);
-$array = [];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $mysqli->prepare("SELECT *
+            FROM meny inner join innhold on meny.idmeny = innhold.idmeny
+            WHERE meny.idmeny = $id");
+    $result = $stmt->get_result();
+    $array = [];
+}
 
 echo("<select class='lenkerDropdown' id='lenkerdrop' name='lenkerdropdown'>");
-if (mysqli_num_rows($result) > 0) {
+if ($stmt->num_rows != 0) {
     // Utdata for hver rad
     while($row = mysqli_fetch_assoc($result)) {
         $array[$row['idinnhold']] = $row['side'];
@@ -16,13 +18,10 @@ if (mysqli_num_rows($result) > 0) {
     	Tittel: " . $row["tittel"]."
     	</option><br>";
     }
+    echo("</select>");
 } else {
-    echo "0 results";
+    echo("<p>Menyen har ingen innhold</p>");
 }
-echo("</select>");
-
-
-
 mysqli_close($mysqli);
 
 ?>
