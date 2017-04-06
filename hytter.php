@@ -21,9 +21,9 @@ Sett på av Erik 03.03.2017
   <?php
   include("PHP/Include/header.php");
   include("PHP/Include/meny.php");
-  include("PHP/Include/footer.php" );
+  include("PHP/Include/footer.php");
   ?>
-
+<!-- test -->
 
 </body>
 </html>
