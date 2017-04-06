@@ -132,7 +132,7 @@ definerer vi 11 seperate kolonne-diver */
   }
 
 /*
-Fiks for footer plassering - hkjh
+Fiks for footer plassering - hkjhasd
 */
 html, body {height: 100%;}
   .rowfooter::after {
