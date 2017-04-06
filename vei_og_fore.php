@@ -25,38 +25,12 @@ Sett på av Erik 03.03.2017
   <!--Sindre 05.04.2017-->
   <div class="content100Prosent">
 		<h1>Vei og føre</h1>
-    <!--<img src="PHP/Bilder/bakgrunn.jpg">-->
     <?php
-    include("PHP/Include/Oversiktspørring.php");
-    ?>
-		<!--<div class="contentArtikkel">
-			<div class="contentBilde"><img src="PHP/Bilder/kj%C3%B8pehytte.jpg"></div>
-			<div class="contentTekst">
-				<h2>Veibeskrivelse</h2>
-				<p>Her kommer det en liten ingress. Det som er litt chillern med å ha en ingress er jo at man kan lese litt om artikkelen uten å åpne artikkelen.</p>
-				<p>Veien til Vikerfjell er ganske enkel, her kan du kjøre fort. Dette er da noen få linjer fra selve artikkelen.</p><a href="url">Les mer..</a>
-			</div>
-		</div>
-		<div class="contentArtikkel">
-			<div class="contentBilde"><img src="PHP/Bilder/kj%C3%B8pehytte.jpg"></div>
-			<div class="contentTekst">
-				<h2>Veibeskrivelse</h2>
-				<p>Her kommer det en liten ingress. Det som er litt chillern med å ha en ingress er jo at man kan lese litt om artikkelen uten å åpne artikkelen.</p>
-				<p>Veien til Vikerfjell er ganske enkel, her kan du kjøre fort. Dette er da noen få linjer fra selve artikkelen.</p><a href="url">Les mer..</a>
-			</div>
-		</div>
-		<div class="contentArtikkel">
-			<div class="contentBilde"><img src="PHP/Bilder/kj%C3%B8pehytte.jpg"></div>
-			<div class="contentTekst">
-				<h2>Veibeskrivelse</h2>
-				<p>Her kommer det en liten ingress. Det som er litt chillern med å ha en ingress er jo at man kan lese litt om artikkelen uten å åpne artikkelen.</p>
-				<p>Veien til Vikerfjell er ganske enkel, her kan du kjøre fort. Dette er da noen få linjer fra selve artikkelen.</p><a href="url">Les mer..</a>
-			</div>
-		</div>
-  -->
+    include('/PHP/Include/Oversiktsporring.php');
+    ?>	
 	</div>
   <?php
-  include("PHP/Include/footer.php");
+ 	 include("PHP/Include/footer.php");
   ?>
 </body>
 </html>
