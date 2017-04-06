@@ -1,0 +1,80 @@
+/*
+Sist endret av Erik 03.03.2017
+Sist sett på av Alex 03.03.2017
+*/
+body {
+  margin: 0;
+  background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
+}
+
+header img {
+  height: 150px;
+}
+
+header {
+  font-size: 20px;
+  background: url("../Bilder/header_kandidat1.jpg");
+  background-repeat: no-repeat;
+  border-bottom: 2px solid black;
+}
+
+header h1 {
+  position: relative;
+  top: 50px;
+  text-align: center;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  color: #444;
+  margin: 0;
+  padding: 0px 0px 0px 0px;
+  font-size: 51px;
+  line-height: 44px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1;
+}
+
+header h2 {
+  position: relative;
+  top: 50px;
+  text-align: center;
+  font-family: Gill Sans, Verdana;
+  font-size: 11px;
+  line-height: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+
+/* Bakgrunn for header
+http://www.w3schools.com/css/css_image_transparency.asp
+Ikke endret så mye, bare lagt til index
+Endret høyde og ny bakgrunn - Erlend 25.02.2017
+*/
+.headerbakgrunn {
+  z-index: -1;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  overflow: hidden;
+  left: 0;
+}
+
+.headerbakgrunnmobil {
+  z-index: -1;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  overflow: auto;
+  left: 0;
+  display: none;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

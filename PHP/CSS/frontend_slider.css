@@ -1,0 +1,171 @@
+/*
+Her har vi kode for sliderboksene som er hentet fra W3Schools
+Og wrappers rundt seksjonene
+*/
+
+/*
+Sist endret av Sindre 17.03.2017
+.. Sist sett på av Erik 28.02.2017
+*/
+
+h2{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family:sans-serif;
+}
+
+.slidercontainer{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sliderbox{
+  margin: 0;
+  float:left;
+  width: 100%;
+}
+
+.large{
+  height: auto;
+  max-width: 100%;
+}
+
+.sliderbox img{
+  height: auto;
+  max-width: 100%;
+}
+
+.wrapperOverskrift{
+  left: 0;
+  width: 100%;
+  text-align:center;
+  top: 18%;
+  position: absolute;
+  font-size: 1.5vw;
+  background-color: rgba(255,255,255,0.8);
+  border-top:1px solid;
+  border-bottom:1px solid;
+  border-color: #000;
+}
+
+.wrapperOverskrift h1{
+  font-size: 2.9vw;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.væretcontent{
+  margin-top:3%;
+  width: 0%;
+}
+.overskriftVæret{
+  text-align: center;
+  font-family: "Kreon";
+  color:white;
+}
+
+.innholdswrapper{
+  height: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.innholdswrapper section{
+  padding: 30px;
+  width: 29.23%;
+  float: left;
+}
+
+.innholdswrapper img{
+  height: auto;
+  max-width: 100%;
+  width: 300px;
+}
+
+
+
+  .nyhetswrapper{
+    height: 100%;
+    overflow: auto;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  .contentheaders{
+    margin: 0;
+  }
+
+  .colsection{
+    width: 25.00%;
+    float:left;
+    padding: 0;
+    padding-top: 15px;
+  }
+
+  .colsectioncontent{
+    margin: 0 auto;
+    display: table;
+    padding: 3px;
+    padding-top: 0.5px;
+  }
+
+  .colsection img{
+    height: auto;
+    max-width: 100%;
+  }
+
+  section{
+    margin: 0;
+    padding: 0;
+  }
+
+  .headerbilde img{
+    max-width:100%;
+    height: auto;
+  }
+
+  /*S�KEBAR - Tas i bruk senere */
+  .righttest{
+    position:absolute;
+    right:20px;
+    top: 47%;
+  }
+
+  .pageheight{
+    height:auto;
+  }
+
+  /*
+  Her har vi hentet kode fra: http://www.w3schools.com/css/css_rwd_grid.asp
+  */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+
+  [class*="col-"] {
+    /*float: left;*/
+    padding: 15px;
+  }
+
+  [class*="col-12"] {
+    float: left;
+    padding: 0px;
+
+  }
+
+  .overflowtest{
+    clear:both;
+  }

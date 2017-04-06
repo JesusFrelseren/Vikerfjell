@@ -1,0 +1,85 @@
+/* CSS Document */
+/*
+Sist endret av Sindre 25.02.2017
+Sist sett på av Erik 02.03.2017
+*/
+
+body {
+  background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
+  color: #606468;
+  font: 1em sans-serif;
+  margin: 0;
+}
+
+input {
+  border :1px solid #000;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+}
+
+
+img {
+  height: 100px;
+  display: block;
+  margin-top: 12%;
+  padding: 0px 0px 0px 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#login {
+  margin: 50px auto;
+  margin-top: 10px;
+  width: 320px;
+}
+
+#login form {
+  margin: auto;
+  padding: 22px 22px 12px 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+
+
+/* Ulike input-felt */
+#login form input[type="text"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 285px;
+  height: 50px;
+}
+
+#login form input[type="password"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 285px;
+  height: 50px;
+}
+
+#login form input[type="submit"] {
+  background: #16aa56;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+/* "Logg inn" knapp - hover */
+#login form input[type="submit"]:hover {
+  background: #318e18;
+}

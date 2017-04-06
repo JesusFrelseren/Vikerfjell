@@ -1,0 +1,257 @@
+/* Sist endret av Erlend 25.02.2017
+* Sett over av Alex 28.02.2017 */
+
+
+* {
+  box-sizing: border-box;
+}
+
+#logutid {float:right;}
+#brukerid {float:right;}
+
+/*FORSIDE - Sindre*/
+.containor {width: 100%; position: absolute; height: 400px; background-color: #F9F5F5;}
+.venstreside {width: 48.5%; position: absolute; top: 5%; height: 710px; left: 1%;}
+.hoyreside {width: 48.5%; position: absolute; top: 5%; height: 310px; right: 1%;}
+.bilde {width: 70%; position: relative; height: auto; margin-left: 25%; margin-right: 0; margin-top: 50px;}
+.ingress {width: 60%; position: relative; height: auto; margin-left: 30%;}
+.oversikt {width: 100%; position: relative; margin-top: 15%; height: auto;}
+
+header img {
+  height: 121px;
+}
+
+header {
+  background: url("header_kandidat1.jpg");
+  background-repeat: no-repeat;
+  width:100%;
+  border-bottom: 2px solid black;
+}
+
+.headerbakgrunn {
+  z-index: -1;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  overflow: hidden;
+}
+
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+/*Header markup*/
+header {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: static;
+  background-color: #F8F8FF;
+  height: 125px;
+}
+
+header h1, h3  {
+  font-weight: bolder;
+  color: #444;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+
+}
+
+header h1 a, h3 a {
+  display: block;
+  text-decoration: none;
+  color: #444;
+}
+
+
+#admin_header_label {
+  text-align: left;
+
+}
+
+#admin_header_label h1, h3 {
+  text-align: center;
+}
+
+/* /header-markup */
+
+
+/*Menybar markup*/
+
+
+.user_controls {
+  display: inline;
+  background-color: #333;
+  color: white;
+  margin-right: 20px;
+  text-align: center;
+  float: right;
+
+}
+
+.user_controls img {
+  height: auto;
+  max-height: 70px;
+}
+
+.user_controls p {
+
+  margin: 0;
+}
+
+/* /Menybar markup */
+
+
+/*Hovedinnhold markup*/
+article {
+  height: auto;
+  width: auto;
+  background-color: #F9F5F5;
+  padding: 15px;
+}
+
+section {
+  height: auto;
+  width: auto;
+  background-color: #F9F5F5;
+  padding: 15px;
+}
+
+aside {
+  height: auto;
+  background-color: #F9F5F5;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+/* /Hovedinnhold markup */
+
+
+/*For genererte elementer*/
+.nav_mobile, .user_controls_mobile {
+
+  width: 50%;
+  cursor: pointer;
+  background: #333 no-repeat center center;
+  color: white;
+  font-family: "Kreon";
+  font-weight: lighter;
+  padding: 15px;
+  text-align: center;
+}
+
+.nav_mobile:hover, .user_controls_mobile:hover {
+  background-color: #111;
+}
+
+
+/*Vi har en default bredde på 100% med tanke på mobile enheter*/
+[class*="col-"] {
+  width: 100%;
+}
+
+/* Hvis skjermstørrelsen er større enn 700px,
+definerer vi 11 seperate kolonne-diver */
+@media only screen and (min-width: 700px) {
+  /* Desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+
+  .nav_mobile {
+    display: none;
+  }
+
+  .user_controls_mobile {
+    display: none;
+  }
+
+}
+
+
+/*Alle kolonne-divene flyter til venstre og har en padding for å skape luft*/
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+/*Når bredden er 100%, ønsker vi ingen padding eller marger*/
+.col-12 {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/*Om bredden er mindre enn 778px,
+gjør vi justeringer på menybar forhold til mobile enheter*/
+@media only screen and (max-width: 778px){
+
+  #nav_bar {
+    width: 100%;
+  }
+
+
+  .nav_mobile {
+    display: inline-block;
+  }
+  #user_controls {
+    display: none;
+  }
+
+
+  .nav_mobile::after {
+    content: "Meny \25BE";
+  }
+
+  .tabs {
+    display: none;
+  }
+
+  .user_controls_mobile {
+    display: inline-block;
+  }
+
+  .user_controls_mobile::after {
+    content: "Brukernavn \25BE";
+  }
+
+  #admin_header_label {
+    text-align: center;
+  }
+
+}
+
+
+@media only screen and (max-width: 720px) {
+
+  header img {
+  height: 96px;
+}
+}

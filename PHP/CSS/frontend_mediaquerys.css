@@ -1,0 +1,264 @@
+/* CSS Document */
+/*
+  Sist endret av Erik 25.02.2017
+  Sett på av Sindre 26.02.2017
+
+  Responsivt design
+  Hentet en del størrelser fra: http://getbootstrap.com/css/
+  Gjort om noen for å tilpasse innholdet vårt.
+*/
+
+/*
+@media screen and (orientation:portrait max-width: 720px) {
+  .slide {
+    display: none;
+  }
+  .portrait_slide {
+    display: block;
+  }
+} */
+
+@media only screen and (max-width: 1480px) {
+  .innholdswrapper section{
+    padding: 30px;
+    width: 40%;
+    float: left;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 721px) {
+  .innholdswrapper section{
+    padding: 30px;
+    width: 90%;
+    float: left;
+    overflow: hidden;
+  }
+}
+
+
+@media only screen and (max-width: 1650px) {
+  .colsection img{
+    max-width: 98%;
+  }
+}
+
+/*
+  Om skjermen er >1280px
+*/
+@media only screen and (min-width: 1280px) {
+
+  .footercol2 {width: 35%;}
+  .footercol1 {width: 15%}
+  .footer_container div.sosial {width: 25%;}
+}
+
+/*
+  Om skjermen er <1280px
+*/
+@media only screen and (max-width:1280px) {
+  .footercol2 {width: 22%;}
+  .footercol3 {width: 11%;}
+  /* slider blir 100%*/
+  .slidercontainer{width: 100%;}
+}
+
+@media only screen and (max-width:1280px) {
+
+  .sub_footer_linker {
+    text-align: left;
+  }
+
+  #credits {
+    text-align: right;
+  }
+
+  #sub_footer_logo {
+    text-align: center;
+  }
+
+
+
+}
+@media only screen and (max-width: 720px) {
+#myTopnav.topnav ul li:not(:first-child) {display: none;}
+    #myTopnav.topnav ul li.icon {
+      float: right;
+      display: inline-block;
+    }
+    #myTopnav.topnav ul li {float: left;}
+    #myTopnav.topnav.responsive ul li.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    #myTopnav.topnav.responsive ul li {
+      float: none;
+      display: inline;
+      background-color: black;
+
+    }
+    #myTopnav.topnav.responsive ul li a {
+      display: block;
+      text-align: left;
+    }
+
+    #myTopnav.nottop ul li:not(:first-child) {display: none;}
+    #myTopnav.nottop ul li.icon {
+      float: right;
+      display: inline-block;
+    }
+    #myTopnav.nottop ul li {float: left;}
+
+    #myTopnav.nottop.responsive ul li.icon {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+
+    #myTopnav.nottop.responsive ul li {
+      float: none;
+      display: inline;
+      background-color: black;
+
+    }
+
+    #myTopnav.nottop.responsive ul li a {
+      display: block;
+      text-align: left;
+    }
+
+    .header img {height: 140px; width: 94%}
+
+    #myTopnav.topnav ul li a, .dropbtn  {
+      padding: 14px 11px;
+      font-size: 14px;
+    }
+}
+
+
+/*
+  Her endrer vi innhold utifra en bredde på 720px
+  Selvtesting
+*/
+@media only screen and (max-width: 720px) {  /* Nedskalering */
+
+
+    .header img {height: 5px; width: 20%;}
+
+    #myTopnav.topnav ul li:not(:first-child) {display: none;}
+    #myTopnav.topnav ul li.icon {
+      float: right;
+      display: inline-block;
+    }
+    #myTopnav.topnav ul li {float: left;}
+    #myTopnav.topnav.responsive ul li.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    #myTopnav.topnav.responsive ul li {
+      float: none;
+      display: inline;
+      background-color: black;
+
+    }
+    #myTopnav.topnav.responsive ul li a {
+      display: block;
+      text-align: left;
+    }
+
+    #myTopnav.nottop ul li:not(:first-child) {display: none;}
+    #myTopnav.nottop ul li.icon {
+      float: right;
+      display: inline-block;
+    }
+    #myTopnav.nottop ul li {float: left;}
+
+    #myTopnav.nottop.responsive ul li.icon {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+
+    #myTopnav.nottop.responsive ul li {
+      float: none;
+      display: inline;
+      background-color: black;
+
+    }
+
+    #myTopnav.nottop.responsive ul li a {
+      display: block;
+      text-align: left;
+    }
+
+    .header img {height: 140px; width: 94%}
+
+    #myTopnav.topnav ul li a, .dropbtn  {
+      padding: 14px 11px;
+      font-size: 14px;
+    }
+    .footercol2 {width: 33%;}
+    .footer_container ul{ font-size: 12px;}
+    div.container.right li {font-size: 12px;}
+
+	    .naviger {
+      display: none;
+    }
+
+    .sub_footer {
+      display: none;
+    }
+}
+
+/*
+  720px slutt
+*/
+
+@media only screen and (max-width: 592px) {
+  header {text-align: center;}
+  /*.headerbakgrunnmobil {display: block;}*/
+}
+
+
+@media only screen and (max-width: 478px) {
+  .headerbakgrunnmobil {display:table;}
+  .headerbakgrunn {display: none;}
+}
+
+[class*="col-"] {
+  width: 100%;
+}
+
+
+@media only screen and (min-width: 960px) {
+    /* Tablets: */
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
+}
+@media only screen and (min-width: 1280px) {
+    /* Desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}

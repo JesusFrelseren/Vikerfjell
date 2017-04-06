@@ -1,0 +1,47 @@
+
+
+#bilder_kontrollpanel, .bildeinfo_container, .bildeopplast_container, #søkewrapper {
+    display: inline-block;
+    width: 330px;
+    height: auto;
+    border: black solid 2px;
+    margin: 15px 15px 15px 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#søkewrapper {
+    width: 100%;
+    margin: 0;
+}
+
+.søk_knapp {
+    background: #16aa56;
+    border: 0;
+    width: 100px;
+    margin-top: 3px;
+    height: 26px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    border: none;
+
+}
+
+.søk_knapp:hover {
+    background: white;
+    color: #16aa56;
+}
+.search_form {
+    display: inline-block;
+}
+
+.plassering {
+    width: 70% !important;
+    margin: 0 !important;
+
+
+}
+
+
+

@@ -1,0 +1,146 @@
+/*
+Siset endret av Erik 02.03.2017
+Sist sett på av Erlend 03.03.2017
+*/
+
+#myTopnav.topnav ul{
+  background-color: #333;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  display: inline-block;
+  padding: 0px;
+  margin: 0;
+  width: 100%;
+  height: 52px;
+  top: 0px;
+  list-style-type: none;
+}
+
+#myTopnav.topnav ul li {display: inline-block;}
+#myTopnav.topnav ul li a:hover {background-color: #555;}
+#myTopnav.topnav ul li.icon {display: none;}
+
+/*notop content*/
+
+#myTopnav.nottop ul{
+  background-color: #333;
+  text-align: center;
+  display: inline-block;
+  padding: 0px;
+  margin: 0;
+  width: 100%;
+  height: 52px;
+  top: 0px;
+  list-style-type: none;
+}
+
+#myTopnav.nottop ul{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+#myTopnav.nottop ul li {display: inline-block;}
+.dropbtn::after {
+  content: " \25BE";
+}
+#myTopnav.nottop ul li a, #myTopnav.topnav ul li a, .dropbtn  {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 11px;
+  text-decoration: none;
+  background-color: #333;
+  font-size: 17px;
+  box-sizing: border-box;
+}
+
+#myTopnav.nottop ul li a:hover {background-color: #555;}
+#myTopnav.nottop ul li.icon {display: none;}
+
+/*Dropdown content*/
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+li.dropdown {display: inline-block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media only screen and (max-width: 720px) {
+  #myTopnav.topnav ul li:not(:first-child) {display: none;}
+  #myTopnav.topnav ul li.icon {
+    float: right;
+    display: inline-block;
+  }
+  #myTopnav.topnav ul li {float: left;}
+  #myTopnav.topnav.responsive ul li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  #myTopnav.topnav.responsive ul li {
+    float: none;
+    display: inline;
+    background-color: black;
+
+  }
+  #myTopnav.topnav.responsive ul li a {
+    display: block;
+    text-align: left;
+  }
+
+  #myTopnav.nottop ul li:not(:first-child) {display: none;}
+  #myTopnav.nottop ul li.icon {
+    float: right;
+    display: inline-block;
+  }
+  #myTopnav.nottop ul li {float: left;}
+
+  #myTopnav.nottop.responsive ul li.icon {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  #myTopnav.nottop.responsive ul li {
+    float: none;
+    display: inline;
+    background-color: black;
+
+  }
+
+  #myTopnav.nottop.responsive ul li a {
+    display: block;
+    text-align: left;
+  }
+
+  .header img {height: 140px; width: 94%}
+
+  #myTopnav.topnav ul li a, .dropbtn  {
+    padding: 14px 11px;
+    font-size: 14px;
+  }
+}

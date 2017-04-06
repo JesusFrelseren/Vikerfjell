@@ -1,0 +1,153 @@
+/*
+Sist endret av Erik 03.03.2017
+Sist sett på av Sindre 03.03.2017
+*/
+.container {width: 100%; position: absolute; top: 100px; height: 400px;}
+.menyliste {width: 48%; position: absolute; border: black 2px; border-style: solid; top:25%; height: 365px; right: 1%; background-color: #F9F5F5;}
+.menyreg {width: 48%; position: absolute; border: black 2px; border-style: solid; top: 25%; height: 365px; left: 1%; background-color: #F9F5F5; }
+.brukertekst {
+  padding: 0px;
+  margin: 0;
+  font-family:sans-serif;
+}
+.menynavn {
+  position: absolute;
+  top: 15%;
+  left: 80%;
+}
+
+
+body {
+  background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
+}
+select {
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1;
+    overflow: auto;
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-position-x: 244px;
+
+}
+
+
+input {
+  border :1px solid #000;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+}
+
+#login {
+  margin: 50px auto;
+  margin-top: 10px;
+  width: 320px;
+}
+
+/* Ulike input-felt */
+#login input[type="text"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 5px;
+  width: 285px;
+  height: 25px;
+}
+
+#login  input[type="password"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 5px;
+  width: 285px;
+  height: 35px;
+}
+
+#login  input[type="submit"] {
+  background: #16aa56;
+  border: 0;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+#login input[type="mail"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 5px;
+  width: 285px;
+  height: 35px;
+}
+
+#login  input[type="submit"]:hover {
+  background: #318e18;
+}
+
+#liste  input[type="submit"] {
+  background: #16aa56;
+  border: 0;
+  height: 23px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  color: white;
+  cursor: pointer;
+  border: none;
+
+}
+
+#liste input[type="text"] {
+  background-color: #FFF;
+  border-radius: 0px 3px 3px 0px;
+  color: #000;
+  margin-bottom: 1em;
+  padding: 0 5px;
+  width: 100%;
+  height: 25px;
+
+}
+
+#endremeny {
+  position: absolute;
+  margin: 0;
+  left:58%;
+  top: 15%;
+  height: 250px;
+  width: 40%;
+}
+.leggetilNyMeny {width:285px;height:36px;}
+.listegammelMeny {right: 5%; left:5%; width:  50%; top: 15%; position:absolute;}
+.nymeny {width:100%;
+background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+}
+.regmeny {width:285px; height:30px;}
+.slettmenycss {position: absolute; left: 5.2%; bottom: 15%; width:50%;}
+.endremenycss {width:100%;}
+/* SINDRE MÅ SE PÅ DISSE ETTERPÅ */
+.listemenyer {width: 100%}
+
+/* Her skal vi fikse slik at listen blir vist øverst og lag ny bruker kommer rett under */
+@media only screen and (max-width: 778px) {
+    .menyreg {width: 90%; top: 11%; left: 5%;}
+    .menyliste {width: 90%; top: 58%; right: 5%;}
+    .container {height: 800px;}
+}
+
+/* Gjør inputfelt litt mindre */
+@media only screen and (max-width: 468px) {
+  .brukertekst{font-size: 14px;}
+  #login input[type="text"] {width: 200px;}
+  #login input[type="password"] {width: 200px};
+  #login input[type="mail"] {width: 200px};
+  #login  input[type="submit"] {width: 61.5%;}
+}
+
