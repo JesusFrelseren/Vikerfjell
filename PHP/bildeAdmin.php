@@ -124,8 +124,12 @@ Inkluder i innhold:<br />");
 
     include("Include/BilderVelgInnholdDropdown.php");
 
-    echo("<br /><form action='LinkBilder.php'><input type='submit' value='Link' class='søk_knapp' style='width: 50px' formaction='LinkBilder.php' formmethod='post'</form>
-</section>");
+    echo('<br />');
+    echo('<form method="post" action="Include/LinkBilder.php">');
+    echo('<input type="submit" value="Link" class="søk_knapp" style="width: 50px">');
+    echo('</form>');
+    echo('</section>');
+                    
 }
 
 
