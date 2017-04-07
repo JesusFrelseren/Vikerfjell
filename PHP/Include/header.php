@@ -31,6 +31,6 @@ echo("
 
  </div>
 <div class='row'>
-<nav id='myTopnav'' class='topnav'>
+<nav id='myTopnav' class='topnav'>
 <ul>");
 ?>
