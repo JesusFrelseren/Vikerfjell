@@ -21,16 +21,8 @@ Sett på av Erik 03.03.2017
   <?php
   include("PHP/Include/header.php");
   include("PHP/Include/meny.php");
-  ?>
-  <!--Sindre 05.04.2017-->
-  <div class="content100Prosent">
-		<h1>Vei og føre</h1>
-    <?php
-    include('/PHP/Include/Oversiktsporring.php');
-    ?>	
-	</div>
-  <?php
- 	 include("PHP/Include/footer.php");
+  include('PHP/Include/NyArtikkel.php');
+ 	include("PHP/Include/footer.php");
   ?>
 </body>
 </html>
