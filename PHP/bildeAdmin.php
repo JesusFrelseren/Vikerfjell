@@ -67,7 +67,7 @@ if (isset($_GET['id'])) {
     <p> Velg side for å inkludere bilder i<p>
     <div id="sidevalg">
         <?php
-        include ("Include/BilderMenyInnhold.php");
+        include("Include/BilderVelgMenyDropdown.php");
 
         ?>
     </div>
@@ -125,7 +125,7 @@ while($row = $img_result ->fetch_assoc()) {
 <p style='margin-top: 0;'>$dimension</p>
 Inkluder i innhold:<br />");
 
-    include("Include/InnholdFiltrertBilder.php");
+    include("Include/BilderVelgInnholdDropdown.php");
 
     echo("<br /><input type='submit' value='Link' class='søk_knapp' style='width: 50px'>
 </section>");
