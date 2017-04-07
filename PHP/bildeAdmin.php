@@ -32,6 +32,10 @@ if (isset($_POST["søk_bilde_search_box"])) {
 } else {
     $img_result = hent_alle_bilder();
 }
+
+if (isset($_GET['id'])) {
+    hent_linkede_bilder();
+}
 ?>
 
 <!-- Søkeboks -->
@@ -64,6 +68,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
     <div id="sidevalg">
         <?php
         include ("Include/BilderMenyInnhold.php");
+
         ?>
     </div>
 </section>
@@ -74,32 +79,16 @@ if (isset($_POST["søk_bilde_search_box"])) {
 function hent_linkede_bilder() {
     global $mysqli;
 
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
+    $id = $_GET['id'];
+    $stmt = $mysqli->prepare(
+        "select *
+                  from bilder inner join bilderinnhold
+                  on bilder.idbilder = $id");
+    mysqli_set_charset($mysqli, "UTF8");
+    $stmt->execute();
+    $img_result = $stmt->get_result();
+    return $img_result;
 
-        if (strpos($id, 'SUB') !== false) {
-            $subid = substr($id, 3);
-            $stmt = $mysqli->prepare(
-                "select *
-                          from bilder join bilderinnhold
-                          on bilder.idbilder = $subid");
-            mysqli_set_charset($mysqli, "UTF8");
-            $stmt->execute();
-            $img_linked_result = $stmt->get_result();
-            return $img_linked_result;
-
-        } else {
-            $stmt = $mysqli->prepare(
-                "select *
-                          from bilder inner join bilderinnhold
-                          on bilder.idbilder = $id");
-            mysqli_set_charset($mysqli, "UTF8");
-            $stmt->execute();
-            $img_linked_result = $stmt->get_result();
-            return $img_linked_result;
-
-        }
-    }
 }
 
 function hent_alle_bilder() {

@@ -97,6 +97,11 @@ window.onscroll = function(e) {
     return idnumre;
 
   }
+  
+  function BilderSettAktivDropdown(aktivIndex) {
+      var dropdown = document.getElementById("lenkerdrop");
+      dropdown.value = aktivIndex;
+  }
 /*
   function populateMenu() {
     var dropdown = document.getElementById("listetest");
