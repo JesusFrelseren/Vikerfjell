@@ -83,7 +83,7 @@ if(!$row){
   legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
   
 
-  
+   
   include("createInnholdFile.php");
 
    header("location: ../innhold.php");

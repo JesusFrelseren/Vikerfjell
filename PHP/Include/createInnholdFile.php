@@ -1,5 +1,5 @@
 ﻿<?php
-/* Alex 07.04.2017 */
+/* Alex 07.04.2017  */
 function lagSide() {
 			ob_start();
 			include 'header.php';

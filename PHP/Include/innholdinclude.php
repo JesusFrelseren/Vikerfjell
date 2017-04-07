@@ -1,5 +1,5 @@
 <?php
-/* Alex 07.04.2017 */
+/* Alex 07.04.2017  */
 
 $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold ORDER BY idinnhold DESC LIMIT 1;");
 mysqli_set_charset($mysqli, "UTF8");
