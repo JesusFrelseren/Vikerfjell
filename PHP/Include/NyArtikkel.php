@@ -1,19 +1,23 @@
 <?php
 /* Sindre 06.04.2017  */
 
+echo ("<div class='content100Prosent'>
+        <h1>Vei og føre</h1>");
+
 // Henter innhold fra den bestemte "idmeny"
 $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold WHERE idmeny = 43 ORDER BY rekke;");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Kjører igjennom en while på alle innholdene den har fått dra spørringen
+// Kjører igjennom en while på alle innholdene den har fått fra spørringen
 while ($row = $result->fetch_assoc())
 	{
 	$overskrift = $row['tittel'];
 	$ingress = $row['ingress'];
-  $innhold = explode(".", $row['text'], 3);
-  $innholdet = $innhold[0].".".$innhold[1].".";
+  //Tar bort denne kommentaren når databasen er klar.
+  //$innhold = explode(".", $row['text'], 3);
+  //$innholdet = $innhold[0].".".$innhold[1].".";
 	$id = $row['idinnhold'];
 	$side = $row['side'];
 
@@ -24,15 +28,16 @@ while ($row = $result->fetch_assoc())
 	$result1 = $stmt1->get_result();
 	$row1 = $result1->fetch_assoc();
 	$bilde = $row1['hvor'];
-	echo ("
-          <div class='contentArtikkel'>
+  //NOTASJON: LEGG TIL $INNHOLDET i stedet for hei når databasen er klar.
+  echo ("  <div class='contentArtikkel'>
             <div class='contentBilde'><img src='PHP/Bilder/$bilde'></div>
             <div class='contentTekst'>
               <h2>$overskrift</h2>
               <p>$ingress</p>
-              <p>$innholdet</p><a href='$side'>Les mer..</a>
+              <p>hei</p><a href='$side'>Les mer..</a>
             </div>
           </div>
           ");
 	}
+  echo("</div>");
 ?>
