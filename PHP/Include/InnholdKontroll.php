@@ -80,11 +80,11 @@ function sjekk_navn($navn){
   $row = $result->fetch_assoc();
 
 if(!$row){
-  legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
-  
+  legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$_POST['menylistephp']);
+
   include 'KobleOgLagInnholdFiler.php';
 
-  
+
 
   header("location: ../innhold.php");
 }else{

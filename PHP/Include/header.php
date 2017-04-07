@@ -14,6 +14,7 @@ echo("
   <link type='text/css' href='PHP/CSS/frontend_mediaquerys.css?v=12345' rel='stylesheet'>
   <link type='text/css' href='PHP/CSS/frontend_footer_new.css?v=12345' rel='stylesheet'>
   <link type='text/css' href='PHP/CSS/menybar.css?v=12345' rel='stylesheet'>
+  <link type='text/css' href='PHP/CSS/oversikt.css?v=12345' rel='stylesheet'>
   <script src='PHP/JavaScript/JS.js?v=12345' type='text/javascript' defer></script>
 </head>
 <body>

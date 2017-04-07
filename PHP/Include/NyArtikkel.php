@@ -1,17 +1,16 @@
 <?php
 /* Sindre 06.04.2017  */
 
-function lagSide() {
+function lagSide2() {
 			ob_start();
 			include 'header.php';
 			include 'meny.php';
-      legg_til_oversikt($_POST['menylistephp']);
+      $menyoverskrift = legg_til_oversikt($_POST['menylistephp']);
 			include 'footer.php';
 			$andreinclude = ob_get_clean();
 			$includes = $andreinclude;
       $sideInsert = "../../".$menyoverskrift.".html";
   		$fh = fopen($sideInsert, 'w', 'w');
-  		$includes = lagSide();
   		fwrite($fh, $includes);
 
       $overskrift4 = $menyoverskrift.".html";
@@ -27,11 +26,12 @@ function lagSide() {
 //Kaller en funksjon som får idmeny og menyoverskrift fra InnholdKontroll
 function legg_til_oversikt($idmeny){
   //Spørring for å få ut navnet på menyelementet for å fylle ut overskrift på siden.
+  global $mysqli;
   $stmt2 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = $idmeny");
   mysqli_set_charset($mysqli, "UTF8");
   $stmt2->execute();
   $result2 = $stmt2->get_result();
-  $row2 = $result2->fetch_assoc()
+  $row2 = $result2->fetch_assoc();
   $menyoverskrift = $row2['tekst'];
 
   echo ("<div class='content100Prosent'>
@@ -73,5 +73,6 @@ function legg_til_oversikt($idmeny){
             ");
   	}
     echo("</div>");
+    return $menyoverskrift;
   }
 ?>

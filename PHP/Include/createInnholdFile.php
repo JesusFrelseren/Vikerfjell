@@ -8,13 +8,11 @@ function lagSide() {
 			include 'footer.php';
 			$andreinclude = ob_get_clean();
 			$includes = $andreinclude;
-			
+
 			return $includes;
 		}
 
 		function koblemeny($id){
-
-		
 
 		global $mysqli;
 		$stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?;");
@@ -23,7 +21,7 @@ function lagSide() {
 		$stmt4->execute();
 		$result4 = $stmt4->get_result();
 		$row4 = $result4->fetch_assoc();
-		
+
 		$overskrift4 = $row4['tittel'].'.html';
 
 		$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
@@ -38,7 +36,7 @@ function lagSide() {
 		fwrite($fh, $includes);
 
 
-		
+
 		}
 
 

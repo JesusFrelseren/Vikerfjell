@@ -10,14 +10,20 @@
 		$count = 0;
 		while($row3 = $result3->fetch_assoc()){
 		$count ++;
+		$navn = $row3['tittel'];
 		}
 		if ($count > 1){
 			include("NyArtikkel.php");
-
+			lagSide2();
+			include("createInnholdFile.php");
+			$sideInsert = "../../".$navn.'.html';
+			$fh = fopen($sideInsert, 'w', 'w');
+			$stringen = lagSide();
+			fwrite($fh, $stringen);
 		}else{
 		include("createInnholdFile.php");
 		koblemeny($_POST['menylistephp']);
-		
+
 		}
 
 
