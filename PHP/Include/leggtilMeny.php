@@ -84,7 +84,7 @@ elseif (!is_numeric($menyrekke))
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
 	{
 	global $mysqli;
-	$test = "./" . $nyttnavn . ".php";
+	$test = "./" . $nyttnavn . ".html";
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $test);
 	$stmt->execute();
@@ -92,7 +92,7 @@ function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
 	$row = $result->fetch_assoc();
 	if (!$row)
 		{
-		$nyttnavn = "./" . $nyttnavn . ".php";
+		$nyttnavn = "./" . $nyttnavn . ".html";
 		$stmt = $mysqli->prepare($sql2);
 		$stmt->bind_param("ssii", $menynavn, $nyttnavn, $menyrekke, $typemeny);
 		$stmt->execute();
@@ -108,7 +108,7 @@ function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
 function sjekktittel2($sql, $sql2, $nyttnavn, $menynavn, $menyrekke)
 	{
 	global $mysqli;
-	$test = $nyttnavn . ".php";
+	$test = $nyttnavn . ".html";
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $test);
 	$stmt->execute();
@@ -117,7 +117,7 @@ function sjekktittel2($sql, $sql2, $nyttnavn, $menynavn, $menyrekke)
 	if (!$row)
 		{
 		$stmt = $mysqli->prepare($sql2);
-		$nyttnavn = $nyttnavn . ".php";
+		$nyttnavn = $nyttnavn . ".html";
 		$stmt->bind_param("ssi", $menynavn, $nyttnavn, $menyrekke);
 		$stmt->execute();
 		}

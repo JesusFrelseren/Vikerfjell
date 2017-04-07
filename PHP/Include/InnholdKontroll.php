@@ -71,7 +71,7 @@ function Slett_Innhold($idinnhold){
 function sjekk_navn($navn){
   global $mysqli;
 
-  $hvasomhelst = $navn.".php";
+  $hvasomhelst = $navn.".html";
 
   $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold WHERE side=?");
   $stmt->bind_param("s",$hvasomhelst);
@@ -82,11 +82,11 @@ function sjekk_navn($navn){
 if(!$row){
   legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
   
+  include 'KobleOgLagInnholdFiler.php';
 
-   
-  include("createInnholdFile.php");
+  
 
-   header("location: ../innhold.php");
+  header("location: ../innhold.php");
 }else{
   $tall ="1";
   $side2 = $navn.$tall;
