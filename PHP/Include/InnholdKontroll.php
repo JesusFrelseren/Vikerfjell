@@ -67,6 +67,7 @@ function Slett_Innhold($idinnhold){
 }
 
 // Sjekker om sidenavn finnes, hvis det gjør det blir det lagt til et tall og kjøres på nytt.
+/*Endret av Alex 07.04.2017 */
 function sjekk_navn($navn){
   global $mysqli;
 
@@ -80,7 +81,11 @@ function sjekk_navn($navn){
 
 if(!$row){
   legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
-  include("innholdinclude.php");
+  
+
+  
+  include("createInnholdFile.php");
+
    header("location: ../innhold.php");
 }else{
   $tall ="1";
