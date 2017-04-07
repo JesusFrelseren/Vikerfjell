@@ -33,9 +33,6 @@ if (isset($_POST["søk_bilde_search_box"])) {
     $img_result = hent_alle_bilder();
 }
 
-if (isset($_GET['id'])) {
-    hent_linkede_bilder();
-}
 ?>
 
 <!-- Søkeboks -->
@@ -67,7 +64,7 @@ if (isset($_GET['id'])) {
     <p> Velg side for å inkludere bilder i<p>
     <div id="sidevalg">
         <?php
-        include ("Include/BilderMenyInnhold.php");
+        include("Include/BilderVelgMenyDropdown.php");
 
         ?>
     </div>
@@ -86,8 +83,8 @@ function hent_linkede_bilder() {
                   on bilder.idbilder = $id");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
-    $img_result = $stmt->get_result();
-    return $img_result;
+    $img_linked_result = $stmt->get_result();
+    return $img_linked_result;
 
 }
 
@@ -125,10 +122,14 @@ while($row = $img_result ->fetch_assoc()) {
 <p style='margin-top: 0;'>$dimension</p>
 Inkluder i innhold:<br />");
 
-    include("Include/InnholdFiltrertBilder.php");
+    include("Include/BilderVelgInnholdDropdown.php");
 
-    echo("<br /><input type='submit' value='Link' class='søk_knapp' style='width: 50px'>
-</section>");
+    echo('<br />');
+    echo('<form method="post" action="Include/LinkBilder.php">');
+    echo('<input type="submit" value="Link" class="søk_knapp" style="width: 50px">');
+    echo('</form>');
+    echo('</section>');
+                    
 }
 
 
