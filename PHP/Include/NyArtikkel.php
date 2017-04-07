@@ -22,13 +22,6 @@ function lagSide() {
   		mysqli_set_charset($mysqli, "UTF8");
   		$stmt6->bind_param("s",$overskrift4);
   		$stmt6->execute();
-
-
-  		$sideInsert = "../../".$overskrift4;
-  		$fh = fopen($sideInsert, 'w', 'w');
-  		$includes = lagSide();
-  		fwrite($fh, $includes);
-
 		}
 
 //Kaller en funksjon som får idmeny og menyoverskrift fra InnholdKontroll
