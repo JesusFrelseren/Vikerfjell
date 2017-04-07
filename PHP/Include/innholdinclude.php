@@ -1,4 +1,18 @@
 <?php
+<<<<<<< HEAD
+=======
+
+$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold ORDER BY idinnhold DESC LIMIT 1;");
+mysqli_set_charset($mysqli, "UTF8");
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+$overskrift = $row['tittel'];
+$text = $row['text'];
+$id = $row['idinnhold'];
+
+>>>>>>> ada0f5907f2f1712c3a58cbb050539a4705a447d
 
 	$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold ORDER BY idinnhold DESC LIMIT 1;");
 	mysqli_set_charset($mysqli, "UTF8");
@@ -17,6 +31,7 @@
 	$row = $result->fetch_assoc();
 	$bilde = $row['hvor'];
 
+<<<<<<< HEAD
 function lagSide() {
 	global $mysqli;
 	$os = serialize($overskrift);
@@ -51,5 +66,13 @@ $test = "
 		$includes = lagSide();
 		file_put_contents($sideInsert, $includes);
 		
+=======
+		echo("<div class='staticinnhold'>
+		<H1>$overskrift</h1>
+		<img src=$bilde width=100% height=auto>
+		<p>$text</p>
+		</div>");
+
+>>>>>>> ada0f5907f2f1712c3a58cbb050539a4705a447d
 		
 ?>
