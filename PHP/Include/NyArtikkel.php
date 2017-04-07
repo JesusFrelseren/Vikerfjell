@@ -1,5 +1,5 @@
 <?php
-/* Sindre 06.04.2017 */
+/* Sindre 06.04.2017  */
 
 // Henter innhold fra den bestemte "idmeny"
 $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold WHERE idmeny = 43 ORDER BY rekke;");
