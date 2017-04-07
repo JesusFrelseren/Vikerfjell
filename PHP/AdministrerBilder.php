@@ -37,7 +37,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 <!-- Søkeboks -->
 <section id="søkewrapper">
-    <form class="search_form" action="bildeAdmin.php" method="post">
+    <form class="search_form" action="AdministrerBilder.php" method="post">
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
         <input type="submit" class="søk_knapp" value="Finn bilder">
 
@@ -107,7 +107,7 @@ function hent_filterte_bilder($søketekst) {
 }
 
 while($row = $img_result ->fetch_assoc()) {
-    $id = $row['idbilder'];
+    $idbilder = $row['idbilder'];
     $hvor = $row['hvor'];
     $tekst = $row['tekst'];
     $dimension = $row['hoyde'] . 'x' . $row['bredde'];
@@ -116,7 +116,7 @@ while($row = $img_result ->fetch_assoc()) {
 
     echo("
 <section class='bildeinfo_container'>
-<input type='hidden' value='$id' name='id' id='id'>
+<input type='hidden' value='$idbilder' name='id' id='id'>
 <img src='$thumb'>
 <p>$tekst</p>
 <p style='margin-top: 0;'>$dimension</p>
@@ -126,6 +126,7 @@ Inkluder i innhold:<br />");
 
     echo('<br />');
     echo('<form method="post" action="Include/LinkBilder.php">');
+    echo('<input type="hidden">');
     echo('<input type="submit" value="Link" class="søk_knapp" style="width: 50px">');
     echo('</form>');
     echo('</section>');

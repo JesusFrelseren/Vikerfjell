@@ -21,7 +21,7 @@ echo("<header>
 				<a class='aktivlenke' href='brukere.php'>Brukere</a>
 			</li>
 			<li>
-				<a href='bildeAdmin.php'>Bilder</a>
+				<a href='AdministrerBilder.php'>Bilder</a>
 			</li>
 			<li id='logutid'>
 				<a href='loggut.php'>Logg ut</a>
