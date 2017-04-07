@@ -5,7 +5,6 @@ Sist sett på av Erlend 30.03.2017
 */
 
 include("mysqlcon.php");
-include("NyArtikkel.php");
 
 function legg_til_side($tittel, $ingress, $tekst, $rekke, $side, $idmeny) {
     global $mysqli;
@@ -82,9 +81,9 @@ function sjekk_navn($navn){
 
 if(!$row){
   legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".php",$_POST['menylistephp']);
+  
 
-
-
+   
   include("createInnholdFile.php");
 
    header("location: ../innhold.php");
@@ -119,9 +118,6 @@ mysqli_close($mysqli);
 
 if(isset($_POST['endreInnhold'])){
   Endre_Innhold($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$_POST['menylistephp'],$_POST['id']);
-
-  //Mekker ny oversikt med artikler
-  legg_til_oversikt($_POST['menylistephp']);
   header("location: ../innhold.php");
 }
 
