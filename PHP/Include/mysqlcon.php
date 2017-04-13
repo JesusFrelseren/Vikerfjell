@@ -3,7 +3,7 @@
 <!--Sett over av Sindre 28.03.2017 */
 
 
- /* $mysqli = new mysqli('localhost', 'root', '', 'vikerfjell');
+  $mysqli = new mysqli('localhost', 'root', '', 'vikerfjell');
 
   if (mysqli_connect_error()) {
     die('Connect Error (' . mysqli_connect_errno() . ') '
@@ -12,7 +12,7 @@
       echo("");
   }
 
-*/
+/*
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
   $mysqli = new mysqli('158.36.139.21', 'brViker', 'pw_Viker', 'vikerfjell');
@@ -25,3 +25,4 @@
   }
 
 ?>
+*/

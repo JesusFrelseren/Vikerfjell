@@ -37,7 +37,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 <!-- Søkeboks -->
 <section id="søkewrapper">
-    <form class="search_form" action="AdministrerBilder.php" method="post">
+    <form class="search_form" action="AdministrerBilderLink.php" method="post">
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
         <input type="submit" class="søk_knapp" value="Finn bilder">
 
@@ -52,20 +52,13 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
-    <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
-    <form>
-        <input type='file' id='bildeopplast' value="Last opp">
-
-        <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
-        <label for="bildebeskrivelse"></label>
-        <input type='text' id='bildebeskrivelse' size="30" placeholder="Maks 30 tegn" maxlength="30">
-        <input type='submit' class="søk_knapp" value='Last opp'>
-    </form>
+<form>
+<input type="submit" class="søk_knapp" value="Til Opplasting" formaction="AdministrerBilder.php" style="margin-top: 86px; margin-bottom: 78px">
+</form>
     <p> Velg side for å inkludere bilder i<p>
     <div id="sidevalg">
         <?php
         include("Include/BilderVelgMenyDropdown.php");
-
         ?>
     </div>
 </section>

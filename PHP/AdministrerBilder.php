@@ -58,16 +58,11 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
         <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
         <label for="bildebeskrivelse"></label>
-        <input type='text' id='bildebeskrivelse' size="30" placeholder="Maks 30 tegn" maxlength="30">
+        <input type='text' id='bildebeskrivelse' size="30" placeholder="Maks 45 tegn" maxlength="45">
         <input type='submit' class="søk_knapp" value='Last opp'>
+        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
     </form>
-    <p> Velg side for å inkludere bilder i<p>
-    <div id="sidevalg">
-        <?php
-        include("Include/BilderVelgMenyDropdown.php");
 
-        ?>
-    </div>
 </section>
 
 
@@ -119,22 +114,8 @@ while($row = $img_result ->fetch_assoc()) {
 <input type='hidden' value='$idbilder' name='id' id='id'>
 <img src='$thumb'>
 <p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p>
-Inkluder i innhold:<br />");
+<p style='margin-top: 0;'>$dimension</p> </section>");
 
-    include("Include/BilderVelgInnholdDropdown.php");
-
-    echo('<br />');
-    echo('<form method="post" action="Include/LinkBilder.php">');
-    echo('<input type="hidden">');
-    echo('<input type="submit" value="Link" class="søk_knapp" style="width: 50px">');
-    echo('</form>');
-    echo('</section>');
-                    
 }
 
-
 ?>
-
-
-
