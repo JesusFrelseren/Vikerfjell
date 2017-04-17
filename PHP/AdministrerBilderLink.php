@@ -37,11 +37,14 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 <!-- Søkeboks -->
 <section id="søkewrapper">
-    <form class="search_form" action="AdministrerBilderLink.php" method="post">
-        <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
-        <input type="submit" class="søk_knapp" value="Finn bilder">
-
+    <form>
+    <input type="submit" class="søk_knapp" value="<- Til Opplasting" formaction="AdministrerBilder.php" style="float: left">
     </form>
+    <form class="search_form" action="AdministrerBilderLink.php" method="post">
+    <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
+    <input type="submit" class="søk_knapp" value="Finn bilder">
+
+</form>
     <form class="search_form">
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
@@ -49,18 +52,18 @@ if (isset($_POST["søk_bilde_search_box"])) {
 </section>
 
 
-
-<!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
-<form>
-<input type="submit" class="søk_knapp" value="Til Opplasting" formaction="AdministrerBilder.php" style="margin-top: 86px; margin-bottom: 78px">
-</form>
-    <p> Velg side for å inkludere bilder i<p>
+
+    <p> 1. Velg side for å inkludere bilder i<p>
     <div id="sidevalg">
+        <form method="get">
         <?php
-        include("Include/BilderVelgMenyDropdown.php");
+        include("Include/BilderVelgMenyDropdownLinkModus.php");
         ?>
+        </form>
     </div>
+    <p>2. Velg siden sitt innhold som bildet skal inkluderes i</p>
+    <p>3. Velg link eller unlink</p>
 </section>
 
 
@@ -120,7 +123,7 @@ Inkluder i innhold:<br />");
     echo('<br />');
     echo('<form method="post" action="Include/LinkBilder.php">');
     echo('<input type="hidden">');
-    echo('<input type="submit" value="Link" class="søk_knapp" style="width: 50px">');
+    echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
     echo('</form>');
     echo('</section>');
 

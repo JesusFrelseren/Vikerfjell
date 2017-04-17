@@ -19,10 +19,10 @@ function changeMenyFunc() {
 }
 
 //OnChange funksjon for select i endring av meny
-function changeMenyFuncBilder() {
+function visInnholdForMenyLinkmodus(modus) {
     var selectBox = document.getElementById("listetest");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/vikerfjell/PHP/bildeAdmin.php?id="+selectedValue);
+    window.location.assign("http://localhost/vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
 }
 
 // Redigere innhold med bold/italic/underline
@@ -102,7 +102,7 @@ window.onscroll = function(e) {
       var dropdown = document.getElementById("lenkerdrop");
       dropdown.value = aktivIndex;
   }
-/*
+
   function populateMenu() {
     var dropdown = document.getElementById("listetest");
     var field = document.getElementById("idtest");
@@ -121,7 +121,7 @@ window.onscroll = function(e) {
   }
 
 
-*/
+
   /*
 var mytimer = 5000;
 var x = document.getElementsByClassName("mySlides");

@@ -18,13 +18,14 @@
 .søk_knapp {
     background: #16aa56;
     border: 0;
-    width: 100px;
+    width: auto;
     margin-top: 3px;
-    height: 26px;
+    height: auto;
     border-radius: 3px;
     color: white;
     cursor: pointer;
     border: none;
+    padding: 5px;
 
 }
 

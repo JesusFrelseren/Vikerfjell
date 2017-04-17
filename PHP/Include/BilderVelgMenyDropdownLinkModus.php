@@ -8,7 +8,7 @@ include 'mysqlcon.php';
 $sql = "SELECT * FROM vikerfjell.meny left join submeny on meny.idmeny = submeny.meny_idmeny ORDER BY rekke;";
 $result = mysqli_query($mysqli, $sql);
 $artnr = 0;
-echo("<select class='plassering' id='listetest' name='menylistephp' onchange='changeMenyFuncBilder()'>");
+echo("<select class='plassering' id='listetest' name='menylistephp' onchange='visInnholdForMenyLinkmodus()'>");
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
