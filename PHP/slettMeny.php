@@ -25,7 +25,7 @@ if(isset($Menyelement) || $Menyelement=="") {
         $innholdStmt->bind_param('i', intval($nymenyid));
         $innholdStmt->execute();
         $innholdStmt->store_result();
-        */ //
+        */ ///
 
         //Lager select for å finne sidenavn for filsletting
         $sqlSelect = "SELECT * FROM submeny WHERE idsubmeny = ?";
