@@ -5,12 +5,21 @@
 
 // Sindre 28.03.2017
 
+function innholdReturnId() {
+    var selectBox = document.getElementById("innhold_dropdown");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    window.location.assign("http://localhost/html/Vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
+
+}
+
 //OnChange funksjon for Select(ListeInnhold).
 
 function changeFunc() {
-    var selectBox = document.getElementById("listeinnhold");
+    var selectBox = document.getElementById("innhold_dropdown");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     window.location.assign("http://localhost/html/Vikerfjell/PHP/innhold.php?id="+selectedValue);
+
+    var selectedValue = document.getElementById("innhold_dropdown").options[document.getElementById("innhold_dropdown").selectedIndex].value;
 }
 //OnChange funksjon for select i endring av meny
 function changeMenyFunc() {
@@ -103,6 +112,8 @@ window.onscroll = function(e) {
       var dropdown = document.getElementById("lenkerdrop");
       dropdown.value = aktivIndex;
   }
+
+
 
   function populateMenu() {
     var dropdown = document.getElementById("listetest");
