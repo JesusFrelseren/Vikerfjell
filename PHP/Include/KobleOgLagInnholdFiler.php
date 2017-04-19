@@ -14,6 +14,7 @@
 			lagSide2($_POST['menylistephp']);
 			include("createInnholdFile.php");
 			$sideInsert = "../../".$navn.'.html';
+
 			$fh = fopen($sideInsert, 'w', 'w');
 			$stringen = lagSide();
 			fwrite($fh, $stringen);
