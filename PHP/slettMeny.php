@@ -18,6 +18,15 @@ if(isset($Menyelement) || $Menyelement=="") {
       if(strpos($Menyelement, 'SUB') !== false) {
         //Substringer for å få ren ID
         $nymenyid = substr($Menyelement,3);
+        //Select for å se om valgt meny har eksisterende innhold
+        /* DENNE FUNGERER IKKE ENDA
+        $innholdSjekk = "SELECT * FROM submeny LEFT JOIN innhold ON submeny. WHERE innhold.idmeny = ?;";
+        $innholdStmt = $mysqli->prepare($innholdSjekk);
+        $innholdStmt->bind_param('i', intval($nymenyid));
+        $innholdStmt->execute();
+        $innholdStmt->store_result();
+        */ //
+
         //Lager select for å finne sidenavn for filsletting
         $sqlSelect = "SELECT * FROM submeny WHERE idsubmeny = ?";
         $selectStmt = $mysqli->prepare($sqlSelect);
