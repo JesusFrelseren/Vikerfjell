@@ -84,7 +84,7 @@ if (isset($_GET['id'])){
 					<p class="brukertekst">Menynavn</p>
 						<input placeholder="Menynavn" autofocus="" name="menuname" title="Skriv inn menynavn" type="text"><br style="margin-bottom:12px;">
 					<p class="brukertekst">Rekke</p>
-						<input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="text"> 
+						<input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="number"> 
 
 						<div class="regmeny">
 							<input class="listemenyer" name="send" type="submit" value="Registrer meny">
