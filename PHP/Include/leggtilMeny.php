@@ -1,7 +1,7 @@
 <?php
 /*
 Laget av Erik 30.03.2017
-Sist endret 07.04.2017
+Sist endret 19.04.2017
 */
 
 function lagSide() {
@@ -30,7 +30,7 @@ while ($row = $result->fetch_assoc())
 	$stmt->execute();
 	}
 // Variabler som blir laget utifra brukertekst
-$menynavn = mysqli_real_escape_string($mysqli, $_POST["menuname"]);
+$menynavn = mysqli_real_escape_string($mysqli, $_POST['menuname']);
 $menyrekke = mysqli_real_escape_string($mysqli, $_POST["menurow"]);
 $typemeny = $_POST['menyliste'];
 //Sjekker om begge felt er fylt ut

@@ -1,16 +1,24 @@
-<!--
-Sist endret av Erlend 01.04.2017
-Sist sett på av Sindre 01.04.2017
--->
-
-<?php include 'startSession.php';
+<?php
+include 'startSession.php';
+include('Include/mysqlcon.php');
+var_dump($_POST);
 $id_innhold = -1;
+if (isset($_POST['idbilder']) && $_POST['id_innhold']) {
+    $idbilder = $_POST['idbilder'];
+    $idinnhold = $_POST['id_innhold'];
+
+    $stmt = $mysqli->prepare("insert into bilderinnhold values(?, ?)");
+    $stmt->bind_param('ii', $idbilder, $idinnhold);
+    $stmt->execute();
+
+}
+
 if(isset($_GET['id'])) {
     $id_innhold = $_GET['id'];
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Vikerfjell Admin</title>
@@ -43,16 +51,17 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <!-- Søkeboks -->
 <section id="søkewrapper">
     <form>
-    <input type="submit" class="søk_knapp" value="<- Til Opplasting" formaction="AdministrerBilder.php" style="float: left">
+        <input type="submit" class="søk_knapp" value="<- Til Opplasting" formaction="AdministrerBilder.php" style="float: left">
     </form>
     <form class="search_form" action="AdministrerBilderLink.php" method="post">
-    <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
-    <input type="submit" class="søk_knapp" value="Finn bilder">
+        <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
+        <input type="submit" class="søk_knapp" value="Finn bilder">
 
-</form>
+    </form>
     <form class="search_form">
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
+
 
 </section>
 
@@ -61,8 +70,8 @@ if (isset($_POST["søk_bilde_search_box"])) {
     <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
     <form>
         <?php include("Include/BilderVelgInnholdDropdown.php")?>
-
     </form>
+    <p style="color: greenyellow">Bildet ble inkludert!</p>
 
 </section>
 
@@ -114,12 +123,13 @@ while($row = $img_result->fetch_assoc()) {
 <input type='hidden' value='$idbilder' name='id' id='id'>
 <img src='$thumb'>
 <p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p>");
+<p style='margin-top: 0;'>$dimension</p>
+Inkluder i innhold:<br />");
 
 
 
     echo('<br />');
-    echo('<form method="post" action="LinkBilder.php">');
+    echo('<form method="post" action="Include/LinkBilder.php">');
 
     echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
     echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
@@ -129,7 +139,5 @@ while($row = $img_result->fetch_assoc()) {
 
 
 }
-
-
 
 ?>
