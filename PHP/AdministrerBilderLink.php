@@ -102,7 +102,8 @@ function hent_filterte_bilder($søketekst) {
     return $img_result;
 }
 
-while($row = $img_result ->fetch_assoc()) {
+
+while($row = $img_result->fetch_assoc()) {
     $idbilder = $row['idbilder'];
     $hvor = $row['hvor'];
     $tekst = $row['tekst'];
@@ -127,7 +128,9 @@ Inkluder i innhold:<br />");
     echo('</form>');
     echo('</section>');
 
+
 }
+
 
 
 ?>
