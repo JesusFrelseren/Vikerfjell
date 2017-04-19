@@ -53,17 +53,17 @@ elseif (!is_numeric($menyrekke))
 		$sql2 = "INSERT INTO meny (tekst,side, rekke) VALUES (?, ?,?)";
 		sjekktittel2($sql, $sql2, $menynavn, $menynavn, $menyrekke);
 		header('Location: ../EndreMeny.php');
-		
+
 		//Lager ny fil til en ny hovedmeny
 		$sideInsert = "../../".$menynavn.".html";
 		$fh = fopen($sideInsert, 'w');
 		$includes = lagSide();
-		fwrite($fh, $includes);	
+		fwrite($fh, $includes);
 		//For å legge endre .html sider utifra nymeny
 		//$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
 		//$result = mysqli_query($mysqli, $sql3);
 
-		include ("GenererAlleHtmlSider.php");
+		include 'GenererAlleHtmlSider.php';
 		}
 	  else
 		{
@@ -72,15 +72,15 @@ elseif (!is_numeric($menyrekke))
 			$sql2 = "INSERT INTO submeny (sub_tekst,sub_side, sub_rekke , meny_idmeny) VALUES (?, ?, ?, ?)";
 			sjekktittel($sql, $sql2, $menynavn, $menynavn, $menyrekke, $typemeny);
 			header('Location: ../EndreMeny.php');
-			
+
 			//Lager ny fil til en ny submeny
 			$sideInsert = "../../".$menynavn.".html";
 			$fh = fopen($sideInsert, 'w');
 			$includes = lagSide();
 			fwrite($fh, $includes);
-			include ("GenererAlleHtmlSider.php");
+			include 'GenererAlleHtmlSider.php';
 		}
-		
+
 	}
 //Funksjon for select og insert for submeny
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
