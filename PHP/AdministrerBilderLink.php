@@ -3,7 +3,12 @@ Sist endret av Erlend 01.04.2017
 Sist sett på av Sindre 01.04.2017
 -->
 
-<?php include 'startSession.php'; ?>
+<?php include 'startSession.php';
+$id_innhold = -1;
+if(isset($_GET['id'])) {
+    $id_innhold = $_GET['id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,22 +56,15 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 </section>
 
-
+<!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
+    <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
+    <form>
+        <?php include("Include/BilderVelgInnholdDropdown.php")?>
 
-    <p> 1. Velg side for å inkludere bilder i<p>
-    <div id="sidevalg">
-        <form method="get">
-        <?php
-        include("Include/BilderVelgMenyDropdownLinkModus.php");
-        ?>
-        </form>
-    </div>
-    <p>2. Velg siden sitt innhold som bildet skal inkluderes i</p>
-    <p>3. Velg link eller unlink</p>
+    </form>
+
 </section>
-
-
 
 <?php
 function hent_linkede_bilder() {
@@ -116,14 +114,15 @@ while($row = $img_result->fetch_assoc()) {
 <input type='hidden' value='$idbilder' name='id' id='id'>
 <img src='$thumb'>
 <p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p>
-Inkluder i innhold:<br />");
+<p style='margin-top: 0;'>$dimension</p>");
 
-    include("Include/BilderVelgInnholdDropdown.php");
+
 
     echo('<br />');
-    echo('<form method="post" action="Include/LinkBilder.php">');
-    echo('<input type="hidden">');
+    echo('<form method="post" action="LinkBilder.php">');
+
+    echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
+    echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
     echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
     echo('</form>');
     echo('</section>');

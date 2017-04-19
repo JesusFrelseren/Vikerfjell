@@ -1,9 +1,9 @@
 <?php
 include 'mysqlcon.php';
-    $id = $_GET['id'];
+
     $stmt = $mysqli->prepare("
             SELECT *
-            FROM meny
+            FROM innhold
             ;
       ");
 
@@ -13,13 +13,14 @@ include 'mysqlcon.php';
     $array = [];
 
 
-echo("<select class='lenkerDropdown' id='lenkerdrop' name='lenkerdropdown' onchange='populatemenu()'");
+echo("<select class='lenkerDropdown' id='innhold_dropdown' name='innhold_dropdown' onchange='innholdReturnId()'>");
 echo("svar");
     // Utdata for hver rad
 while($row = $result->fetch_assoc()) {
+    $tittel = $row['tittel'];
     $array[$row['idinnhold']] = $row['side'];
     echo "<option value=" . $row["idinnhold"] . ">
-    Tittel: " . $row["tittel"] . "
+    $tittel
     </option><br>";
 
 }

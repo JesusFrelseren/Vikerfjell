@@ -1,6 +1,6 @@
 <?php
-/* Sist endret av Erik 28.03.2017-->
-<!--Sett over av Alex 28.03.2017 */
+/* Laget av Erik 30.01.2017
+Sist endret 19.04.2017*/
 include("mysqlcon.php");
 $stmt = $mysqli->prepare("select * from vikerfjell.meny ORDER BY rekke");
 mysqli_set_charset($mysqli, "UTF8");
@@ -20,7 +20,7 @@ while($row = $result->fetch_assoc()){
   $stmt->store_result();
 
   if ($stmt->num_rows == 0) {
-    echo("<li><a href=$side>$tekst</a></li>");
+    echo("<li><a href='$side'>$tekst</a></li>");
 
   } else {
 
@@ -37,7 +37,7 @@ while($row = $result->fetch_assoc()){
 
       $sub_tekst = $sub_row['sub_tekst'];
       $sub_side = $sub_row['sub_side'];
-      $submenu_html .= "<a href=$sub_side>$sub_tekst</a>";
+      $submenu_html .= "<a href='$sub_side'>$sub_tekst</a>";
 
     }
 

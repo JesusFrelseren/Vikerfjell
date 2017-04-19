@@ -1,7 +1,7 @@
 <?php
 /*
-Sist endret av Erik 01.04.2017
-Sist sett på av Sindre 01.04.2017
+Laget av Erik 01.03.2017
+Sist endret 19.04.2017
 */
 include 'startSession.php';
 ?>
@@ -84,7 +84,7 @@ if (isset($_GET['id'])){
 					<p class="brukertekst">Menynavn</p>
 						<input placeholder="Menynavn" autofocus="" name="menuname" title="Skriv inn menynavn" type="text"><br style="margin-bottom:12px;">
 					<p class="brukertekst">Rekke</p>
-						<input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="text"> 
+						<input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="number"> 
 
 						<div class="regmeny">
 							<input class="listemenyer" name="send" type="submit" value="Registrer meny">
@@ -121,7 +121,7 @@ if (isset($_GET['id'])){
 						
 					<br style="margin-bottom:12px;">
 					<p class="brukertekst"> Rekke </p>
-					<input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="text">
+					<input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="number">
 						
 					<br style="margin-bottom:12px;">
 					<input onclick="return confirm('Sikker på at du vil endre menyen?')" class="endremenycss" name="endre" type="submit" value="Endre meny"> 

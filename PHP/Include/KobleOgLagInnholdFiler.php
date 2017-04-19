@@ -1,7 +1,4 @@
 ﻿<?php
-
-
-
 		$stmt3 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?");
 		mysqli_set_charset($mysqli, "UTF8");
 		$stmt3->bind_param("i",$_POST['menylistephp']);
@@ -17,15 +14,12 @@
 			lagSide2($_POST['menylistephp']);
 			include("createInnholdFile.php");
 			$sideInsert = "../../".$navn.'.html';
+
 			$fh = fopen($sideInsert, 'w', 'w');
 			$stringen = lagSide();
 			fwrite($fh, $stringen);
 		}else{
 		include("createInnholdFile.php");
 		koblemeny($_POST['menylistephp']);
-
 		}
-
-
-
 ?>

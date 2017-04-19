@@ -1,11 +1,24 @@
-<!--
-Sist endret av Erlend 01.04.2017
-Sist sett på av Sindre 01.04.2017
--->
+<?php
+include 'startSession.php';
+include('Include/mysqlcon.php');
+var_dump($_POST);
+$id_innhold = -1;
+if (isset($_POST['idbilder']) && $_POST['id_innhold']) {
+    $idbilder = $_POST['idbilder'];
+    $idinnhold = $_POST['id_innhold'];
 
-<?php include 'startSession.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
+    $stmt = $mysqli->prepare("insert into bilderinnhold values(?, ?)");
+    $stmt->bind_param('ii', $idbilder, $idinnhold);
+    $stmt->execute();
+
+}
+
+if(isset($_GET['id'])) {
+    $id_innhold = $_GET['id'];
+}
+?>
+    <!DOCTYPE html>
+    <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Vikerfjell Admin</title>
@@ -37,7 +50,10 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 <!-- Søkeboks -->
 <section id="søkewrapper">
-    <form class="search_form" action="AdministrerBilder.php" method="post">
+    <form>
+        <input type="submit" class="søk_knapp" value="<- Til Opplasting" formaction="AdministrerBilder.php" style="float: left">
+    </form>
+    <form class="search_form" action="AdministrerBilderLink.php" method="post">
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
         <input type="submit" class="søk_knapp" value="Finn bilder">
 
@@ -46,25 +62,18 @@ if (isset($_POST["søk_bilde_search_box"])) {
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
 
+
 </section>
-
-
 
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
-    <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
-    <form method="post" enctype="multipart/form-data" action="Fil_lastet_opp.php">
-        <input type='file' id='bildeopplast' value="Last opp">
-        <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
-        <label for="bildebeskrivelse"></label>
-        <input type='text' id='bildebeskrivelse' size="30" placeholder="Maks 45 tegn" maxlength="45">
-        <input type='submit' class="søk_knapp" value='Last opp'>
-        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
+    <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
+    <form>
+        <?php include("Include/BilderVelgInnholdDropdown.php")?>
     </form>
+    <p style="color: greenyellow">Bildet ble inkludert!</p>
 
 </section>
-
-
 
 <?php
 function hent_linkede_bilder() {
@@ -100,7 +109,8 @@ function hent_filterte_bilder($søketekst) {
     return $img_result;
 }
 
-while($row = $img_result ->fetch_assoc()) {
+
+while($row = $img_result->fetch_assoc()) {
     $idbilder = $row['idbilder'];
     $hvor = $row['hvor'];
     $tekst = $row['tekst'];
@@ -113,7 +123,20 @@ while($row = $img_result ->fetch_assoc()) {
 <input type='hidden' value='$idbilder' name='id' id='id'>
 <img src='$thumb'>
 <p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p> </section>");
+<p style='margin-top: 0;'>$dimension</p>
+Inkluder i innhold:<br />");
+
+
+
+    echo('<br />');
+    echo('<form method="post" action="Include/LinkBilder.php">');
+
+    echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
+    echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
+    echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
+    echo('</form>');
+    echo('</section>');
+
 
 }
 
