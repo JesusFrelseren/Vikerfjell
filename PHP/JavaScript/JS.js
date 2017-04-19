@@ -15,11 +15,11 @@ function innholdReturnId() {
 //OnChange funksjon for Select(ListeInnhold).
 
 function changeFunc() {
-    var selectBox = document.getElementById("innhold_dropdown");
+    var selectBox = document.getElementById("listeinnhold");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     window.location.assign("http://localhost/html/Vikerfjell/PHP/innhold.php?id="+selectedValue);
 
-    var selectedValue = document.getElementById("innhold_dropdown").options[document.getElementById("innhold_dropdown").selectedIndex].value;
+    var selectedValue = document.getElementById("listeinnhold").options[document.getElementById("listeinnhold").selectedIndex].value;
 }
 //OnChange funksjon for select i endring av meny
 function changeMenyFunc() {
