@@ -21,7 +21,7 @@ try {
 
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     if (false === $ext = array_search(
-            $finfo->file($_FILES['upfile']['tmp_name']),
+            $finfo->file($_FILES['upload']['tmp_name']),
             array(
                 'jpg' => 'image/jpeg',
                 'png' => 'image/png',
@@ -44,16 +44,6 @@ try {
 
 
 } catch (RuntimeException $e) {
-
+    throw new RuntimeException($e->getMessage());
 }
-
-//Sjekk UPLOAD_ERR_OK
-//Sjekk NO_FILE
-//Sjekk størrelse vs maks størrelse
-//Sjekk størrelse MAX_FILE_SIZE
-//Sjekk MIME type
-//lag unikt navn fra binærdata
-
-//var_dump($_POST);
-var_dump($_FILES);
 
