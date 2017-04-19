@@ -1,5 +1,6 @@
 <?php
 include('mysqlcon.php');
+var_dump($_POST);
 
 if (isset($_POST['idbilder']) && $_POST['idinnhold']) {
     $idbilder = $_POST['idbilder'];
