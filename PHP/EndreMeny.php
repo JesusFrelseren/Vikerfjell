@@ -121,7 +121,7 @@ if (isset($_GET['id'])){
 						
 					<br style="margin-bottom:12px;">
 					<p class="brukertekst"> Rekke </p>
-					<input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="text">
+					<input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="number">
 						
 					<br style="margin-bottom:12px;">
 					<input onclick="return confirm('Sikker på at du vil endre menyen?')" class="endremenycss" name="endre" type="submit" value="Endre meny"> 
