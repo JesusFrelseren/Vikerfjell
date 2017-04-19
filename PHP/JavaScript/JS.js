@@ -6,6 +6,7 @@
 // Sindre 28.03.2017
 
 //OnChange funksjon for Select(ListeInnhold).
+
 function changeFunc() {
     var selectBox = document.getElementById("listeinnhold");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;

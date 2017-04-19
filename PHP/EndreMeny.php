@@ -1,7 +1,7 @@
 <?php
 /*
-Sist endret av Erik 01.04.2017
-Sist sett på av Sindre 01.04.2017
+Laget av Erik 01.03.2017
+Sist endret 19.04.2017
 */
 include 'startSession.php';
 ?>

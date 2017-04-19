@@ -1,6 +1,6 @@
 <?php
-/* Sist endret av Erik 28.03.2017-->
-<!--Sett over av Alex 28.03.2017 */
+/* Laget av Erik 30.01.2017
+Sist endret 19.04.2017*/
 include("mysqlcon.php");
 $stmt = $mysqli->prepare("select * from vikerfjell.meny ORDER BY rekke");
 mysqli_set_charset($mysqli, "UTF8");

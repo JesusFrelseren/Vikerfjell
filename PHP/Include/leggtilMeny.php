@@ -1,7 +1,7 @@
 <?php
 /*
 Laget av Erik 30.03.2017
-Sist endret 07.04.2017
+Sist endret 19.04.2017
 */
 
 function lagSide() {

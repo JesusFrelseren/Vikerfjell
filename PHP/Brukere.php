@@ -1,6 +1,8 @@
-<!--Sist endret av Erik 16.02.2017-->
-<!--Sett over av Sindre 16.02.2017-->
 <?php
+/*
+Laget av Erik 16.02.2017
+Sist endret 12.03.2017
+*/
 include 'startSession.php';
 ?>
 <!DOCTYPE html>
