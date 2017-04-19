@@ -38,7 +38,18 @@ if(isset($Menyelement) || $Menyelement=="") {
         $stmt->execute();
         //header("location:EndreMeny.php");
       }elseif(strpos($Menyelement, 'SUB') == false) {
+         //Select for å se om valgt meny har eksisterende innhold
+        $innholdSjekk = "SELECT * FROM meny LEFT JOIN innhold USING(idmeny) WHERE innhold.idmeny = ?;";
+        $innholdStmt = $mysqli->prepare($innholdSjekk);
+        $innholdStmt->bind_param('i', intval($Menyelement));
+        $innholdStmt->execute();
+        $innholdStmt->store_result();
        
+        //Hvis valgt meny har innhold blir det vist en feilmelding
+        if($innholdStmt->num_rows > 0) {
+          header("location: EndreMeny.php?feilslett=Kan ikke slette en meny med eksisterende innhold.");
+        } else {
+        //Sletter hvis innhold ikke finnes
         //Sjekker om valgt hovedmeny har en submeny knyttet til seg
         $sjekkspørring = "SELECT * FROM meny WHERE   NOT EXISTS(SELECT  * FROM submeny WHERE submeny.meny_idmeny = ?);";
         $stmt = $mysqli->prepare($sjekkspørring);
@@ -66,11 +77,12 @@ if(isset($Menyelement) || $Menyelement=="") {
           header("location:EndreMeny.php");
       
       } 
+        }
        
         mysqli_close($mysqli);
       }
       }
+
 }
-    
 
 ?>
