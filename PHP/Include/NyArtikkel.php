@@ -1,11 +1,11 @@
 <?php
 /* Sindre 06.04.2017  */
 
-function lagSide2() {
+function lagSide2($idmenyen) {
 			ob_start();
 			include 'header.php';
 			include 'meny.php';
-      $menyoverskrift = legg_til_oversikt($_POST['menylistephp']);
+      $menyoverskrift = legg_til_oversikt($idmenyen);
 			include 'footer.php';
 			$andreinclude = ob_get_clean();
 			$includes = $andreinclude;
@@ -14,7 +14,7 @@ function lagSide2() {
   		fwrite($fh, $includes);
 
       $overskrift4 = $menyoverskrift.".html";
-      $id = $_POST['menylistephp'];
+      $id = $idmenyen;
 
 		  global $mysqli;
   		$stmt6 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
