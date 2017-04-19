@@ -1,4 +1,4 @@
-﻿<?php>
+﻿<?php
 
 
 $stmt33 = $mysqli->prepare("SELECT * FROM vikerfjell.meny");
@@ -38,4 +38,4 @@ $stmt33 = $mysqli->prepare("SELECT * FROM vikerfjell.meny");
 
 
 
-<php>
+?>
