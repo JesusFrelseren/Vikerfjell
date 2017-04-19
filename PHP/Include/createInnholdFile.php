@@ -40,5 +40,20 @@ function lagSide() {
 		}
 
 
+		function lagBestemtSide($idinnold){
+
+			ob_start();
+			include 'header.php';
+			include 'meny.php';
+			include 'lagbestemtinnhold.php';
+			include 'footer.php';
+			$andreinclude = ob_get_clean();
+			$includes = $andreinclude;
+
+			return $includes;
+		
+		}
+
+
 
 ?>

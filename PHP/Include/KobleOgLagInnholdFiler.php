@@ -14,7 +14,7 @@
 		}
 		if ($count > 1){
 			include("NyArtikkel.php");
-			lagSide2();
+			lagSide2($_POST['menylistephp']);
 			include("createInnholdFile.php");
 			$sideInsert = "../../".$navn.'.html';
 			$fh = fopen($sideInsert, 'w', 'w');

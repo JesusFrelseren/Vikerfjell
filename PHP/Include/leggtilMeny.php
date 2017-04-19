@@ -63,7 +63,7 @@ elseif (!is_numeric($menyrekke))
 		//$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
 		//$result = mysqli_query($mysqli, $sql3);
 
-
+		include ("GenererAlleHtmlSider.php");
 		}
 	  else
 		{
@@ -78,7 +78,9 @@ elseif (!is_numeric($menyrekke))
 			$fh = fopen($sideInsert, 'w');
 			$includes = lagSide();
 			fwrite($fh, $includes);
+			include ("GenererAlleHtmlSider.php");
 		}
+		
 	}
 //Funksjon for select og insert for submeny
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
