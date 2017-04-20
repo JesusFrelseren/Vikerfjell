@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="vikerfjell@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="vikerfjell">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="bank"/>
+    <schema id="4" parent="1" name="bibliotek"/>
+    <schema id="5" parent="1" name="final_oppgave"/>
+    <schema id="6" parent="1" name="hesteløp"/>
+    <schema id="7" parent="1" name="hobbyhuset2017"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <schema id="9" parent="1" name="mydb"/>
+    <schema id="10" parent="1" name="mysql"/>
+    <schema id="11" parent="1" name="performance_schema"/>
+    <schema id="12" parent="1" name="sys"/>
+    <table id="13" parent="2" name="bilder"/>
+    <table id="14" parent="2" name="bilderinnhold"/>
+    <table id="15" parent="2" name="bruker"/>
+    <table id="16" parent="2" name="dokumenter"/>
+    <table id="17" parent="2" name="dokumenterinnhold"/>
+    <table id="18" parent="2" name="innhold"/>
+    <table id="19" parent="2" name="kontakt"/>
+    <table id="20" parent="2" name="meny"/>
+    <table id="21" parent="2" name="submeny"/>
+    <column id="22" parent="13" name="idbilder">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="23" parent="13" name="hvor">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="13" name="tekst">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="25" parent="13" name="thumb">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="26" parent="13" name="bredde">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="27" parent="13" name="hoyde">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="28" parent="13" name="tooltip">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="29" parent="13" name="alt">
+      <Position>8</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="30" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idbilder</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="31" parent="14" name="_idbilder">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="14" name="_idinnhold">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="33" parent="14" name="_idinnhold_idx">
+      <ColNames>_idinnhold</ColNames>
+    </index>
+    <key id="34" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>_idbilder</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="14" name="_idbilder">
+      <ColNames>_idbilder</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>bilder</RefTableName>
+      <RefColNames>idbilder</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="14" name="_idinnhold">
+      <ColNames>_idinnhold</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>innhold</RefTableName>
+      <RefColNames>idinnhold</RefColNames>
+    </foreign-key>
+    <column id="37" parent="15" name="idbruker">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="15" name="brukerNavn">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="15" name="passord">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="15" name="ePost">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="15" name="feilLogginnTeller">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="feilLogginnSiste">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="43" parent="15" name="feilIP">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="44" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idbruker</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="16" name="iddokumenter">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="46" parent="16" name="hvor">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="16" name="tekst">
+      <Position>3</Position>
+      <DataType>mediumtext|0</DataType>
+    </column>
+    <key id="48" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>iddokumenter</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="17" name="_iddokumenter">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="17" name="_idinnhold">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="51" parent="17" name="idinnhold_idx">
+      <ColNames>_idinnhold</ColNames>
+    </index>
+    <key id="52" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>_iddokumenter
+_idinnhold</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="17" name="iddokumenter">
+      <ColNames>_iddokumenter</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>dokumenter</RefTableName>
+      <RefColNames>iddokumenter</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="17" name="idinnhold">
+      <ColNames>_idinnhold</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>innhold</RefTableName>
+      <RefColNames>idinnhold</RefColNames>
+    </foreign-key>
+    <column id="55" parent="18" name="idinnhold">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="18" name="tittel">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="18" name="ingress">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="58" parent="18" name="text">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="59" parent="18" name="rekke">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="18" name="side">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="61" parent="18" name="idmeny">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="62" parent="18" name="idmeny_idx">
+      <ColNames>idmeny</ColNames>
+    </index>
+    <key id="63" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idinnhold</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="64" parent="18" name="idmeny">
+      <ColNames>idmeny</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>meny</RefTableName>
+      <RefColNames>idmeny</RefColNames>
+    </foreign-key>
+    <column id="65" parent="19" name="idkontakt">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="66" parent="19" name="ePost">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="67" parent="19" name="tlf">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="68" parent="19" name="adresse">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="69" parent="19" name="postnr">
+      <Position>5</Position>
+      <DataType>char(4)|0</DataType>
+    </column>
+    <column id="70" parent="19" name="sted">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="71" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idkontakt</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="72" parent="20" name="idmeny">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="73" parent="20" name="tekst">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="20" name="side">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="75" parent="20" name="rekke">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="76" parent="20" name="toolTip">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="77" parent="20" name="alt">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <key id="78" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idmeny</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="79" parent="21" name="idsubmeny">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="80" parent="21" name="sub_tekst">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="81" parent="21" name="sub_side">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="82" parent="21" name="sub_rekke">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="21" name="sub_toolTip">
+      <Position>5</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="84" parent="21" name="sub_alt">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="85" parent="21" name="meny_idmeny">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="86" parent="21" name="innhold_idinnhold">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="87" parent="21" name="idinnhold_idx">
+      <ColNames>innhold_idinnhold</ColNames>
+    </index>
+    <index id="88" parent="21" name="idmeny_idx">
+      <ColNames>meny_idmeny</ColNames>
+    </index>
+    <key id="89" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idsubmeny</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="90" parent="21" name="meny_idmeny">
+      <ColNames>meny_idmeny</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>meny</RefTableName>
+      <RefColNames>idmeny</RefColNames>
+    </foreign-key>
+    <foreign-key id="91" parent="21" name="innhold_idinnhold">
+      <ColNames>innhold_idinnhold</ColNames>
+      <RefSchemaName>vikerfjell</RefSchemaName>
+      <RefTableName>innhold</RefTableName>
+      <RefColNames>idinnhold</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
