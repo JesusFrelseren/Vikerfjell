@@ -40,11 +40,23 @@ try {
     move_uploaded_file($tmp_location, $perm_name);
     echo("Fil ble lastet opp");
 
-    //Lag kopi av bilde
+    //Hent bildedimensjoner
+    list($width_src, $height_src) = getimagesize($perm_name);
 
-    //Skaler med 100px høyde
-    //Skriv til database
+    //Lag filsti for thumbnail
+    $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', $perm_name."_thumb", $ext);
 
+    //Lag fullskalert bilde
+    $image_src = imagecreatefromjpeg($perm_name);
+
+    //Lag thumbnail med dimensjoner
+    $image_thumb = imagecreatetruecolor($width_src / 3, 100);
+
+    //Kopier til base
+    imagecopyresampled($image_src, $image_thumb, 0, 0, 0, 0, $width_src / 4, 100,
+        $width_src, $height_src);
+
+    move_uploaded_file($tmp_location, $perm_thumb_location);
 
 } catch (RuntimeException $e) {
     throw new RuntimeException($e->getMessage());
