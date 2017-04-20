@@ -15,8 +15,7 @@ while ($row33 = $result33->fetch_assoc())
 	while ($row3 = $result3->fetch_assoc())
 		{
 		include ("createInnholdFile.php");
-		//$sideInsert = "../../" .$row3['tittel']. '.html';
-		$sideInsert = "../../" .$row3['idmeny']. '.html';
+		$sideInsert = "../../" .$row3['tittel']. '.html';
 		$fh = fopen($sideInsert, 'w', 'w');
 		$stringen = lagBestemtSide($row3['idinnhold']);
 		fwrite($fh, $stringen);

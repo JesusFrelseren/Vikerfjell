@@ -12,7 +12,6 @@ $text = $row['text'];
 $id = $row['idinnhold'];
 
 
-
 $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder on _idbilder = idbilder where _idinnhold = $id;");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
@@ -27,5 +26,5 @@ $bilde = $row['hvor'];
 		<p>$text</p>
 		</div>");
 
-		
+
 ?>
