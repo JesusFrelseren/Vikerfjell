@@ -54,9 +54,9 @@
 </header>
 </div>
 <div class='wrap'><div class='staticinnhold'>
-		<H1>Aktiviteter</h1>
+		<H1>nyttinnhold</h1>
 		<img src= width=100% height=auto>
-		<p>Vinterstid har området  oppkjørte skiløyper i nydelig turterreng. Om sommeren er det muligheter for bade- og båtliv i Sperillen og flotte turer i skog og fjell. Ringerike Turistforening har et stort nettverk av merkede stier på Vikerfjell. Det er gode fiskevann i området som blir jevnlig kalket og området har et rikt dyreliv med lange jakttradisjoner.</p>
+		<p>Vinterstid har området  oppkjørte skiløyper i nydelig turterreng. Om sommeren er det muligheter for bade- og båtliv i Sperillen og flotte turer i skog og fjell. Ringerike Turistforening har et stort nettverk av merkede stier på Vikerfjell. Det er gode fiskevann i området som blir jevnlig kalket og området har et rikt dyreliv med lange jakttradisjoner. Test. Test.</p>
 		</div>
 </div>
 <!--Footer-->
