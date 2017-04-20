@@ -2,7 +2,7 @@
 /* Alex 07.04.2017 */
 
 $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idinnhold = ?;");
-$stmt3->bind_param("i",$idinnold);
+$stmt->bind_param("i",$idinnold);
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -28,6 +28,5 @@ $bilde = $row['hvor'];
 		<p>$text</p>
 		</div>");
 
-		
-?>
 
+?>

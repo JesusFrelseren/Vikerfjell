@@ -3,8 +3,7 @@
 Laget av Erik 30.03.2017
 Sist endret 19.04.2017
 */
-
-function lagSide() {
+function lagSidepp() {
 			ob_start();
 			include 'header.php';
 			include 'meny.php';
@@ -57,12 +56,11 @@ elseif (!is_numeric($menyrekke))
 		//Lager ny fil til en ny hovedmeny
 		$sideInsert = "../../".$menynavn.".html";
 		$fh = fopen($sideInsert, 'w');
-		$includes = lagSide();
+		$includes = lagSidepp();
 		fwrite($fh, $includes);
 		//For å legge endre .html sider utifra nymeny
 		//$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
 		//$result = mysqli_query($mysqli, $sql3);
-
 		include 'GenererAlleHtmlSider.php';
 		}
 	  else
@@ -76,11 +74,11 @@ elseif (!is_numeric($menyrekke))
 			//Lager ny fil til en ny submeny
 			$sideInsert = "../../".$menynavn.".html";
 			$fh = fopen($sideInsert, 'w');
-			$includes = lagSide();
+			$includes = lagSidepp();
 			fwrite($fh, $includes);
 			include 'GenererAlleHtmlSider.php';
 		}
-
+		include 'GenererAlleHtmlSider.php';
 	}
 //Funksjon for select og insert for submeny
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
