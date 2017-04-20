@@ -1,6 +1,8 @@
+// Utviklet av Erlend. Sist endret 20.04.2017
+
 <?php
 
-include('Include/mysqlcon.php');
+include('Include/InnholdKontroll.php');
 try {
     //Sjekk $_FILES[error] feilkodene
     if(!(isset($_FILES['upload']['error']))) {
@@ -40,14 +42,38 @@ try {
     $perm_name = sprintf('Bilder/%s.%s', $filinfo, $ext);
     move_uploaded_file($tmp_location, $perm_name);
     //todo: Lag sjekk på om fil finnes
-    //echo("Fil ble lastet opp\n");
 
-    //Hent bildedimensjoner
+
+    //Lag thumbnail filsti
+    $perm_thumb_location = lag_thumbnail_filsti($filinfo, $ext);
+
+    //Resample image resource med orginalversjon
+    $image_thumb = resample($perm_name, $filinfo, $ext);
+
+    //Skriv $image_thumb til masselager med 50% kvalitet
+    imagejpeg($image_thumb, $perm_thumb_location, 50);
+
+    //Skriv meta til base
+    list($width_src, $height_src) = getimagesize($perm_name);
+    skriv_bilder_til_base($_POST, $_FILES, $width_src, $height_src);
+
+
+} catch (RuntimeException $e) {
+    throw new RuntimeException($e->getMessage());
+}
+
+
+function lag_thumbnail_filsti($filinfo, $ext) {
+    $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_".$filinfo, $ext);
+    return $perm_thumb_location;
+}
+
+
+function resample($perm_name, $filinfo, $ext) {
     list($width_src, $height_src) = getimagesize($perm_name);
     $width_thumb = $width_src / 4;
 
     //Lag filsti for thumbnail
-    $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_".$filinfo, $ext);
 
     //Lag fullskalert bilde
     $image_src = imagecreatefromjpeg($perm_name);
@@ -55,32 +81,8 @@ try {
     //Lag thumbnail med dimensjoner
     $image_thumb = imagecreatetruecolor($width_thumb, 100);
 
-    //Resample image_thumb
     imagecopyresampled($image_thumb, $image_src, 0, 0, 0, 0, $width_src, 100,
         $width_src, $height_src);
 
-    //Skriv $image_thumb til masselager med 50% kvalitet
-    imagejpeg($image_thumb, $perm_thumb_location, 50);
-
-    //Skriv metadata til databasen
-    $tekst = $_POST['bildebeskrivelse'];
-    $thumb = "thumb_".pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
-    $hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
-    $bredde = $width_src;
-    $høyde = $height_src;
-    $tooltip = "Fuck tooltips";
-    $alt = "Bildet ble ikke funnet :´(";
-
-    //Skriv meta til base
-    global $mysqli;
-    $stmt = $mysqli->prepare("
-      INSERT INTO vikerfjell.bilder(hvor, tekst, thumb, bredde, hoyde, tooltip, alt)
-      VALUES(?, ?, ?, ?, ?, ?, ?)");
-
-    $stmt->bind_param('sssiiss', $hvor, $tekst, $thumb, $bredde, $høyde, $tooltip, $alt);
-    $stmt->execute();
-    $mysqli->close();
-} catch (RuntimeException $e) {
-    throw new RuntimeException($e->getMessage());
+    return $image_thumb;
 }
-
