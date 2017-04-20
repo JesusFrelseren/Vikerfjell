@@ -1,6 +1,6 @@
 <?php
 
-
+include('Include/mysqlcon.php');
 try {
     //Sjekk $_FILES[error] feilkodene
     if(!(isset($_FILES['upload']['error']))) {
@@ -36,28 +36,50 @@ try {
 
     $tmp_location = $_FILES['upload']['tmp_name'];
     $perm_name_hash = md5_file($tmp_location);
-    $perm_name = sprintf('Bilder/%s.%s', $perm_name_hash, $ext);
+    $filinfo = pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME);
+    $perm_name = sprintf('Bilder/%s.%s', $filinfo, $ext);
     move_uploaded_file($tmp_location, $perm_name);
-    echo("Fil ble lastet opp");
+    //todo: Lag sjekk på om fil finnes
+    //echo("Fil ble lastet opp\n");
 
     //Hent bildedimensjoner
     list($width_src, $height_src) = getimagesize($perm_name);
+    $width_thumb = $width_src / 4;
 
     //Lag filsti for thumbnail
-    $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', $perm_name."_thumb", $ext);
+    $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_".$filinfo, $ext);
 
     //Lag fullskalert bilde
     $image_src = imagecreatefromjpeg($perm_name);
 
     //Lag thumbnail med dimensjoner
-    $image_thumb = imagecreatetruecolor($width_src / 3, 100);
+    $image_thumb = imagecreatetruecolor($width_thumb, 100);
 
-    //Kopier til base
-    imagecopyresampled($image_src, $image_thumb, 0, 0, 0, 0, $width_src / 4, 100,
+    //Resample image_thumb
+    imagecopyresampled($image_thumb, $image_src, 0, 0, 0, 0, $width_src, 100,
         $width_src, $height_src);
 
-    move_uploaded_file($tmp_location, $perm_thumb_location);
+    //Skriv $image_thumb til masselager med 50% kvalitet
+    imagejpeg($image_thumb, $perm_thumb_location, 50);
 
+    //Skriv metadata til databasen
+    $tekst = $_POST['bildebeskrivelse'];
+    $thumb = "thumb_".pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
+    $hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
+    $bredde = $width_src;
+    $høyde = $height_src;
+    $tooltip = "Fuck tooltips";
+    $alt = "Bildet ble ikke funnet :´(";
+
+    //Skriv meta til base
+    global $mysqli;
+    $stmt = $mysqli->prepare("
+      INSERT INTO vikerfjell.bilder(hvor, tekst, thumb, bredde, hoyde, tooltip, alt)
+      VALUES(?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param('sssiiss', $hvor, $tekst, $thumb, $bredde, $høyde, $tooltip, $alt);
+    $stmt->execute();
+    $mysqli->close();
 } catch (RuntimeException $e) {
     throw new RuntimeException($e->getMessage());
 }
