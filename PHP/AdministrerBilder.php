@@ -53,7 +53,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
-    <form method="post" enctype="multipart/form-data" action="Fil_lastet_opp.php">
+    <form method="post" enctype="multipart/form-data" action="BildeOpplasting.php">
         <input type='file' id='upload' name='upload' value="Last opp">
         <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
         <label for="bildebeskrivelse"></label>

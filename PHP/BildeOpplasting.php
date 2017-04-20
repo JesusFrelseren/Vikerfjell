@@ -40,7 +40,10 @@ try {
     move_uploaded_file($tmp_location, $perm_name);
     echo("Fil ble lastet opp");
 
+    //Lag kopi av bilde
 
+    //Skaler med 100px høyde
+    //Skriv til database
 
 
 } catch (RuntimeException $e) {
