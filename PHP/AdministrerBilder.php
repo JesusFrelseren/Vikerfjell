@@ -16,8 +16,10 @@ include 'startSession.php';
     <link href="CSS/style_innhold.css" rel="stylesheet">
     <link href="CSS/bildeAdmin.css" rel="stylesheet">
     <link href="CSS/style_admin.css" rel="stylesheet">
+    <link href="CSS/bilde_modal.css" rel="stylesheet">
     <script defer src="JavaScript/JS.js">
     </script>
+    <script defer src="JavaScript/bilde_modal.js"></script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 </head>
 <!--Rad 1: Overskift-header-->
@@ -54,6 +56,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
     <form method="post" enctype="multipart/form-data" action="BildeOpplasting.php">
+        Støttede formater er png, jpg eller gif
         <input type='file' id='upload' name='upload' value="Last opp">
         <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
         <label for="bildebeskrivelse"></label>
@@ -102,19 +105,32 @@ function hent_filterte_bilder($søketekst) {
 
 while($row = $img_result ->fetch_assoc()) {
     $idbilder = $row['idbilder'];
-    $hvor = $row['hvor'];
+    $hvor = 'Bilder/'.$row['hvor'];
     $tekst = $row['tekst'];
     $dimension = $row['hoyde'] . 'x' . $row['bredde'];
-    $thumb = $row['thumb'];
+    $thumb = 'Bilder/thumbs/'.$row['thumb'];
 
 
     echo("
 <section class='bildeinfo_container'>
 <input type='hidden' value='$idbilder' name='id' id='id'>
-<img src='$thumb'>
+<img id='id' src='$thumb' alt='Test'>
+
+<div id='bilde_modal' class='modal' onclick='visModal()'>
+    <span class=\"close\" onclick=\"document.getElementById('bilde_modal').style.display='none'\">&times;</span>
+    <img src='$hvor' class='modal - content' id='img01'>
+    <div id=\"caption\"></div>
+</div>
+
 <p>$tekst</p>
 <p style='margin-top: 0;'>$dimension</p> </section>");
 
-}
 
+
+
+}
 ?>
+
+
+
+
