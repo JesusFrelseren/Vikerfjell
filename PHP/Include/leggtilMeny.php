@@ -52,6 +52,8 @@ elseif (!is_numeric($menyrekke))
 		$sql2 = "INSERT INTO meny (tekst,side, rekke) VALUES (?, ?,?)";
 		sjekktittel2($sql, $sql2, $menynavn, $menynavn, $menyrekke);
 		include 'GenererAlleHtmlSider.php';
+		include 'NyArtikkel.php';
+		lagSide3();
 		header('Location: ../EndreMeny.php');
 
 		//Lager ny fil til en ny hovedmeny
@@ -68,11 +70,12 @@ elseif (!is_numeric($menyrekke))
 			$sql2 = "INSERT INTO submeny (sub_tekst,sub_side, sub_rekke , meny_idmeny) VALUES (?, ?, ?, ?)";
 			sjekktittel($sql, $sql2, $menynavn, $menynavn, $menyrekke, $typemeny);
 			include 'GenererAlleHtmlSider.php';
+			include 'NyArtikkel.php';
+			lagSide3();
 			header('Location: ../EndreMeny.php');
 
 			//Lager ny fil til en ny submeny
-			
-			
+		
 		}
 		
 	}
