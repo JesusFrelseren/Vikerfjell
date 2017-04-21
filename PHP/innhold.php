@@ -18,6 +18,16 @@ include 'startSession.php';
 <!--Rad 1: Overskift-header-->
 <body>
 <?php
+
+function targetMeny($id, $sql) {
+	global $mysqli;
+	$stmt = $mysqli->prepare($sql);
+	$stmt->bind_param('i', $id);
+	$stmt->execute();
+	$result = $stmt->get_result();
+	$row = mysqli_fetch_assoc($result);
+	return $row;
+}
   include ("Include/backendmeny.php");
   include ('Include/mysqlcon.php');
 $overskrift = "";
@@ -25,22 +35,39 @@ $ingress = "";
 $text = "";
 $rekke = "";
 $idmeny = "";
+$subid = "";
 
 if (isset($_GET['id'])){
-global $mysqli;
-$sql = "SELECT * FROM vikerfjell.innhold WHERE idinnhold =?;";
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param('i',$_GET['id']);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = mysqli_fetch_assoc($result);
-mysqli_close($mysqli);
+	global $mysqli;
+	$idvariabel = $_GET['id'];
+	$sql = "SELECT * FROM  innhold 
+					LEFT JOIN submeny 
+					ON submeny.meny_idmeny = innhold.idmeny 
+					WHERE idinnhold = ? AND idsubmeny IS NOT NULL;";
+	$row = targetMeny($idvariabel, $sql);
+	if($row == true) {
+		$subID = $row['idsubmeny'];
+		$sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny 
+						WHERE innhold.idmeny = submeny.meny_idmeny AND idsubmeny = ?;";
+		$row = targetMeny($subID, $sql);
+		$overskrift = $row['tittel'];
+		$ingress = $row['ingress'];
+		$text = $row['text'];
+		$rekke = $row['rekke'];
+		$subid = $row['idsubmeny'];
+		$sjekkvariabel = 2;
+	} else {
+		$sql = "SELECT * FROM vikerfjell.innhold WHERE idinnhold =?;";
+		$row = targetMeny($idvariabel, $sql);
 
 		$overskrift = $row['tittel'];
 		$ingress = $row['ingress'];
 		$text = $row['text'];
 		$rekke = $row['rekke'];
 		$idmeny = $row['idmeny'];
+		$sjekkvariabel = 1;
+	
+}
 }
 
 ?>
@@ -121,12 +148,19 @@ mysqli_close($mysqli);
 	var idmeny = "<?php echo($idmeny); ?>"
 	<?php $idyolo = "";
 	if(isset($_GET['id'])){
-	$idyolo = $_GET['id'];};?>
-	var id = "<?php echo($idyolo); ?>";
-	document.getElementById('listetest').value = idmeny;
+		$idyolo = $_GET['id'];};?>
+		var id = "<?php echo($idyolo); ?>";
+		var sjekk = "<?php echo($sjekkvariabel); ?>";
+		var idsubmeny = "<?php echo($subid); ?>";
+	if(sjekk == 1) {
+		document.getElementById('listetest').value = idmeny;
+	} else {
+		document.getElementById('listetest').value = 'SUB'+idsubmeny;
+	}
+	//ID på selve artikkelen - Hva brukes denne til?
 	document.getElementById('listeinnhold').value = id;
 
-	function fyllLink() {
+	 function fyllLink() {
 	    var selectBox = document.getElementById("lenkerdrop").selectedIndex;
 	    //var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	    var js_array = [<?php echo '"'.implode('","',  $array).'"' ?>];

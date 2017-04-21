@@ -42,8 +42,8 @@ WHERE idinnhold = $idinnhold;";
 // Sist endret av Sindre og Alex 29.03.2017
 
 function Endre_Rekke($idmeny, $rekke){
-global $mysqli;
-$sql = "SELECT * FROM vikerfjell.innhold WHERE idmeny = ? and rekke >= ?";
+    global $mysqli;
+    $sql = "SELECT * FROM vikerfjell.innhold WHERE idmeny = ? and rekke >= ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('ii',$idmeny,$rekke);
     $stmt->execute();
@@ -52,12 +52,13 @@ $sql = "SELECT * FROM vikerfjell.innhold WHERE idmeny = ? and rekke >= ?";
 
     while($row = $result->fetch_assoc()) {
       $sql = "UPDATE innhold set rekke = rekke +1 where idinnhold = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('i',$row['idinnhold']);
-    $stmt->execute();
+      $stmt = $mysqli->prepare($sql);
+      $stmt->bind_param('i',$row['idinnhold']);
+      $stmt->execute();
     }
 }
 
+//Slett innhold funksjon
 function Slett_Innhold($idinnhold){
   global $mysqli;
   $sql = "DELETE FROM innhold WHERE idinnhold = ?";
@@ -72,16 +73,37 @@ function sjekk_navn($navn){
   global $mysqli;
 
   $hvasomhelst = $navn.".html";
-
+  //Sjekker om side finnes fra før
   $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.innhold WHERE side=?");
   $stmt->bind_param("s",$hvasomhelst);
   $stmt->execute();
   $result = $stmt->get_result();
   $row = $result->fetch_assoc();
 
+//Erik 21.04
+//For å legge inn artikkel til submeny må vi teste value'n til menyen vi har lagt til for å se om det er en SUB eller ikke
+//Hvis SIDE ikke finnes fra før
 if(!$row){
-  legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$_POST['menylistephp']);
-
+  $subID = "";
+  $id = $_POST['menylistephp'];
+  //Sjekker om verdien inneholder SUB
+  	if(strpos($id, 'SUB') !== false) { 
+      $nymenyid = substr($id,3);
+      $sql = "SELECT meny_idmeny FROM vikerfjell.submeny WHERE idsubmeny = ?";
+      $stmt = $mysqli->prepare($sql);
+      $stmt->bind_param("s", $nymenyid);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+      if($row) {
+        $subID = $row['meny_idmeny'];
+      }
+      //Legger til artikkel på submeny
+      legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$subID);
+    } else {
+      //Legger til artikkel på hovedmeny
+      legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$_POST['menylistephp']);
+    }
   include 'KobleOgLagInnholdFiler.php';
 
 
@@ -107,19 +129,46 @@ if(isset($_POST['slettInnhold'])){
   header("location: ../innhold.php");
 }
 
+//Funksjon for endring av innhold
 function Endre_Innhold($tittel, $ingress, $text, $rekke, $idmeny, $idinnhold){
-global $mysqli;
-$sql = "UPDATE vikerfjell.innhold SET tittel=?,ingress=?,text=?,rekke=?,idmeny=? WHERE idinnhold =?;";
-$stmt = $mysqli->prepare($sql);
-$stmt->bind_param('ssssss',$tittel,$ingress,$text,$rekke,$idmeny, $idinnhold);
-$stmt->execute();
-mysqli_close($mysqli);
+  global $mysqli;
+  $sql = "UPDATE vikerfjell.innhold SET tittel=?,ingress=?,text=?,rekke=?,idmeny=? WHERE idinnhold =?;";
+  $stmt = $mysqli->prepare($sql);
+  $stmt->bind_param('ssssss',$tittel,$ingress,$text,$rekke,$idmeny, $idinnhold);
+  $stmt->execute();
+  mysqli_close($mysqli);
 }
 
-if(isset($_POST['endreInnhold'])){
-  Endre_Innhold($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$_POST['menylistephp'],$_POST['id']);
-  header("location: ../innhold.php");
-}
+
+  if(isset($_POST['endreInnhold'])){
+    //Endret erik 21.04
+    //Escaper verdiene brukeren skriver inn
+    $overskrift = mysqli_real_escape_string($mysqli, $_POST["overskrift"]);
+    $ingress = mysqli_real_escape_string($mysqli, $_POST["ingresso"]);
+    $innhold = mysqli_real_escape_string($mysqli, $_POST["innholdet"]);
+    $rekke = mysqli_real_escape_string($mysqli, $_POST["rekke"]);
+    $idmeny = mysqli_real_escape_string($mysqli, $_POST["menylistephp"]);
+    $id = mysqli_real_escape_string($mysqli, $_POST['id']);
+    //Sjekker om artikkelen er koblet til en submeny
+    if(strpos($idmeny, "SUB") !== false) {
+      //Endrer hvis submeny er valgt
+      $nyid = substr($idmeny, 3);
+      $sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny 
+              WHERE innhold.idmeny = submeny.meny_idmeny AND idsubmeny = ? ;";
+      $stmt = $mysqli->prepare($sql);
+      $stmt->bind_param("i", $nyid);
+      $stmt->execute();
+      $res = $stmt->get_result();
+      $row = $res->fetch_assoc();
+      $sisteID = $row['idmeny'];
+      Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$sisteID,$id);
+    } else {
+      //Endrer hvis hovedmeny er valgt
+        Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$idmeny,$id);
+    }
+    
+    header("location: ../innhold.php");
+  }
 
 function legg_til_link(string $url, string $tekst, string $idmeny, string $idsubmeny) {
     global $mysqli;

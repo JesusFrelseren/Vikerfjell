@@ -1,4 +1,4 @@
-﻿<?php
+﻿<?phpz
 		$stmt3 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?");
 		mysqli_set_charset($mysqli, "UTF8");
 		$stmt3->bind_param("i",$_POST['menylistephp']);

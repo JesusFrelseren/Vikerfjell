@@ -19,7 +19,7 @@ function changeFunc() {
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     window.location.assign("http://localhost/html/Vikerfjell/PHP/innhold.php?id="+selectedValue);
 
-    var selectedValue = document.getElementById("listeinnhold").options[document.getElementById("listeinnhold").selectedIndex].value;
+   // var selectedValue = document.getElementById("listeinnhold").options[document.getElementById("listeinnhold").selectedIndex].value;
 }
 //OnChange funksjon for select i endring av meny
 function changeMenyFunc() {
