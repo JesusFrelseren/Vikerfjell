@@ -50,12 +50,6 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 </section>
 
-
-<?php
-if(isset($_FILES)) {
-    echo("Fil ble lastet opp");
-}
-?>
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
