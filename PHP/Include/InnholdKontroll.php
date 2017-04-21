@@ -40,6 +40,24 @@ WHERE idinnhold = $idinnhold;";
 }
 
 // Sist endret av Sindre og Alex 29.03.2017
+function skriv_bilder_til_base($POST, $FILES, $width_src, $height_src)  {
+        global $mysqli;
+    $tekst = $POST['bildebeskrivelse'];
+    $thumb = "thumb_".pathinfo($FILES['upload']['name'], PATHINFO_BASENAME);
+    $hvor = pathinfo($FILES['upload']['name'], PATHINFO_BASENAME);
+    $bredde = $width_src;
+    $høyde = $height_src;
+    $tooltip = "Fuck tooltips";
+    $alt = "Bildet ble ikke funnet :´(";
+    $stmt = $mysqli->prepare("
+      INSERT INTO vikerfjell.bilder(hvor, tekst, thumb, bredde, hoyde, tooltip, alt)
+      VALUES(?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param('sssiiss', $hvor, $tekst, $thumb, $bredde, $høyde, $tooltip, $alt);
+    $stmt->execute();    $mysqli->close();
+
+
+}
 
 function Endre_Rekke($idmeny, $rekke){
     global $mysqli;
