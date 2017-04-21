@@ -17,7 +17,7 @@ while ($row33 = $result33->fetch_assoc())
 		{
 		
 		//$sideInsert = "../../" .$row3['tittel']. '.html';
-		$sideInsert = "../../" .$row3['side'];
+		$sideInsert = "../../" .$row3['side']; 
 		$fh = fopen($sideInsert, 'w', 'w');
 		$stringen = lagBestemtSide($row3['idinnhold']);
 		fwrite($fh, $stringen);

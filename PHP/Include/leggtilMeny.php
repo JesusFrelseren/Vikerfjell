@@ -55,10 +55,7 @@ elseif (!is_numeric($menyrekke))
 		header('Location: ../EndreMeny.php');
 
 		//Lager ny fil til en ny hovedmeny
-		$sideInsert = "../../".$menynavn.".html";
-		$fh = fopen($sideInsert, 'w');
-		$includes = lagSidepp();
-		fwrite($fh, $includes);
+		
 		//For å legge endre .html sider utifra nymeny
 		//$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
 		//$result = mysqli_query($mysqli, $sql3);
@@ -74,10 +71,7 @@ elseif (!is_numeric($menyrekke))
 			header('Location: ../EndreMeny.php');
 
 			//Lager ny fil til en ny submeny
-			$sideInsert = "../../".$menynavn.".html";
-			$fh = fopen($sideInsert, 'w');
-			$includes = lagSidepp();
-			fwrite($fh, $includes);
+			
 			
 		}
 		
