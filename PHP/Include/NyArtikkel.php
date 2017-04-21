@@ -37,11 +37,6 @@ function lagSide2($idmenyen) {
   		$fh = fopen($sideInsert, 'w', 'w');
   		fwrite($fh, $includes);
 
-		
-
-
-
-
       $overskrift4 = $menyoverskrift;
       $id = $idmenyen;
 
