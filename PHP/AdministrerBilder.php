@@ -116,7 +116,7 @@ while($row = $img_result ->fetch_assoc()) {
 <input type='hidden' value='$idbilder' name='id' id='id'>
 <img id='id' src='$thumb' alt='Test'>
 
-<div id='bilde_modal' class='modal'>
+<div id='bilde_modal' class='modal' onclick='visModal()'>
     <span class=\"close\" onclick=\"document.getElementById('bilde_modal').style.display='none'\">&times;</span>
     <img src='$hvor' class='modal - content' id='img01'>
     <div id=\"caption\"></div>
@@ -130,4 +130,7 @@ while($row = $img_result ->fetch_assoc()) {
 
 }
 ?>
+
+
+
 

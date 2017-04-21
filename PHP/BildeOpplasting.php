@@ -3,8 +3,8 @@
 //todo: Sjekk for overskrivning av bilder
 //todo: Utvid catch
 //todo: Demonstrer bilder som allerede er linket
-//todo: Lag støtte for andre bildeformater
-//todo: Fiks visning av thumbnails på webside
+
+
 //todo: Fiks firefox implementasjon
 //todo: Fiks object not found i linkmodus
 include('Include/mysqlcon.php');
@@ -47,7 +47,21 @@ try {
     $perm_name_hash = md5_file($tmp_location);
     $filinfo = pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME);
     $perm_name = sprintf('Bilder/%s.%s', $filinfo, $ext);
-    move_uploaded_file($tmp_location, $perm_name);
+
+    if (!(file_exists($perm_name))) {
+        move_uploaded_file($tmp_location, $perm_name);
+    } else {
+        $kopi = 2;
+        while(true) {
+            if(file_exists($perm_name.$kopi)) {
+                $kopi++;
+            } else {
+                move_uploaded_file($tmp_location, $perm_name.$kopi);
+                break;
+            }
+        }
+    }
+
     //todo: Lag sjekk på om fil finnes
     //echo("Fil ble lastet opp\n");
 
