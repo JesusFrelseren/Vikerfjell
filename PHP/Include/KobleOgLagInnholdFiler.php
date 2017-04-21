@@ -22,4 +22,6 @@
 		include("createInnholdFile.php");
 		koblemeny($_POST['menylistephp']);
 		}
+
+
 ?>
