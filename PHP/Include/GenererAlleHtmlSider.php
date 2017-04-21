@@ -4,6 +4,10 @@ mysqli_set_charset($mysqli, "UTF8");
 $stmt33->execute();
 $result33 = $stmt33->get_result();
 include ("createInnholdFile.php");
+<<<<<<< HEAD
+=======
+$menyid;
+>>>>>>> babbef68df034a59ec34d708bcab8abe95a872df
 while ($row33 = $result33->fetch_assoc())
 	{
 	$menyid = $row33['idmeny'];
