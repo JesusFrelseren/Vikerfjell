@@ -29,7 +29,7 @@
  </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
-<ul><li><a href='test2.html'>test2</a></li><li><a href='test1.html'>test1</a></li><li><a href='Test111.html'>Test</a></li><li><a href='Test11.html'>Test</a></li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
+<ul><li><a href='test2.html'>test2</a></li><li><a href='test1.html'>test1</a></li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
         <a href='#'' class='dropbtn'>Hytter</a>
         <div class='dropdown-content'>
           <a href='.html'>Hytter til salgs</a>

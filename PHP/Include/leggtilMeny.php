@@ -57,11 +57,11 @@ elseif (!is_numeric($menyrekke))
 		header('Location: ../EndreMeny.php');
 
 		//Lager ny fil til en ny hovedmeny
-		
+
 		//For å legge endre .html sider utifra nymeny
 		//$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
 		//$result = mysqli_query($mysqli, $sql3);
-		
+
 		}
 	  else
 		{
@@ -75,9 +75,9 @@ elseif (!is_numeric($menyrekke))
 			header('Location: ../EndreMeny.php');
 
 			//Lager ny fil til en ny submeny
-		
+
 		}
-		
+
 	}
 //Funksjon for select og insert for submeny
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
@@ -111,9 +111,7 @@ function sjekktittel2($sql, $sql2, $nyttnavn, $menynavn, $menyrekke)
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $test);
 	$stmt->execute();
-	$result = <1stmt->
-		<get_r></get_r>
-	</1stmt->esult();
+	$result = $stmt->get_result();
 	$row = $result->fetch_assoc();
 	if (!$row)
 		{

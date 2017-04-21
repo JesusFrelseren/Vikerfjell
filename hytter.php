@@ -29,12 +29,12 @@
  </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
-<ul><li><a href='testooo.html'>testooo</a></li><li><a href='testings.html'>testings</a></li><li><a href='Test.html'>Hjem</a></li><li class='dropdown'>
+<ul><li><a href='test2.html'>test2</a></li><li><a href='test1.html'>test1</a></li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
         <a href='#'' class='dropbtn'>Hytter</a>
         <div class='dropdown-content'>
           <a href='.html'>Hytter til salgs</a>
         </div>
-      </li><li><a href='Aktuelt Test.html'>Aktuelt</a></li><li><a href='Hyttetomter Test.html'>Hyttetomter</a></li><li><a href='aktiviteter.php'>Aktiviteter</a></li><li class='dropdown'>
+      </li><li><a href='Aktuelt.html'>Aktuelt</a></li><li><a href='Hyttetomter Test.html'>Hyttetomter</a></li><li><a href='aktiviteter.php'>Aktiviteter</a></li><li class='dropdown'>
         <a href='#'' class='dropbtn'>Kontakt</a>
         <div class='dropdown-content'>
           <a href='./elsrud_gaard.php'>Elsrud Gård</a>
@@ -48,11 +48,16 @@
   </nav>
 </header>
 </div>
-<div class='wrap'><div class='staticinnhold'>
-		<H1></h1>
-		<img src= width=100% height=auto>
-		<p>Skriv inn tekst her</p>
-		</div>
+<div class='wrap'><div class='content100Prosent'>
+          <h1>Hytter</h1>  <div class='contentArtikkel'>
+              <div class='contentBilde'><img src='PHP/Bilder/'></div>
+              <div class='contentTekst'>
+                <h2>SubTest</h2>
+                <p>123</p>
+                <p>hei</p><a href='SubTest.html'>Les mer..</a>
+              </div>
+            </div>
+            </div>
 </div>
 <!--Footer-->
 <footer class="fcol-12">
