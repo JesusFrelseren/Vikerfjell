@@ -1,6 +1,17 @@
 // Utviklet av Erlend. Sist endret 20.04.2017
 
+
 <?php
+//todo: Lag sjekk på om fil finnes
+//todo: Sjekk for overskrivning av bilder
+//todo: Utvid med tooltip
+//todo: Utvid catch
+//todo: Demonstrer bilder som allerede er linket
+//todo: Lag støtte for andre bildeformater
+//todo: Fiks visning av thumbnails på webside
+//todo: Fiks firefox javascript
+//todo: Fiks object not found i linkmodus
+
 
 include('Include/InnholdKontroll.php');
 try {
@@ -41,8 +52,6 @@ try {
     $filinfo = pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME);
     $perm_name = sprintf('Bilder/%s.%s', $filinfo, $ext);
     move_uploaded_file($tmp_location, $perm_name);
-    //todo: Lag sjekk på om fil finnes
-
 
     //Lag thumbnail filsti
     $perm_thumb_location = lag_thumbnail_filsti($filinfo, $ext);
@@ -56,6 +65,7 @@ try {
     //Skriv meta til base
     list($width_src, $height_src) = getimagesize($perm_name);
     skriv_bilder_til_base($_POST, $_FILES, $width_src, $height_src);
+    header("location:form.php?msg=Feil brukernavn eller passord");
 
 
 } catch (RuntimeException $e) {

@@ -3,7 +3,9 @@ Sist endret av Erlend 01.04.2017
 Sist sett på av Sindre 01.04.2017
 -->
 
-<?php include 'startSession.php'; ?>
+<?php
+include 'startSession.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +51,11 @@ if (isset($_POST["søk_bilde_search_box"])) {
 </section>
 
 
-
+<?php
+if(isset($_FILES)) {
+    echo("Fil ble lastet opp");
+}
+?>
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
