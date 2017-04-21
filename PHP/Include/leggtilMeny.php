@@ -52,11 +52,8 @@ elseif (!is_numeric($menyrekke))
 		$sql2 = "INSERT INTO meny (tekst,side, rekke) VALUES (?, ?,?)";
 		sjekktittel2($sql, $sql2, $menynavn, $menynavn, $menyrekke);
 		include 'GenererAlleHtmlSider.php';
-<<<<<<< HEAD
-=======
 		include 'NyArtikkel.php';
 		lagSide3();
->>>>>>> babbef68df034a59ec34d708bcab8abe95a872df
 		header('Location: ../EndreMeny.php');
 
 		//Lager ny fil til en ny hovedmeny
@@ -73,20 +70,12 @@ elseif (!is_numeric($menyrekke))
 			$sql2 = "INSERT INTO submeny (sub_tekst,sub_side, sub_rekke , meny_idmeny) VALUES (?, ?, ?, ?)";
 			sjekktittel($sql, $sql2, $menynavn, $menynavn, $menyrekke, $typemeny);
 			include 'GenererAlleHtmlSider.php';
-<<<<<<< HEAD
-			header('Location: ../EndreMeny.php');
-
-			//Lager ny fil til en ny submeny
-			
-			
-=======
 			include 'NyArtikkel.php';
 			lagSide3();
 			header('Location: ../EndreMeny.php');
 
 			//Lager ny fil til en ny submeny
 		
->>>>>>> babbef68df034a59ec34d708bcab8abe95a872df
 		}
 		
 	}
@@ -122,7 +111,9 @@ function sjekktittel2($sql, $sql2, $nyttnavn, $menynavn, $menyrekke)
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $test);
 	$stmt->execute();
-	$result = $stmt->get_result();
+	$result = <1stmt->
+		<get_r></get_r>
+	</1stmt->esult();
 	$row = $result->fetch_assoc();
 	if (!$row)
 		{
