@@ -19,13 +19,16 @@ if(isset($Menyelement) || $Menyelement=="") {
         //Substringer for å få ren ID
         $nymenyid = substr($Menyelement,3);
         //Select for å se om valgt meny har eksisterende innhold
-        /* DENNE FUNGERER IKKE ENDA
-        $innholdSjekk = "SELECT * FROM submeny LEFT JOIN innhold ON submeny. WHERE innhold.idmeny = ?;";
+        //DENNE FUNGERER IKKE ENDA
+        $innholdSjekk = "SELECT * FROM submeny LEFT JOIN innhold ON submeny.meny_idmeny = innhold.idmeny WHERE idsubmeny = ? 
+	                        AND idinnhold IS NOT NULL;";
         $innholdStmt = $mysqli->prepare($innholdSjekk);
         $innholdStmt->bind_param('i', intval($nymenyid));
         $innholdStmt->execute();
         $innholdStmt->store_result();
-        */ ///
+        if($innholdStmt->num_rows > 0) {
+          header("location: EndreMeny.php?feilslett=Kan ikke slette en meny med eksisterende innhold.");
+        } else {
 
         //Lager select for å finne sidenavn for filsletting
         $sqlSelect = "SELECT * FROM submeny WHERE idsubmeny = ?";
@@ -45,7 +48,8 @@ if(isset($Menyelement) || $Menyelement=="") {
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param('i', intval($nymenyid));
         $stmt->execute();
-        //header("location:EndreMeny.php");
+        header("location:EndreMeny.php");
+        }
       }elseif(strpos($Menyelement, 'SUB') == false) {
          //Select for å se om valgt meny har eksisterende innhold
         $innholdSjekk = "SELECT * FROM meny LEFT JOIN innhold USING(idmeny) WHERE innhold.idmeny = ?;";

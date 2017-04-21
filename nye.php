@@ -29,7 +29,11 @@
  </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
+<<<<<<< HEAD:nye.php
+<ul><li><a href='nymeny.html'>nymeny</a></li><li><a href='123.html'>yolo</a></li><li><a href='rekt.html'>rekt</a></li><li><a href='testings.html'>testings</a></li><li><a href='Test.html'>Hjem</a></li><li class='dropdown'>
+=======
 <ul><li><a href='testooo.html'>testooo</a></li><li><a href='O.O.html'>O.O</a></li><li><a href='testii.html'>testii</a></li><li><a href='testings.html'>testings</a></li><li><a href='Test.html'>Hjem</a></li><li class='dropdown'>
+>>>>>>> babbef68df034a59ec34d708bcab8abe95a872df:nye.php
         <a href='#'' class='dropbtn'>Hytter</a>
         <div class='dropdown-content'>
           <a href='.html'>Hytter til salgs</a>
