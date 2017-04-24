@@ -124,13 +124,12 @@ if(!$row){
       legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$_POST['menylistephp']);
       include 'KobleOgLagInnholdFiler.php';
     }
-  
   header("location: ../innhold.php");
-}else{
-  $tall ="1";
-  $side2 = $navn.$tall;
-  sjekk_navn($side2);
-}
+  }else{
+    $tall ="1";
+    $side2 = $navn.$tall;
+    sjekk_navn($side2);
+  }
 }
 
 // Kjører nytt innhold, med en sjekk på om sidenavn finnes.
