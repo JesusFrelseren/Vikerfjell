@@ -77,7 +77,4 @@ function lagSide() {
 			return $includes;
 
 		}
-
-
-
 ?>
