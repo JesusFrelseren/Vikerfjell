@@ -24,6 +24,9 @@ while ($row33 = $result33->fetch_assoc())
 		fwrite($fh, $stringen);
 		$count++;
 		}
+		if ($count =1){
+		koblemeny($menyid);
+		}
 
 	// lager oversikt til innhold
 	//	include("NyArtikkel.php");
