@@ -33,11 +33,11 @@ function lagSide2($idmenyen) {
 			include 'footer.php';
 			$andreinclude = ob_get_clean();
 			$includes = $andreinclude;
-      $sideInsert = "../../".$menyoverskrift;
+      $sideInsert = "../../".$menyoverskrift.".html";
   		$fh = fopen($sideInsert, 'w', 'w');
   		fwrite($fh, $includes);
 
-      $overskrift4 = $menyoverskrift;
+      $overskrift4 = $menyoverskrift.".html";
       $id = $idmenyen;
 
 		  global $mysqli;
@@ -117,6 +117,6 @@ function legg_til_oversikt($idmeny){
             ");
   	}
     echo("</div>");
-    return $linkside;
+    return $menyoverskrift;
   }
 ?>
