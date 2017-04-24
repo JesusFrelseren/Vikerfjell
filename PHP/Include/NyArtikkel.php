@@ -1,43 +1,19 @@
 <?php
-header('Content-type: text/plain; charset=utf-8');
 /* Sindre 06.04.2017  */
-function convertCharacterEncoding($content) {
-// Convert encoding from charset X to utf8 if needed.
-  $characterEncoding = mb_detect_encoding($content, 'UTF-8, UTF-16, ISO-8859-1, ISO-8859-15, Windows-1252, ASCII');
-  
-switch ($characterEncoding) {
-  case "UTF-8":
-    // Do nothing
-    break;	
-  case "ISO-8859-1":
-    $content = utf8_encode($content);    
-    break;
-  default:
-    $content = mb_convert_encoding($content,"UTF-8",$characterEncoding);
-    break;
-}
-
-return $content;
-
-}
-
-
-
 
 function lagSide2($idmenyen) {
 			ob_start();
 			include 'header.php';
 			include 'meny.php';
-			$menyoverskrift = legg_til_oversikt($idmenyen);
-			$menyoverskrift = convertCharacterEncoding($menyoverskrift);
+      $menyoverskrift = legg_til_oversikt($idmenyen);
 			include 'footer.php';
 			$andreinclude = ob_get_clean();
 			$includes = $andreinclude;
-      $sideInsert = "../../".$menyoverskrift;
+      $sideInsert = "../../".$menyoverskrift.".html";
   		$fh = fopen($sideInsert, 'w', 'w');
   		fwrite($fh, $includes);
 
-      $overskrift4 = $menyoverskrift;
+      $overskrift4 = $menyoverskrift.".html";
       $id = $idmenyen;
 
 		  global $mysqli;
@@ -45,26 +21,6 @@ function lagSide2($idmenyen) {
   		mysqli_set_charset($mysqli, "UTF8");
   		$stmt6->bind_param("s",$overskrift4);
   		$stmt6->execute();
-		}
-
-
-
-
-		function lagSide3(){
-		global $mysqli;
-		$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.meny;");
-		mysqli_set_charset($mysqli, "UTF8");
-		$stmt->execute();
-		 $result = $stmt->get_result();
-
-  
-		 while ($row = $result->fetch_assoc()){
-		 $nyid = $row['idmeny'];
-		if ($nyid !=1){
-		lagSide2($nyid);
-		}
-
-		}
 		}
 
 //Kaller en funksjon som får idmeny og menyoverskrift fra InnholdKontroll
@@ -77,7 +33,7 @@ function legg_til_oversikt($idmeny){
   $result2 = $stmt2->get_result();
   $row2 = $result2->fetch_assoc();
   $menyoverskrift = $row2['tekst'];
-  $linkside = $row2['side'];
+
   echo ("<div class='content100Prosent'>
           <h1>$menyoverskrift</h1>");
 
@@ -117,6 +73,6 @@ function legg_til_oversikt($idmeny){
             ");
   	}
     echo("</div>");
-    return $linkside;
+    return $menyoverskrift;
   }
 ?>
