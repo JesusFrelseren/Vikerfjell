@@ -24,6 +24,7 @@ function lagSide() {
 			$stmt4->execute();
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
+			
 			$overskrift4 = $row4['tittel'].'.html';
 
 			$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";

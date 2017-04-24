@@ -118,14 +118,13 @@ if(!$row){
       }
       //Legger til artikkel på submeny
       legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$subID);
+      include 'KobleOgLagInnholdFiler.php';
     } else {
       //Legger til artikkel på hovedmeny
       legg_til_side($_POST['overskrift'],$_POST['ingresso'],$_POST['innholdet'],$_POST['rekke'],$navn.".html",$_POST['menylistephp']);
+      include 'KobleOgLagInnholdFiler.php';
     }
-  include 'KobleOgLagInnholdFiler.php';
-
-
-
+  
   header("location: ../innhold.php");
 }else{
   $tall ="1";
@@ -182,7 +181,7 @@ function Endre_Innhold($tittel, $ingress, $text, $rekke, $idmeny, $idinnhold){
       Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$sisteID,$id);
     } else {
       //Endrer hvis hovedmeny er valgt
-        Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$idmeny,$id);
+      Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$idmeny,$id);
     }
     
     header("location: ../innhold.php");

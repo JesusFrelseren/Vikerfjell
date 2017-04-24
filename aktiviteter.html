@@ -29,7 +29,12 @@
  </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
-<ul><li><a href='test2.html'>test2</a></li><li><a href='test1.html'>test1</a></li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
+<ul><li><a href='swag.html'>swag</a></li><li><a href='Test2.html'>Test2</a></li><li><a href='test1.html'>test1</a></li><li class='dropdown'>
+        <a href='#'' class='dropbtn'>SubTesting</a>
+        <div class='dropdown-content'>
+          <a href='./SubTestingSub.html'>SubTestingSub</a>
+        </div>
+      </li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
         <a href='#'' class='dropbtn'>Hytter</a>
         <div class='dropdown-content'>
           <a href='.html'>Hytter til salgs</a>
