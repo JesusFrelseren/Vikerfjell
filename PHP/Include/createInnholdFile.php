@@ -12,16 +12,9 @@ function lagSide() {
 			return $includes;
 		}
 
-<<<<<<< HEAD
-		function koblemeny($id){
-			global $mysqli;
-			mysqli_set_charset($mysqli, "UTF8");
-
-=======
 	function koblemeny($id, $teller){
 		global $mysqli;
-		mysqli_set_charset($mysqli, "UTF8");		
->>>>>>> origin/master
+		mysqli_set_charset($mysqli, "UTF8");
 		//Test ny substring sub id
 		if($teller == 1) {
 			$stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold RIGHT JOIN vikerfjell.submeny ON innhold.idmeny = submeny.meny_idmeny WHERE submeny.idsubmeny = ?;");
@@ -31,22 +24,15 @@ function lagSide() {
 			$row4 = $result4->fetch_assoc();
 
 			$overskrift4 = $row4['tittel'].'.html';
-			
+
 			$overkrift5 = substr($overskrift4, 2);
-			
+
 			$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $id";
 
-<<<<<<< HEAD
-			$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";
 			mysqli_set_charset($mysqli, "UTF8");
 			$stmt = $mysqli->prepare($sql);
-			$stmt->bind_param('s', $overskrift4);
-=======
-			mysqli_set_charset($mysqli, "UTF8");	
-			$stmt = $mysqli->prepare($sql);
-			$stmt->bind_param('s', $overskrift5);  
->>>>>>> origin/master
-            $stmt->execute();
+			$stmt->bind_param('s', $overskrift5);
+        $stmt->execute();
 
 			$sideInsert = "../../".$overskrift5;
 			$fh = fopen($sideInsert, 'w', 'w');
