@@ -14,7 +14,7 @@ function lagSide() {
 
 		function koblemeny($id){
 			global $mysqli;
-			mysqli_set_charset($mysqli, "UTF8");		
+			mysqli_set_charset($mysqli, "UTF8");
 
 		//Test ny substring sub id
 		if(strpos($id, 'SUB') !== false) {
@@ -24,13 +24,13 @@ function lagSide() {
 			$stmt4->execute();
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
-			
+
 			$overskrift4 = $row4['tittel'].'.html';
 
 			$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";
-			mysqli_set_charset($mysqli, "UTF8");	
+			mysqli_set_charset($mysqli, "UTF8");
 			$stmt = $mysqli->prepare($sql);
-			$stmt->bind_param('s', $overskrift4);  
+			$stmt->bind_param('s', $overskrift4);
             $stmt->execute();
 
 			$sideInsert = "../../".$overskrift4;
@@ -44,7 +44,7 @@ function lagSide() {
 			$stmt4->execute();
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
-			$overskrift4 = $row4['tittel'].'.html';
+			$overskrift4 = $row4['side'];
 
 			$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
 			mysqli_set_charset($mysqli, "UTF8");
@@ -57,7 +57,7 @@ function lagSide() {
 			fwrite($fh, $includes);
 		}
 
-		
+
 
 
 
