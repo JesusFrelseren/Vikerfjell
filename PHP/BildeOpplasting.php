@@ -5,8 +5,7 @@
 //todo: Demonstrer bilder som allerede er linket (bonus)
 
 
-//todo: Fiks firefox implementasjon
-//todo: Fiks object not found i linkmodus
+//todo: Fiks firefox implementasjon (funker?)
 include('Include/mysqlcon.php');
 
 
