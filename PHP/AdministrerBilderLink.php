@@ -3,8 +3,25 @@ Sist endret av Erlend 01.04.2017
 Sist sett på av Sindre 01.04.2017
 -->
 
-<?php include 'startSession.php';
+<?php
+include 'startSession.php';
+include('Include/mysqlcon.php');
 $id_innhold = -1;
+
+
+if (isset($_POST['idbilder'])) {
+    if($_POST['id_innhold'] == -1) {
+        echo("Velg innhold");
+    } else {
+        global $mysqli;
+        $idbilder = $_POST['idbilder'];
+        $idinnhold = $_POST['id_innhold'];
+
+        $stmt = $mysqli->prepare("INSERT INTO bilderinnhold(_idbilder, _idinnhold) VALUES(?, ?)");
+        $stmt->bind_param('ii', $idbilder, $idinnhold);
+        $stmt->execute();
+    }
+}
 if(isset($_GET['id'])) {
     $id_innhold = $_GET['id'];
 }
@@ -47,7 +64,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
     </form>
     <form class="search_form" action="AdministrerBilderLink.php" method="post">
     <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
-    <input type="submit" class="søk_knapp" value="Finn bilder">
+    <input type="submit" class="søk_knapp" value="Søk">
 
 </form>
     <form class="search_form">
@@ -63,7 +80,11 @@ if (isset($_POST["søk_bilde_search_box"])) {
         <?php include("Include/BilderVelgInnholdDropdown.php")?>
 
     </form>
-
+    <?php
+    if(isset($_POST['idbilder'])) {
+        echo("Bildet ble inkludert!");
+    }
+    ?>
 </section>
 
 <?php
@@ -119,10 +140,10 @@ while($row = $img_result->fetch_assoc()) {
 
 
     echo('<br />');
-    echo('<form method="post" action="LinkBilder.php">');
+    echo('<form method="post" action="AdministrerBilderLink.php">');
 
-    echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
-    echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
+    echo("<input type='text' class='innhold_id' name='id_innhold' value='$id_innhold'>");
+    echo("<input type='text' name='idbilder' id='idbilder' value='$idbilder'>");
     echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
     echo('</form>');
     echo('</section>');

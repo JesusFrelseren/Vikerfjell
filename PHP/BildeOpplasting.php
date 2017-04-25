@@ -2,7 +2,7 @@
 //todo: Skriv melding om opplastet bilde på samme sted
 //todo: Sjekk for overskrivning av bilder
 //todo: Utvid catch
-//todo: Demonstrer bilder som allerede er linket
+//todo: Demonstrer bilder som allerede er linket (bonus)
 
 
 //todo: Fiks firefox implementasjon
@@ -35,8 +35,6 @@ try {
                 'jpg' => 'image/jpeg',
                 'png' => 'image/png',
                 'gif' => 'image/gif',
-                'tiff' => 'image/tiff',
-                'bmp' => 'image/bmp',
             ),
             true
         )) {

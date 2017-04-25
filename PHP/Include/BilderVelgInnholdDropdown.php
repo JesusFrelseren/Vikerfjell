@@ -3,9 +3,7 @@ include 'mysqlcon.php';
 
     $stmt = $mysqli->prepare("
             SELECT *
-            FROM innhold
-            ;
-      ");
+            FROM innhold;");
 
     //$stmt->bind_param('i', $id);
     $stmt->execute();
@@ -16,6 +14,7 @@ include 'mysqlcon.php';
 echo("<select class='lenkerDropdown' id='innhold_dropdown' name='innhold_dropdown' onchange='innholdReturnId()'>");
 echo("svar");
     // Utdata for hver rad
+echo("<option>Velg innhold</option>");
 while($row = $result->fetch_assoc()) {
     $tittel = $row['tittel'];
     $array[$row['idinnhold']] = $row['side'];
@@ -24,9 +23,6 @@ while($row = $result->fetch_assoc()) {
     </option><br>";
 
 }
-
-
-
 
 echo("</select>");
 mysqli_close($mysqli);
