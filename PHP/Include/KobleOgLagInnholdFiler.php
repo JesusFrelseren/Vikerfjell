@@ -1,25 +1,5 @@
 ﻿<?php
 
-/*
-function lagFil($value) {
-	global $mysqli;
-	
-	$stmt3 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?");
-	mysqli_set_charset($mysqli, "UTF8");
-	$stmt3->bind_param("i",$idValue);
-	$stmt3->execute();
-	$result3 = $stmt3->get_result();
-	$count = 0;
-	while($row3 = $result3->fetch_assoc()){
-		$count ++;
-		$navn = $row3['tittel'];
-		$array[0] = $count;
-		$array[1] = $navn;
-	}
-	return $array;
-}*/
-
-
 		$idValue = $_POST['menylistephp'];
 		if(strpos($idValue, "SUB") !== false) {
 			$idValue = substr($idValue, 3);
@@ -32,8 +12,6 @@ function lagFil($value) {
 			while($row3 = $result3->fetch_assoc()){
 				$count ++;
 				$navn = $row3['tittel'];
-				$array[0] = $count;
-				$array[1] = $navn;
 			}
 			
 			
