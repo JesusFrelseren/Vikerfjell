@@ -12,7 +12,7 @@ function lagSide() {
 			return $includes;
 		}
 
-	function koblemeny($id, $teller){
+	function koblemeny($id, $teller = null){
 		global $mysqli;
 		mysqli_set_charset($mysqli, "UTF8");
 		//Test ny substring sub id
@@ -32,7 +32,7 @@ function lagSide() {
 			mysqli_set_charset($mysqli, "UTF8");
 			$stmt = $mysqli->prepare($sql);
 			$stmt->bind_param('s', $overskrift5);
-        $stmt->execute();
+			$stmt->execute();
 
 			$sideInsert = "../../".$overskrift5;
 			$fh = fopen($sideInsert, 'w', 'w');
