@@ -4,6 +4,9 @@ Sist sett på av Sindre 01.04.2017
 -->
 
 <?php
+//todo: ta vare på scroll
+
+
 include 'startSession.php';
 include('Include/mysqlcon.php');
 $id_innhold = -1;
@@ -24,6 +27,15 @@ if (isset($_POST['idbilder'])) {
 }
 if(isset($_GET['id'])) {
     $id_innhold = $_GET['id'];
+}
+
+if(isset($_POST['slett_fra_innhold'])) {
+    global $mysqli;
+    $idbilder = $_POST['idbilder'];
+    $idinnhold = $_POST['id_innhold'];
+    $stmt = $mysqli->prepare("delete from bilderinnhold where _idbilder = ? AND _idinnhold = ?");
+    $stmt->bind_param('ii', $idbilder, $idinnhold);
+    $stmt->execute();
 }
 ?>
 <!DOCTYPE html>
@@ -105,7 +117,8 @@ function hent_linkede_bilder() {
 
 function hent_alle_bilder() {
     global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder");
+    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde, _idbilder from vikerfjell.bilder 
+                        left join vikerfjell.bilderinnhold ON bilder.idbilder = bilderinnhold.`_idbilder`");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
     $img_result = $stmt->get_result();
@@ -123,11 +136,13 @@ function hent_filterte_bilder($søketekst) {
 
 
 while($row = $img_result->fetch_assoc()) {
+    unset($_idbilder);
     $idbilder = $row['idbilder'];
     $hvor = $row['hvor'];
     $tekst = $row['tekst'];
     $dimension = $row['hoyde'] . 'x' . $row['bredde'];
     $thumb = $row['thumb'];
+    $_idbilder = $row['_idbilder'];
 
 
     echo("
@@ -138,15 +153,27 @@ while($row = $img_result->fetch_assoc()) {
 <p style='margin-top: 0;'>$dimension</p>");
 
 
+//if
+    if (!(isset($_idbilder))) {
+        echo('<br />');
+        echo('<form method="post" action="AdministrerBilderLink.php">');
 
-    echo('<br />');
-    echo('<form method="post" action="AdministrerBilderLink.php">');
+        echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
+        echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
+        echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
+        echo('</form>');
+        echo('</section>');
+    } else {
+        echo('<br />');
+        echo('<form method="post" action="AdministrerBilderLink.php">');
 
-    echo("<input type='text' class='innhold_id' name='id_innhold' value='$id_innhold'>");
-    echo("<input type='text' name='idbilder' id='idbilder' value='$idbilder'>");
-    echo('<input type="submit" value="Inkluder i innhold" class="søk_knapp">');
-    echo('</form>');
-    echo('</section>');
+        echo("<input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>");
+        echo("<input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>");
+        echo("<input type='hidden' id='slett_fra_innhold' name='slett_fra_innhold'>");
+        echo('<input type="submit" value="Fjern fra innhold" class="søk_knapp">');
+        echo('</form>');
+        echo('</section>');
+    }
 
 
 }
