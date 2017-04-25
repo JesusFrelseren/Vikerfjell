@@ -1,10 +1,7 @@
 <?php
 //todo: Skriv melding om opplastet bilde på samme sted
 //todo: Sjekk for overskrivning av bilder
-//todo: Utvid catch
-//todo: Demonstrer bilder som allerede er linket (bonus)
-
-
+//todo: Kontroll med try catch
 //todo: Fiks firefox implementasjon (funker?)
 include('Include/mysqlcon.php');
 

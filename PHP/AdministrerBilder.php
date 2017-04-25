@@ -4,7 +4,6 @@ Sist sett på av Sindre 01.04.2017
 -->
 
 <?php
-var_dump($_POST);
 include 'startSession.php';
 include("Include/mysqlcon.php");
 
@@ -14,13 +13,29 @@ if(isset($_POST['id']) && isset($_POST['slett'])) {
     global $mysqli;
     $idbilder = $_POST['id'];
 
+    //Slett fra masselager
+    $stmt = $mysqli->prepare("select hvor, thumb from bilder where idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+    $img = $stmt->get_result();
+    $row = $img->fetch_assoc();
+
+    $hvor = $row['hvor'];
+    $thumb = $row['thumb'];
+    unlink("Bilder/$hvor");
+    unlink("Bilder/thumbs/$thumb");
+
+    //Slett fra bilderinnhold
     $stmt = $mysqli->prepare("delete from bilderinnhold where _idbilder = ?");
     $stmt->bind_param('i', $idbilder);
     $stmt->execute();
 
+    //Slett fra bilder
     $stmt = $mysqli->prepare("delete from bilder where idbilder = ?");
     $stmt->bind_param('i', $idbilder);
     $stmt->execute();
+
+
 }
 ?>
 <!DOCTYPE html>

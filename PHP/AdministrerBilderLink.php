@@ -4,7 +4,7 @@ Sist sett på av Sindre 01.04.2017
 -->
 
 <?php
-//todo: ta vare på scroll
+//todo: ta vare på scroll position
 
 
 include 'startSession.php';
@@ -141,7 +141,7 @@ while($row = $img_result->fetch_assoc()) {
     $hvor = $row['hvor'];
     $tekst = $row['tekst'];
     $dimension = $row['hoyde'] . 'x' . $row['bredde'];
-    $thumb = $row['thumb'];
+    $thumb = 'Bilder/thumbs/'.$row['thumb'];
     $_idbilder = $row['_idbilder'];
 
 
