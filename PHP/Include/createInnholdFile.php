@@ -14,7 +14,7 @@ function lagSide() {
 
 	function koblemeny($id, $teller){
 		global $mysqli;
-		mysqli_set_charset($mysqli, "UTF8");		
+		mysqli_set_charset($mysqli, "UTF8");
 		//Test ny substring sub id
 		if($teller == 1) {
 			$stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold RIGHT JOIN vikerfjell.submeny ON innhold.idmeny = submeny.meny_idmeny WHERE submeny.idsubmeny = ?;");
@@ -24,23 +24,21 @@ function lagSide() {
 			$row4 = $result4->fetch_assoc();
 
 			$overskrift4 = $row4['tittel'].'.html';
-			
+
 			$overkrift5 = substr($overskrift4, 2);
-			
+
 			$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $id";
 
-			mysqli_set_charset($mysqli, "UTF8");	
+			mysqli_set_charset($mysqli, "UTF8");
 			$stmt = $mysqli->prepare($sql);
-			$stmt->bind_param('s', $overskrift5);  
-            $stmt->execute();
+			$stmt->bind_param('s', $overskrift5);
+        $stmt->execute();
 
-				mysqli_set_charset($mysqli, "UTF8");	
-				$stmt = $mysqli->prepare($sql);
-				$stmt->bind_param('s', $overskrift5);  
-				$stmt->execute();
-				
+			$sideInsert = "../../".$overskrift5;
+			$fh = fopen($sideInsert, 'w', 'w');
+			$includes = lagSide();
+			fwrite($fh, $includes);
 		} else {
-
 			//Hvis det er hovedmeny kjører dette
 			$stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?;");
 			$stmt4->bind_param("i",$id);
@@ -49,26 +47,22 @@ function lagSide() {
 			$row4 = $result4->fetch_assoc();
 			$overskrift4 = $row4['side'];
 
-				$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
-				mysqli_set_charset($mysqli, "UTF8");
-				$stmt5->bind_param("s",$tittel);
-				$stmt5->execute();
+			$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+			mysqli_set_charset($mysqli, "UTF8");
+			$stmt5->bind_param("s",$overskrift4);
+			$stmt5->execute();
 
-				$tittel2 = $tittel.'.html';
-				$sideInsert = "../../".$tittel2;
-				$fh = fopen($sideInsert, 'w', 'w');
-				$includes = lagSide();
-				fwrite($fh, $includes);
-			}
-			}
-			
+			$sideInsert = "../../".$overskrift4;
+			$fh = fopen($sideInsert, 'w', 'w');
+			$includes = lagSide();
+			fwrite($fh, $includes);
 		}
 
 
 
 
 
-		
+		}
 
 
 		function lagBestemtSide($idinnold){

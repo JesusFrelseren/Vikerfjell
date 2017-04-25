@@ -1,5 +1,8 @@
 ﻿<?php
 
+
+
+
 		$idValue = $_POST['menylistephp'];
 		if(strpos($idValue, "SUB") !== false) {
 			$idValue = substr($idValue, 3);
@@ -13,10 +16,10 @@
 				$count ++;
 				$navn = $row3['tittel'];
 			}
-			
-			
+
+
 			$teller = 1;
-			
+
 		} else {
 			$stmt3 = $mysqli->prepare("SELECT * FROM vikerfjell.innhold where idmeny = ?");
 			mysqli_set_charset($mysqli, "UTF8");
@@ -31,7 +34,7 @@
 				$array[1] = $navn;
 			}
 			$teller = 2;
-		
+
 		}
 
 		if ($count > 1){
@@ -48,6 +51,6 @@
 			include("createInnholdFile.php");
 			koblemeny($idValue, $teller);
 		}
-		
+
 
 ?>
