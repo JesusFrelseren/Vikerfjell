@@ -29,21 +29,6 @@ function lagSide() {
 				$overskrift4 = $row4['side'];
 
 				$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";
-<<<<<<< HEAD
-
-				mysqli_set_charset($mysqli, "UTF8");
-				$stmt = $mysqli->prepare($sql);
-				$stmt->bind_param('s', $overskrift4);
-				$stmt->execute();
-
-				$sideInsert = "../../".$overskrift4;
-				$fh = fopen($sideInsert, 'w', 'w');
-				$includes = lagSide();
-				fwrite($fh, $includes);
-			}
-
-			
-=======
 
 				mysqli_set_charset($mysqli, "UTF8");
 				$stmt = $mysqli->prepare($sql);
@@ -57,7 +42,6 @@ function lagSide() {
 			}
 
 
->>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
 		} else {
 			//Hvis det er hovedmeny kjører dette
 			$stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = ?;");
@@ -67,11 +51,6 @@ function lagSide() {
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
 			if($row4) {
-<<<<<<< HEAD
-				
-=======
-
->>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
 				$overskrift4 = $row4['side'];
 				$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
 				mysqli_set_charset($mysqli, "UTF8");
@@ -83,15 +62,9 @@ function lagSide() {
 				$includes = lagSide();
 				fwrite($fh, $includes);
 			}
-<<<<<<< HEAD
-			
-
-			
-=======
 
 
 
->>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
 		}
 	}
 
