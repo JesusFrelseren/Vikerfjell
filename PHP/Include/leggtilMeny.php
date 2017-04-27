@@ -9,7 +9,7 @@ function lagSidepp() {
 			include 'meny.php';
 			include 'footer.php';
 			$includes = ob_get_clean();
-			ob_end_clean();
+			if (ob_get_length() > 0) { ob_end_clean(); }
 			return $includes;
 		}
 include 'mysqlcon.php';
@@ -83,7 +83,7 @@ elseif (!is_numeric($menyrekke))
 function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
 	{
 	global $mysqli;
-	$test = "./" . $nyttnavn . ".html";
+	$test = $nyttnavn.".html";
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $test);
 	$stmt->execute();
@@ -91,7 +91,7 @@ function sjekktittel($sql, $sql2, $nyttnavn, $menynavn, $menyrekke, $typemeny)
 	$row = $result->fetch_assoc();
 	if (!$row)
 		{
-		$nyttnavn = "./" . $nyttnavn . ".html";
+		$nyttnavn = $nyttnavn.".html";
 		$stmt = $mysqli->prepare($sql2);
 		$stmt->bind_param("ssii", $menynavn, $nyttnavn, $menyrekke, $typemeny);
 		$stmt->execute();

@@ -16,39 +16,24 @@
 <body>
 <div class='row'>
   <header class='col-12 col-m-12'>
-    <!--Header logo-->
-    <a href='default.php'><img src='PHP/Bilder/logov2.png' class='headerbakgrunn'></img></a>
-
-    <!--Header logo mobil
-    <a href='default.php'><img src='Bilder/logo.png' class='headerbakgrunnmobil'></img></a>
-
-    <div class='headerbakgrunnmobil'>
-      <img src='Bilder/headerimgmobil.jpg'>
-    </div>-->
-
- </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
-<<<<<<< HEAD
-<ul><li><a href='swag.html'>swag</a></li><li><a href='Test2.html'>Test2</a></li><li><a href='test1.html'>test1</a></li><li class='dropdown'>
-        <a href='#'' class='dropbtn'>SubTesting</a>
+<ul><li><a href='asd1111.html'>asd</a></li><li><a href='asd111.html'>asd</a></li><li><a href='asd11.html'>asd</a></li><li><a href='asd1.html'>asd</a></li><li><a href='asd.html'>asd</a></li><li><a href='asdasdasd.html'>asdasdasd</a></li><li><a href='Hjem.html'>Hjem</a></li><li class='dropdown'>
+        <a href='#' class='dropbtn'>HovedSub</a>
         <div class='dropdown-content'>
-          <a href='./SubTestingSub.html'>SubTestingSub</a>
+          <a href='SubSub.html'>SubSub</a>
         </div>
-      </li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
-=======
-<ul><li><a href='swag.html'>swag</a></li><li><a href='Test2.html'>Test2</a></li><li><a href='test1.html'>test1</a></li><li><a href='Default.php'>Hjem</a></li><li class='dropdown'>
->>>>>>> 2902f3b347b6ce0bd01547a4f8fb8d2b013897a1
-        <a href='#'' class='dropbtn'>Hytter</a>
+      </li><li><a href='TestArtikler.html'>TestArtikler</a></li><li><a href='Aktuelt.html'>Aktuelt</a></li><li class='dropdown'>
+        <a href='#' class='dropbtn'>Hytter</a>
         <div class='dropdown-content'>
-          <a href='.html'>Hytter til salgs</a>
+          <a href='Hytter til salgs.html'>Hytter til salgs</a>
         </div>
-      </li><li><a href='Aktuelt.html'>Aktuelt</a></li><li><a href='Hyttetomter Test.html'>Hyttetomter</a></li><li><a href='aktiviteter.php'>Aktiviteter</a></li><li class='dropdown'>
-        <a href='#'' class='dropbtn'>Kontakt</a>
+      </li><li><a href='Aktiviteter.html'>Aktiviteter</a></li><li class='dropdown'>
+        <a href='#' class='dropbtn'>Kontakt</a>
         <div class='dropdown-content'>
-          <a href='./elsrud_gaard.php'>Elsrud Gård</a>
+          <a href='Elsrud Gård.html'>Elsrud Gård</a>
         </div>
-      </li><li><a href='test.html'>betaling eri kke trygg</a></li><li><a href='Vei og føre.html'>Vei og føre</a></li>
+      </li><li><a href='EttInnhold.html'>EttInnhold</a></li><li><a href='Vei og føre.html'>Vei og føre</a></li>
    <li class='icon'>
 	<a href='javascript:void(0);' style='font-size:15px;' onclick='myFunction()'>☰</a>
    </li>
@@ -57,17 +42,11 @@
   </nav>
 </header>
 </div>
-<div class='wrap'><div class='content100Prosent'>
-          <h1>Aktiviteter</h1>  <div class='contentArtikkel'>
-              <div class='contentBilde'><img src='PHP/Bilder/'></div>
-              <div class='contentTekst'>
-                <h2>Aktiviteter</h2>
-                <p>Se hva slags aktiviteter Vikerfjell har å by på
-123<a href=nye.html>Test</a></p>
-                <p>hei</p><a href='aktiviteter.html'>Les mer..</a>
-              </div>
-            </div>
-            </div>
+<div class='wrap'><div class='staticinnhold'>
+		<H1>Skriv inn tittel her</h1>
+		<img src= width=100% height=auto>
+		<p>Skriv inn tekst her</p>
+		</div>
 </div>
 <!--Footer-->
 <footer class="fcol-12">

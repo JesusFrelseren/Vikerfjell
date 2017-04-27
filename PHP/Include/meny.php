@@ -42,7 +42,7 @@ while($row = $result->fetch_assoc()){
     }
 
     echo("<li class='dropdown'>
-        <a href='#'' class='dropbtn'>$tekst</a>
+        <a href='#' class='dropbtn'>$tekst</a>
         <div class='dropdown-content'>
           $submenu_html
         </div>
