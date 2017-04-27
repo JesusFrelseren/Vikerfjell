@@ -5,6 +5,38 @@ Sist sett på av Sindre 01.04.2017
 
 <?php
 include 'startSession.php';
+include("Include/mysqlcon.php");
+
+//Sletting av bilde
+if(isset($_POST['id']) && isset($_POST['slett'])) {
+
+    global $mysqli;
+    $idbilder = $_POST['id'];
+
+    //Slett fra masselager
+    $stmt = $mysqli->prepare("select hvor, thumb from bilder where idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+    $img = $stmt->get_result();
+    $row = $img->fetch_assoc();
+
+    $hvor = $row['hvor'];
+    $thumb = $row['thumb'];
+    unlink("Bilder/$hvor");
+    unlink("Bilder/thumbs/$thumb");
+
+    //Slett fra bilderinnhold
+    $stmt = $mysqli->prepare("delete from bilderinnhold where _idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+
+    //Slett fra bilder
+    $stmt = $mysqli->prepare("delete from bilder where idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +145,7 @@ while($row = $img_result ->fetch_assoc()) {
 
     echo("
 <section class='bildeinfo_container'>
-<input type='hidden' value='$idbilder' name='id' id='id'>
+
 <img id='id' src='$thumb' alt='Test'>
 
 <div id='bilde_modal' class='modal' onclick='visModal()'>
@@ -123,7 +155,12 @@ while($row = $img_result ->fetch_assoc()) {
 </div>
 
 <p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p> </section>");
+<p style='margin-top: 0;'>$dimension</p> 
+<form action='AdministrerBilder.php' method='post'>
+    <input type='text' value='$idbilder' name='id' id='id'>
+    <input type='hidden' id='slett' name='slett'>
+    <input type='submit' value='Slett' class='søk_knapp'>
+</form></section>");
 
 
 

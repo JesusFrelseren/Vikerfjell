@@ -40,20 +40,22 @@ $subid = "";
 if (isset($_GET['id'])){
 	global $mysqli;
 	$idvariabel = $_GET['id'];
-	$sql = "SELECT * FROM  innhold 
-					LEFT JOIN submeny 
-					ON submeny.meny_idmeny = innhold.idmeny 
+	$sql = "SELECT * FROM  innhold
+					LEFT JOIN submeny
+					ON submeny.meny_idmeny = innhold.idmeny
 					WHERE idinnhold = ? AND idsubmeny IS NOT NULL;";
 	$row = targetMeny($idvariabel, $sql);
 	if($row == true) {
 		$subID = $row['idsubmeny'];
-		$sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny 
+		$sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
 						WHERE innhold.idmeny = submeny.meny_idmeny AND idsubmeny = ?;";
+		$sql2 = "SELECT * FROM vikerfjell.innhold WHERE idinnhold = ?;";
 		$row = targetMeny($subID, $sql);
-		$overskrift = $row['tittel'];
-		$ingress = $row['ingress'];
-		$text = $row['text'];
-		$rekke = $row['rekke'];
+		$row2 = targetMeny($idvariabel,$sql2);
+		$overskrift = $row2['tittel'];
+		$ingress = $row2['ingress'];
+		$text = $row2['text'];
+		$rekke = $row2['rekke'];
 		$subid = $row['idsubmeny'];
 		$sjekkvariabel = 2;
 	} else {
@@ -66,7 +68,7 @@ if (isset($_GET['id'])){
 		$rekke = $row['rekke'];
 		$idmeny = $row['idmeny'];
 		$sjekkvariabel = 1;
-	
+
 }
 }
 

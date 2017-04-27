@@ -1,10 +1,28 @@
-
-
+/* Sindre 26.04.2017 */
 
 .staticinnhold{
-	width: 35%;
-    font-family: sans-serif;
-    font-size: 16px;
-    line-height: 1;
-    border: 1px solid #000;
+	width: 80%;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin-right: auto;
+	margin-left: auto;
+	background-color: #FFFFFF;
+	height: auto;
+	overflow: auto;
+}
+
+.staticinnhold h1 {
+margin-left: 10px;
+text-align: center;
+}
+
+.staticinnhold img {
+	float: left;
+	width: 45%;
+	height: auto;
+	margin: 0px 10px 10px 10px;
+}
+
+.staticinnhold p {
+	margin: 0px 10px 10px 10px;
 }

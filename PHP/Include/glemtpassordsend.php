@@ -12,7 +12,7 @@ $msg = '';
 if(isset($username)) {
   include 'mysqlcon.php';
 
-  $stmt = $mysqli->prepare("SELECT ePost FROM bruker WHERE brukerNavn=?");
+  $stmt = $mysqli->prepare("SELECT ePost,idbruker FROM bruker WHERE brukerNavn=?");
   $stmt->bind_param("s",$username);
   $stmt->execute();
 
@@ -20,9 +20,10 @@ if(isset($username)) {
   $row = $result->fetch_assoc();
 
   $to = $row["ePost"];
+  $idbruker = $row['idbruker'];
   $subject = "Glemt passord";
 
-  $message = "Please use this password to login";
+  $message = <a href="localhost/html/vikerfjell/PHP/EndrePassordfraMail?id=$idbruker">Endre Passord</a>;
   $headers = 'From: Your name <info@address.com>' . "\r\n";
   if(mail($to, $subject, $message, $headers)){
     echo "Your Password has been sent to your email id";

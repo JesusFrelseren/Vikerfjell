@@ -16,31 +16,33 @@
 <body>
 <div class='row'>
   <header class='col-12 col-m-12'>
-    <!--Header logo-->
-    <a href='default.php'><img src='PHP/Bilder/logov2.png' class='headerbakgrunn'></img></a>
-
-    <!--Header logo mobil
-    <a href='default.php'><img src='Bilder/logo.png' class='headerbakgrunnmobil'></img></a>
-
-    <div class='headerbakgrunnmobil'>
-      <img src='Bilder/headerimgmobil.jpg'>
-    </div>-->
-
- </div>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
+<<<<<<< HEAD
 <ul><li><a href='Hjem.html'>Hjem</a></li><li><a href='asdasd.html'>asdasd</a></li><li class='dropdown'>
         <a href='#'' class='dropbtn'>HovedSub</a>
+=======
+<ul><li><a href='asd1111.html'>asd</a></li><li><a href='asd111.html'>asd</a></li><li><a href='asd11.html'>asd</a></li><li><a href='asd1.html'>asd</a></li><li><a href='asd.html'>asd</a></li><li><a href='asdasdasd.html'>asdasdasd</a></li><li><a href='Hjem.html'>Hjem</a></li><li class='dropdown'>
+        <a href='#' class='dropbtn'>HovedSub</a>
+>>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
         <div class='dropdown-content'>
           <a href='SubSub.html'>SubSub</a>
         </div>
       </li><li><a href='TestArtikler.html'>TestArtikler</a></li><li><a href='Aktuelt.html'>Aktuelt</a></li><li class='dropdown'>
+<<<<<<< HEAD
         <a href='#'' class='dropbtn'>Hytter</a>
+=======
+        <a href='#' class='dropbtn'>Hytter</a>
+>>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
         <div class='dropdown-content'>
           <a href='Hytter til salgs.html'>Hytter til salgs</a>
         </div>
       </li><li><a href='Aktiviteter.html'>Aktiviteter</a></li><li class='dropdown'>
+<<<<<<< HEAD
         <a href='#'' class='dropbtn'>Kontakt</a>
+=======
+        <a href='#' class='dropbtn'>Kontakt</a>
+>>>>>>> 30b251dd28367e48f4fcf5d7fa41ab82da9df585
         <div class='dropdown-content'>
           <a href='Elsrud Gård.html'>Elsrud Gård</a>
         </div>

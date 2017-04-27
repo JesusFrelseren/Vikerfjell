@@ -1,12 +1,8 @@
 <?php
 //todo: Skriv melding om opplastet bilde på samme sted
 //todo: Sjekk for overskrivning av bilder
-//todo: Utvid catch
-//todo: Demonstrer bilder som allerede er linket
-
-
-//todo: Fiks firefox implementasjon
-//todo: Fiks object not found i linkmodus
+//todo: Kontroll med try catch
+//todo: Fiks firefox implementasjon (funker?)
 include('Include/mysqlcon.php');
 
 
@@ -35,8 +31,6 @@ try {
                 'jpg' => 'image/jpeg',
                 'png' => 'image/png',
                 'gif' => 'image/gif',
-                'tiff' => 'image/tiff',
-                'bmp' => 'image/bmp',
             ),
             true
         )) {

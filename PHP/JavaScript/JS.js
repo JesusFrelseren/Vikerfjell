@@ -8,7 +8,7 @@
 function innholdReturnId() {
     var selectBox = document.getElementById("innhold_dropdown");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/html/Vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
+    window.location.assign("http://localhost/vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
 
 }
 
