@@ -11,7 +11,7 @@ include 'mysqlcon.php';
     $array = [];
 
 
-echo("<select class='lenkerDropdown' id='innhold_dropdown' name='innhold_dropdown' onchange='innholdReturnId()'>");
+echo("<select class='lenkerDropdown' id='id' name='id' onchange='innholdReturnId()'>");
 echo("svar");
     // Utdata for hver rad
 echo("<option>Velg innhold</option>");

@@ -6,6 +6,7 @@ Sist sett på av Sindre 01.04.2017
 <?php
 include 'startSession.php';
 include("Include/mysqlcon.php");
+include("BildeOpplasting.php");
 
 //Sletting av bilde
 if(isset($_POST['id']) && isset($_POST['slett'])) {
@@ -87,12 +88,13 @@ if (isset($_POST["søk_bilde_search_box"])) {
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
-    <form method="post" enctype="multipart/form-data" action="BildeOpplasting.php">
+    <form method="post" enctype="multipart/form-data" action="AdministrerBilder.php">
         Støttede formater er png, jpg eller gif
         <input type='file' id='upload' name='upload' value="Last opp">
         <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
         <label for="bildebeskrivelse"></label>
         <input type='text' name="bildebeskrivelse" id='bildebeskrivelse' size="30" placeholder="Maks 45 tegn" maxlength="45">
+        <input type='hidden' name="action_last_opp" id="action_last_opp">
         <input type='submit' class="søk_knapp" value='Last opp'>
         <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
     </form>
@@ -145,9 +147,9 @@ while($row = $img_result ->fetch_assoc()) {
 
     echo("
 <section class='bildeinfo_container'>
-
-<img id='id' src='$thumb' alt='Test'>
-
+<div id='bilde_container' style='height: 100px; overflow: hidden; width: auto'>
+    <img id='id' src='$thumb' alt='Test'>
+</div>
 <div id='bilde_modal' class='modal' onclick='visModal()'>
     <span class=\"close\" onclick=\"document.getElementById('bilde_modal').style.display='none'\">&times;</span>
     <img src='$hvor' class='modal - content' id='img01'>
