@@ -22,7 +22,7 @@ if($row) {
 
 			echo("<div class='staticinnhold'>
 			<H1>$overskrift</h1>
-			<img src=$bilde width=100% height=auto>
+			<img src='$bilde' style='width=100%; height=auto;'>
 			<p>$text</p>
 			</div>");
 

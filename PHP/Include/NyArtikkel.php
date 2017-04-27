@@ -36,34 +36,51 @@ function lagSide2($idmenyen) {
       $sideInsert = "../../".$menyoverskrift.".html";
   		$fh = fopen($sideInsert, 'w', 'w');
   		fwrite($fh, $includes);
-
+      if (ob_get_length() > 0) { ob_end_clean(); }
       $overskrift4 = $menyoverskrift.".html";
-      $id = $idmenyen;
 
-		  global $mysqli;
-  		$stmt6 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
-  		mysqli_set_charset($mysqli, "UTF8");
-  		$stmt6->bind_param("s",$overskrift4);
-  		$stmt6->execute();
+      if(strpos($idmenyen, "S") !== false) {
+        $id = substr($idmenyen, 1);
+        $sql = "UPDATE vikerfjell.submeny SET sub_side = ? WHERE idsubmeny = ?";
+        mysqli_set_charset($mysqli, "UTF8");
+        $stmt6 = $mysqli->prepare($sql);
+        $stmt6->bind_param("si",$overskrift4, $id);
+        $stmt6->execute();
+      } else {
+        $id = $idmenyen;
+        global $mysqli;
+        $stmt6 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+        mysqli_set_charset($mysqli, "UTF8");
+        $stmt6->bind_param("s",$overskrift4);
+        $stmt6->execute();
+      }
+      
 		}
 
 
 
 
 		function lagSide3(){
-		global $mysqli;
-		$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.meny;");
-		mysqli_set_charset($mysqli, "UTF8");
-		$stmt->execute();
-		 $result = $stmt->get_result();
+      global $mysqli;
+      $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.submeny ON meny.idmeny = submeny.meny_idmeny ORDER BY idmeny;");
+      mysqli_set_charset($mysqli, "UTF8");
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-  
 		 while ($row = $result->fetch_assoc()){
-		 $nyid = $row['idmeny'];
-		if ($nyid !=1){
-		lagSide2($nyid);
-		}
-
+      $nyid = $row['idmeny'];
+      $subid = $row['idsubmeny'];
+      
+      if($nyid == 1) {
+          //Generere hovedside
+      } elseif(empty($subid)==false) {
+        $subid = "S".$subid;
+        lagSide2($subid);
+        $subid = "";
+      } elseif (empty($subid) == true){
+        lagSide2($nyid);
+        $nyid = "";
+      }
 		}
 		}
 
@@ -71,6 +88,67 @@ function lagSide2($idmenyen) {
 function legg_til_oversikt($idmeny){
   //Spørring for å få ut navnet på menyelementet for å fylle ut overskrift på siden.
   global $mysqli;
+  if(strpos($idmeny, "S") !== false) {
+    //submeny 
+    $idmeny = substr($idmeny, 1);
+    $sql = "SELECT * FROM vikerfjell.submeny WHERE idsubmeny = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i",$idmeny);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $menyoverskrift = $row['sub_tekst'];
+    $link = $row['sub_side'];
+    echo("<div class='content100Prosent'>
+            <h1>$menyoverskrift</h1>");
+    //Henter innhold fra bestemt idmeny
+    $sqlInnhold = "SELECT * FROM vikerfjell.innhold RIGHT JOIN vikerfjell.submeny ON innhold.idmeny = submeny.meny_idmeny WHERE submeny.idsubmeny = ?;";
+    
+    $stmtInnhold = $mysqli->prepare($sqlInnhold);
+ 
+    $stmtInnhold->bind_param("i",$idmeny);
+    $stmtInnhold->execute();
+    $resInnhold = $stmtInnhold->get_result();
+    while($rowInnhold = $resInnhold->fetch_assoc()) {
+      $idinnhold = $rowInnhold['idinnhold'];
+      if(empty($idinnhold) == false) {
+        $overskrift = $rowInnhold['tittel'];
+        $ingress = $rowInnhold['ingress'];
+        // IF test på innhold og text osv for at dritten ikke crasher
+        //Tar bort denne kommentaren når databasen er klar.
+        //$innhold = explode(".", $row['text'], 3);
+        //$innholdet = $innhold[0].".".$innhold[1].".";
+        $id = $rowInnhold['idinnhold'];
+        $side = $rowInnhold['side'];
+        
+        // Kjører en ny spørring hvor vi henter ut lokasjonen for forsidebildet til det bestemte innholdet.
+    if(empty($id) == false) {
+        $stmt1 = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder on _idbilder = idbilder where _idinnhold = $id;");
+        mysqli_set_charset($mysqli, "UTF8");
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+        $row1 = $result1->fetch_assoc();
+        $bilde = $row1['hvor'];
+        //NOTASJON: LEGG TIL $INNHOLDET i stedet for hei når databasen er klar.
+        echo ("<div class='contentArtikkel'>
+            <div class='contentBilde'><img src='PHP/Bilder/$bilde'></div>
+            <div class='contentTekst'>
+              <h2>$overskrift</h2>
+              <p>$ingress</p>
+              <p>hei</p><a href='$side'>Les mer..</a>            
+            </div>
+          </div>
+          ");
+    }
+      }
+   
+    }
+  
+	
+    return $menyoverskrift;
+  } else {
+    //hovedmeny
+  
   $stmt2 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = $idmeny");
   mysqli_set_charset($mysqli, "UTF8");
   $stmt2->execute();
@@ -92,6 +170,7 @@ function legg_til_oversikt($idmeny){
   	{
   	$overskrift = $row['tittel'];
   	$ingress = $row['ingress'];
+    // IF test på innhold og text osv for at dritten ikke crasher
     //Tar bort denne kommentaren når databasen er klar.
     //$innhold = explode(".", $row['text'], 3);
     //$innholdet = $innhold[0].".".$innhold[1].".";
@@ -119,4 +198,5 @@ function legg_til_oversikt($idmeny){
     echo("</div>");
     return $menyoverskrift;
   }
+}
 ?>

@@ -178,9 +178,16 @@ function Endre_Innhold($tittel, $ingress, $text, $rekke, $idmeny, $idinnhold){
       $row = $res->fetch_assoc();
       $sisteID = $row['idmeny'];
       Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$sisteID,$id);
+      include 'GenererAlleHtmlSider.php';
+      include 'NyArtikkel.php';
+		  lagSide3();
+
     } else {
       //Endrer hvis hovedmeny er valgt
       Endre_Innhold($overskrift ,$ingress,$innhold,$rekke,$idmeny,$id);
+      include 'GenererAlleHtmlSider.php';
+      include 'NyArtikkel.php';
+		  lagSide3();
     }
     
     header("location: ../innhold.php");
@@ -196,3 +203,4 @@ function legg_til_link(string $url, string $tekst, string $idmeny, string $idsub
     $stmt->execute();
 
 }
+?>
