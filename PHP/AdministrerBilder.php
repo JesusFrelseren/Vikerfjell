@@ -159,7 +159,7 @@ while($row = $img_result ->fetch_assoc()) {
 <p>$tekst</p>
 <p style='margin-top: 0;'>$dimension</p> 
 <form action='AdministrerBilder.php' method='post'>
-    <input type='text' value='$idbilder' name='id' id='id'>
+    <input type='hidden' value='$idbilder' name='id' id='id'>
     <input type='hidden' id='slett' name='slett'>
     <input type='submit' value='Slett' class='søk_knapp'>
 </form></section>");

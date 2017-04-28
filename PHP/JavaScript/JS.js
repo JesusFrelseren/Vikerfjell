@@ -5,11 +5,13 @@
 
 // Sindre 28.03.2017
 
+function saveScroll() {
+    document.getElementById("scroll_pos").value = document.getElementById("scroll").scrollTop;
+
+}
+
 function innholdReturnId() {
     document.forms["submit_select"].submit();
-    //var selectBox = document.getElementById("innhold_dropdown");
-    //var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    //window.location.assign("http://localhost/vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
 }
 
 //OnChange funksjon for Select(ListeInnhold).

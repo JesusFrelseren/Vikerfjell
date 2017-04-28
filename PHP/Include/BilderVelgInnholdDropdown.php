@@ -25,6 +25,5 @@ while($row = $result->fetch_assoc()) {
 }
 
 echo("</select>");
-mysqli_close($mysqli);
 
 ?>
