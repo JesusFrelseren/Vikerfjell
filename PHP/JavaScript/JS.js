@@ -11,6 +11,7 @@ function saveScroll() {
 }
 
 function innholdReturnId() {
+    document.getElementById("option_selected_index").value = document.getElementById('id').selectedIndex;
     document.forms["submit_select"].submit();
 }
 

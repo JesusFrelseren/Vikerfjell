@@ -4,6 +4,9 @@ Sist sett på av Sindre 01.04.2017
 -->
 
 <?php
+var_dump($_POST);
+echo("<br>");
+var_dump($_GET);
 //todo: ta vare på scroll position
 include 'startSession.php';
 include('Include/mysqlcon.php');
@@ -50,7 +53,8 @@ include ('Include/mysqlcon.php');
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
-    <form id="submit_select" action="AdministrerBilderLink.php">
+    <form id="submit_select" action="AdministrerBilderLink.php" method="get">
+        <input type="hidden" id="option_selected_index" name="option_selected_index" value="">
         <?php include("Include/BilderVelgInnholdDropdown.php")?>
     </form>
 </section>
