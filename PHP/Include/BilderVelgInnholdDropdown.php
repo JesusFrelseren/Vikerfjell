@@ -11,7 +11,7 @@ include 'mysqlcon.php';
     $array = [];
     if(isset($_GET['option_selected_index'])) {
         $index = $_GET['option_selected_index'];
-        $counter = 1;
+        $counter = 0;
     }
 
 echo("<select class='lenkerDropdown' id='id' name='id' onchange='innholdReturnId()'>");

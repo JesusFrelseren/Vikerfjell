@@ -1,8 +1,9 @@
 <?php
-//todo: Skriv melding om opplastet bilde på samme sted
-//todo: Sjekk for overskrivning av bilder
+//Utviklet av Erlend
+
+
 //todo: Kontroll med try catch
-//todo: Fiks firefox implementasjon (funker?)
+
 include('Include/mysqlcon.php');
 
 if(isset($_POST['action_last_opp'])) {
@@ -17,13 +18,8 @@ if(isset($_POST['action_last_opp'])) {
                 break;
             case UPLOAD_ERR_NO_FILE:
                 throw new RuntimeException("Ingen fil ble sendt til server");
-            case UPLOAD_ERR_FORM_SIZE || UPLOAD_ERR_INI_SIZE:
-                throw new RuntimeException("Filen er for stor");
         }
 
-        if ($_FILES['upload']['size'] > 100000000000) {
-            throw new RuntimeException("Filen er for stor");
-        }
 
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         if (false === $ext = array_search(
@@ -58,10 +54,23 @@ if(isset($_POST['action_last_opp'])) {
         }
 
 
-        //Hent bildedimensjoner
+        //Hent bildedimensjoner for å definere thumbnail-dimensjoner
         list($width_src, $height_src) = getimagesize($perm_name);
-        $width_thumb = $width_src -($width_src * .90);
-        $height_thumb = $height_src - ($height_src * .90);
+
+        //Hvis bildet er landskap
+        if ($width_src > $height_src) {
+            $width_thumb = 150;
+            $height_thumb = 100;
+        //Hvis bildet er portrett
+        } elseif($width_src < $height_src) {
+            $width_thumb = 100;
+            $height_thumb = 150;
+        //Hvis bildet er kvadaratisk
+        } else {
+            $width_thumb = 100;
+            $height_thumb = 100;
+
+        }
 
         //Lag filsti for thumbnail
         $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_" . $filinfo, $ext);
@@ -87,7 +96,7 @@ if(isset($_POST['action_last_opp'])) {
         $hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
         $bredde = $width_src;
         $høyde = $height_src;
-        $tooltip = "Fuck tooltips";
+        $tooltip = "";
         $alt = "Bildet ble ikke funnet :´(";
 
         //Skriv meta til base
@@ -108,10 +117,10 @@ if(isset($_POST['action_last_opp'])) {
 function createImage($ext, $image_thumb, $perm_thumb_location) {
     switch ($ext) {
         case 'jpg':
-            imagejpeg($image_thumb, $perm_thumb_location, 50);
+            imagejpeg($image_thumb, $perm_thumb_location, 100);
             break;
         case 'png':
-            imagepng($image_thumb, $perm_thumb_location, 50);
+            imagepng($image_thumb, $perm_thumb_location, 100);
             break;
         case 'gif':
             imagegif($image_thumb, $perm_thumb_location);
