@@ -1,12 +1,9 @@
 <!--
-Sist endret av Erlend 01.04.2017
-Sist sett på av Sindre 01.04.2017
+Utviklet av Erlend
+Sist endret:
 -->
 
 <?php
-var_dump($_POST);
-echo("<br>");
-var_dump($_GET);
 //todo: ta vare på scroll position
 include 'startSession.php';
 include('Include/mysqlcon.php');
@@ -61,11 +58,13 @@ include ('Include/mysqlcon.php');
 <?php
 
 $søketekst = "";
-//Vis søkeresultat
+
+//Hvis bruker søker med søkebaren
 if (isset($_POST["søk_bilde_search_box"])) {
     $søketekst = $_POST['søk_bilde_search_box'];
     vis_alle_bilder($søketekst);
 
+   //Hvis bruker klikke på knappen for å inkludere bilde i innhold
 } elseif (isset($_POST['legg_til_innhold'])) {
 
     if($_POST['id_innhold'] == -1) {
@@ -80,6 +79,8 @@ if (isset($_POST["søk_bilde_search_box"])) {
         $stmt->execute();
     }
     vis_alle_bilder($søketekst);
+
+    //Hvis bruker klikket knappen for fjerne link til innhold
 } elseif (isset($_POST['slett_fra_innhold'])) {
     global $mysqli;
     $idbilder = $_POST['idbilder'];
@@ -101,6 +102,12 @@ if(isset($_GET['id'])) {
 }
 
 
+/**
+ * $søketekst: Brukes i simpel where-betingelse
+ *
+ * Funksjonen henter et resultatset av alle linkede bilder, og genererer sections ut ifra de returnerte radene.
+ * Deretter henter den de resterende radene som ikke er linket og gjør tilsvarende.
+ */
 function vis_alle_bilder($søketekst) {
 
     if(isset($_GET['id'])) {
@@ -110,11 +117,9 @@ function vis_alle_bilder($søketekst) {
     }
     $img_result = hent_linkede_bilder($søketekst);
     while($row = $img_result->fetch_assoc()) {
-        $hvor = $row['hvor'];
         $tekst = $row['tekst'];
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
-        $_idbilder = $row['_idbilder'];
         $idbilder = $row['idbilder'];
         $idinnhold = $row['idinnhold'];
 
@@ -144,11 +149,9 @@ function vis_alle_bilder($søketekst) {
 
     $img_result = hent_ulinkede_bilder($søketekst);
     while($row = $img_result->fetch_assoc()) {
-        $hvor = $row['hvor'];
         $tekst = $row['tekst'];
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/'.$row['thumb'];
-        $_idbilder = $row['_idbilder'];
         $idbilder = $row['idbilder'];
 
         echo("

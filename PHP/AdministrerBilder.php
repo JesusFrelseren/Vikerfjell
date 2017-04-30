@@ -7,6 +7,7 @@ Sist sett på av Sindre 01.04.2017
 include 'startSession.php';
 include("Include/mysqlcon.php");
 include("BildeOpplasting.php");
+include("Include/BilderKontroll.php");
 
 //Sletting av bilde
 if(isset($_POST['id']) && isset($_POST['slett'])) {
@@ -104,7 +105,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 
 
 <?php
-function hent_linkede_bilder() {
+function hent_linkede_bilder2() {
     global $mysqli;
 
     $id = $_GET['id'];
