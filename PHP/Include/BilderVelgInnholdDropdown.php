@@ -15,9 +15,7 @@ include 'mysqlcon.php';
     }
 
 echo("<select class='lenkerDropdown' id='id' name='id' onchange='innholdReturnId()'>");
-echo("svar");
     // Utdata for hver rad
-echo("<option>Velg innhold</option>");
 while($row = $result->fetch_assoc()) {
     $tittel = $row['tittel'];
     $array[$row['idinnhold']] = $row['side'];

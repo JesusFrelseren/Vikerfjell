@@ -97,7 +97,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
         <input type='text' name="bildebeskrivelse" id='bildebeskrivelse' size="30" placeholder="Maks 45 tegn" maxlength="45">
         <input type='hidden' name="action_last_opp" id="action_last_opp">
         <input type='submit' class="søk_knapp" value='Last opp'>
-        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
+        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php?option_selected_index=0&id=1">
     </form>
 
 </section>
@@ -120,23 +120,6 @@ function hent_linkede_bilder2() {
 
 }
 
-function hent_alle_bilder() {
-    global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder");
-    mysqli_set_charset($mysqli, "UTF8");
-    $stmt->execute();
-    $img_result = $stmt->get_result();
-    return $img_result;
-}
-
-function hent_filterte_bilder($søketekst) {
-    global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder where tekst like '%$søketekst%'");
-    mysqli_set_charset($mysqli, "UTF8");
-    $stmt->execute();
-    $img_result = $stmt->get_result();
-    return $img_result;
-}
 
 while($row = $img_result ->fetch_assoc()) {
     $idbilder = $row['idbilder'];
