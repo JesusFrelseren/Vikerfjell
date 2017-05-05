@@ -118,7 +118,7 @@ function createImage($ext, $image_thumb, $perm_thumb_location) {
             imagejpeg($image_thumb, $perm_thumb_location, 100);
             break;
         case 'png':
-            imagepng($image_thumb, $perm_thumb_location, 100);
+            imagepng($image_thumb, $perm_thumb_location, 9);
             break;
         case 'gif':
             imagegif($image_thumb, $perm_thumb_location);

@@ -187,11 +187,12 @@ function vis_alle_bilder($søketekst) {
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/'.$row['thumb'];
         $idbilder = $row['idbilder'];
+        $_idinnhold = $row['_idinnhold'];
         $get = "";
         if (isset($_GET['option_selected_index'])) {
             $get = "option_selected_index=".$_GET['option_selected_index']."&id=".$_GET['id'];
         }
-
+        if ($_idinnhold != $)
         echo("
             <section class='bildeinfo_container'>
             <div id='bilde_container' style='height: 100px; overflow: hidden; width: auto' onclick='visModal($counter)'>
