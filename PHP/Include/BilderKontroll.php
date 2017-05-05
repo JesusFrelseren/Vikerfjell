@@ -2,7 +2,7 @@
 require("mysqlcon.php");
 function hent_linkede_bilder($søketekst) {
     global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde, _idbilder, idinnhold
+    $stmt = $mysqli->prepare("select idbilder, hvor, alt, tekst, thumb, bredde, hoyde, _idbilder, idinnhold
 from innhold inner join(bilderinnhold inner join bilder ON _idbilder = idbilder) on `_idinnhold` = idinnhold 
 WHERE tekst like '%$søketekst%'");
     mysqli_set_charset($mysqli, "UTF8");
@@ -24,7 +24,7 @@ function hent_alle_bilder() {
 
 function hent_ulinkede_bilder($søketekst) {
     global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde, _idbilder
+    $stmt = $mysqli->prepare("select idbilder, hvor, alt, tekst, thumb, bredde, hoyde, _idbilder
 from bilder left join bilderinnhold on idbilder = _idbilder
 where _idbilder IS NULL AND tekst like '%$søketekst%'");
     mysqli_set_charset($mysqli, "UTF8");
@@ -35,7 +35,7 @@ where _idbilder IS NULL AND tekst like '%$søketekst%'");
 
 function hent_filterte_bilder($søketekst) {
     global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder where tekst like '%$søketekst%'");
+    $stmt = $mysqli->prepare("select idbilder, alt, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder where tekst like '%$søketekst%'");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
     $img_result = $stmt->get_result();

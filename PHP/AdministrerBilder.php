@@ -69,16 +69,19 @@ include ('Include/mysqlcon.php');
 <section id="søkewrapper">
     <form class="search_form" action="AdministrerBilder.php" method="post">
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
+    <div id="btn_group">
         <input type="submit" class="søk_knapp" value="Søk">
 
     </form>
     <form class="search_form">
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
+    </div>
 
 </section>
 
 <!-- Opplastingsboks -->
+<section id="#content">
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
     <form method="post" enctype="multipart/form-data" action="AdministrerBilder.php">
@@ -113,7 +116,7 @@ function vis_alle_bilder($søketekst) {
         $tekst = $row['tekst'];
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
-
+        $alt = $row['alt'];
 
         echo("
 <section class='bildeinfo_container'>
@@ -125,7 +128,7 @@ function vis_alle_bilder($søketekst) {
 <!--Fra: https://www.w3schools.com/howto/howto_css_modals.asp -->
 <div id='bilde_modal$counter' class='modal'>
     <span class='close' onclick='skjulModal($counter)'>&times;</span>
-    <img src='$hvor' id='img01' class='modal-content' alt='Kan ikke laste inn'>
+    <img src='$hvor' id='img01' class='modal-content' alt='$alt'>
 </div>
 
 <p>$tekst</p>
@@ -138,7 +141,7 @@ function vis_alle_bilder($søketekst) {
 $counter++;
 
     }
-
+echo("</section>");
 }
 ?>
 
