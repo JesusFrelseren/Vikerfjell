@@ -20,7 +20,6 @@ include("Include/BilderKontroll.php");
     <link href="CSS/bildeAdmin.css" rel="stylesheet">
     <link href="CSS/style_admin.css" rel="stylesheet">
     <link href="CSS/bilde_modal.css" rel="stylesheet">
-    <link href="CSS/style_innhold.css" rel="stylesheet">
     <script defer src="JavaScript/JS.js"></script>
     <script defer src="JavaScript/bilde_modal.js"></script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -65,13 +64,13 @@ echo('
 ?>
 <!-- Opplastingsboks -->
 <section id='content'>
-<section class='bildeopplast_container'>
-    <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
-    <form id="submit_select" action="AdministrerBilderLink.php" method="get">
-        <input type="hidden" id="option_selected_index" name="option_selected_index" value="">
-        <?php include("Include/BilderVelgInnholdDropdown.php")?>
-    </form>
-</section>
+    <section class='bildeopplast_container'>
+        <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
+        <form id="submit_select" action="AdministrerBilderLink.php" method="get">
+            <input type="hidden" id="option_selected_index" name="option_selected_index" value="">
+            <?php include("Include/BilderVelgInnholdDropdown.php")?>
+        </form>
+    </section>
 <?php
 
 $søketekst = "";
@@ -81,7 +80,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
     $søketekst = $_POST['søk_bilde_search_box'];
     vis_alle_bilder($søketekst);
 
-   //Hvis bruker klikke på knappen for å inkludere bilde i innhold
+    //Hvis bruker klikke på knappen for å inkludere bilde i innhold
 } elseif (isset($_POST['legg_til_innhold'])) {
 
     if($_POST['id_innhold'] == -1) {
@@ -131,7 +130,7 @@ function vis_alle_bilder($søketekst) {
     } else {
         $id_innhold = -1;
     }
-    $img_result = hent_linkede_bilder($søketekst, $id_innhold);
+    $img_result = hent_linkede_bilder($søketekst);
     $counter = 0;
 
     while($row = $img_result->fetch_assoc()) {
@@ -141,10 +140,7 @@ function vis_alle_bilder($søketekst) {
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
         $idbilder = $row['idbilder'];
         $idinnhold = $row['idinnhold'];
-        $alt = $row['alt'];$get = "";
-        if (isset($_GET['option_selected_index'])) {
-            $get = "option_selected_index=".$_GET['option_selected_index']."&id=".$_GET['id'];
-        }
+        $alt = $row['alt'];
 
 //Vis bilder som kan fjernes fra innhold
 
@@ -163,8 +159,8 @@ function vis_alle_bilder($søketekst) {
             <br />
             ");
 
-        if (isset($_GET['id']) && isset($_GET['option_selected_index'])) {
-            echo('<form method="post" action="AdministrerBilderLink.php?'.$get.'">');
+        if (isset($_GET['id'])) {
+            echo('<form method="post" action="AdministrerBilderLink.php?id=' . $_GET['id'] . '">');
         } else {
             echo('<form method="post" action="AdministrerBilderLink.php">');
         }
@@ -187,10 +183,6 @@ function vis_alle_bilder($søketekst) {
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/'.$row['thumb'];
         $idbilder = $row['idbilder'];
-        $get = "";
-        if (isset($_GET['option_selected_index'])) {
-            $get = "option_selected_index=".$_GET['option_selected_index']."&id=".$_GET['id'];
-        }
 
         echo("
             <section class='bildeinfo_container'>
@@ -207,9 +199,8 @@ function vis_alle_bilder($søketekst) {
             <br />"
         );
 
-        if(isset($_GET['option_selected_index'])) {
-
-            echo('<form method="post" action="AdministrerBilderLink.php?'.$get.'">');
+        if(isset($_GET['id'])) {
+            echo('<form method="post" action="AdministrerBilderLink.php?id='.$_GET['id'].'">');
         } else {
             echo('<form method="post" action="AdministrerBilderLink.php">');
         }
