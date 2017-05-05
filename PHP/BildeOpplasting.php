@@ -2,8 +2,6 @@
 //Utviklet av Erlend
 
 
-//todo: Kontroll med try catch
-
 include('Include/mysqlcon.php');
 
 if(isset($_POST['action_last_opp'])) {

@@ -1,6 +1,5 @@
 <!--
-Sist endret av Erlend 01.04.2017
-Sist sett på av Sindre 01.04.2017
+Utviklet av Erlend. Sist endret 30.04.2017
 -->
 
 <?php
@@ -8,6 +7,7 @@ include 'startSession.php';
 include("Include/mysqlcon.php");
 include("BildeOpplasting.php");
 include("Include/BilderKontroll.php");
+
 
 //Sletting av bilde
 if(isset($_POST['id']) && isset($_POST['slett'])) {
@@ -64,20 +64,12 @@ include ('Include/mysqlcon.php');
 
 ?>
 
-<?php
-if (isset($_POST["søk_bilde_search_box"])) {
-    $img_result = hent_filterte_bilder($_POST["søk_bilde_search_box"]);
-} else {
-    $img_result = hent_alle_bilder();
-}
-
-?>
 
 <!-- Søkeboks -->
 <section id="søkewrapper">
     <form class="search_form" action="AdministrerBilder.php" method="post">
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
-        <input type="submit" class="søk_knapp" value="Finn bilder">
+        <input type="submit" class="søk_knapp" value="Søk">
 
     </form>
     <form class="search_form">
@@ -101,43 +93,39 @@ if (isset($_POST["søk_bilde_search_box"])) {
     </form>
 
 </section>
-
-
-
 <?php
-function hent_linkede_bilder2() {
-    global $mysqli;
-
-    $id = $_GET['id'];
-    $stmt = $mysqli->prepare(
-        "select *
-                  from bilder inner join bilderinnhold
-                  on bilder.idbilder = $id");
-    mysqli_set_charset($mysqli, "UTF8");
-    $stmt->execute();
-    $img_linked_result = $stmt->get_result();
-    return $img_linked_result;
-
+$søketekst = "";
+if (isset($_POST["søk_bilde_search_box"])) {
+    $søketekst = $_POST["søk_bilde_search_box"];
+    vis_alle_bilder($søketekst);
+} else {
+    vis_alle_bilder($søketekst);
 }
 
 
-while($row = $img_result ->fetch_assoc()) {
-    $idbilder = $row['idbilder'];
-    $hvor = 'Bilder/'.$row['hvor'];
-    $tekst = $row['tekst'];
-    $dimension = $row['hoyde'] . 'x' . $row['bredde'];
-    $thumb = 'Bilder/thumbs/'.$row['thumb'];
+function vis_alle_bilder($søketekst) {
+    $img_result = hent_filterte_bilder($søketekst);
+    $counter = 0;
+    while ($row = $img_result->fetch_assoc()) {
+
+        $idbilder = $row['idbilder'];
+        $hvor = 'Bilder/' . $row['hvor'];
+        $tekst = $row['tekst'];
+        $dimension = $row['hoyde'] . 'x' . $row['bredde'];
+        $thumb = 'Bilder/thumbs/' . $row['thumb'];
 
 
-    echo("
+        echo("
 <section class='bildeinfo_container'>
-<div id='bilde_container' style='height: 100px; overflow: hidden; width: auto'>
+
+<div id='bilde_container' style='height: 100px; overflow: hidden; width: auto' onclick='visModal($counter)'>
     <img id='id' src='$thumb' alt='Test'>
 </div>
-<div id='bilde_modal' class='modal' onclick='visModal()'>
-    <span class=\"close\" onclick=\"document.getElementById('bilde_modal').style.display='none'\">&times;</span>
-    <img src='$hvor' class='modal - content' id='img01'>
-    <div id=\"caption\"></div>
+
+<!--Fra: https://www.w3schools.com/howto/howto_css_modals.asp -->
+<div id='bilde_modal$counter' class='modal'>
+    <span class='close' onclick='skjulModal($counter)'>&times;</span>
+    <img src='$hvor' id='img01' class='modal-content' alt='Kan ikke laste inn'>
 </div>
 
 <p>$tekst</p>
@@ -147,13 +135,12 @@ while($row = $img_result ->fetch_assoc()) {
     <input type='hidden' id='slett' name='slett'>
     <input type='submit' value='Slett' class='søk_knapp'>
 </form></section>");
+$counter++;
 
-
-
+    }
 
 }
 ?>
-
 
 
 

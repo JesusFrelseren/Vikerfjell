@@ -32,21 +32,30 @@ include ('Include/mysqlcon.php');
 
 <div id="scroll"></div>
 <!-- Søkeboks -->
+<?php
+
+//Etter søk må GET tas vare på for at linking av bilde skal fungere
+$get = "";
+if (isset($_GET['option_selected_index'])) {
+    $get = "option_selected_index=".$_GET['option_selected_index']."&id=".$_GET['id'];
+}
+echo('
 <section id="søkewrapper">
     <form>
     <input type="submit" class="søk_knapp" value="<- Til Opplasting" formaction="AdministrerBilder.php" style="float: left">
     </form>
-    <form class="search_form" action="AdministrerBilderLink.php" method="post">
+    <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
     <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
     <input type="submit" class="søk_knapp" value="Søk">
 
 </form>
-    <form class="search_form">
+
+ <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
         <input type="submit" class="søk_knapp" value="Vis alle">
-    </form>
+ </form>
 
-</section>
-
+</section>');
+?>
 <!-- Opplastingsboks -->
 <section class='bildeopplast_container'>
     <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
