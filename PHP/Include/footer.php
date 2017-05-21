@@ -1,7 +1,4 @@
 <?php
-/* Sist endret av Erlend 30.03.2017-->
-<!--Sett over av Erik 30.03.2017 */
-//Her lager vi hele footeren
 echo('
 </div>
 <!--Footer-->
@@ -15,13 +12,13 @@ echo('
           <input type="text" id="fname" name="fname" placeholder="E-post adresse">
           <button type="button">Registrer</button>
         </form>
-        <a href="www.facebook.com"><img src="PHP/Bilder/face.png" width="30" height="30"></img></a>
-        <a href="www.twitter.com"><img src="PHP/Bilder/twitter.png" width="30" height="30"></img></a><br  />
+        <a href="www.facebook.com"><img src="PHP/Bilder/face.png" width="30" height="30"></a>
+        <a href="www.twitter.com"><img src="PHP/Bilder/twitter.png" width="30" height="30"></a><br  />
       </section>
     </div>
     <div class="fcol-3">
       <section class="kontaktinfo">
-        <h3>Kontakt</h3>
+        <a style="color:white; text-decoration:underline;" href="PHP/henvendelser.php"><h3>Kontakt</h3></a>
         <ul>
           <li>Elsrud gård</li>
           <li>Vestre Ådal 922</li>

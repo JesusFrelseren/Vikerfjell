@@ -1,4 +1,7 @@
 <?php
+//Utviklet av Erlend. Sist endret 07.05.2017
+
+
 require("mysqlcon.php");
 
 function hent_alle_bilder() {
@@ -35,9 +38,6 @@ where tekst like '%$søketekst%'");
     return $img_result;
 }
 
-function fjern_duplikater() {
-
-}
 
 function hent_filterte_bilder($søketekst) {
     global $mysqli;

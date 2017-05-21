@@ -1,13 +1,9 @@
 <?php
-/* Laget av Erik 30.01.2017
-Sist endret 19.04.2017*/
 include("mysqlcon.php");
 $stmt = $mysqli->prepare("select * from vikerfjell.meny ORDER BY rekke");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
-$result = $stmt->get_result();
-
-
+$result = $stmt->get_result(); 
 
 while($row = $result->fetch_assoc()){
 
@@ -46,21 +42,21 @@ while($row = $result->fetch_assoc()){
         <div class='dropdown-content'>
           $submenu_html
         </div>
-      </li>");
+        </li>
+        ");
     $submenu_html = '';
     }
-	
+
   }
 
   echo("
    <li class='icon'>
 	<a href='javascript:void(0);' style='font-size:15px;' onclick='myFunction()'>☰</a>
    </li>
-
-  </ul>
+   </ul>
   </nav>
-</header>
-</div>
-<div class='wrap'>");
+  </div>
+  </header>
+  ");
 
 ?>

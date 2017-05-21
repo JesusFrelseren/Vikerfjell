@@ -1,6 +1,7 @@
 <!--
-Sist endret av Sindre 24.02.2017
+endret av Sindre 24.02.2017
 Sist sett på av Erik 28.02.2017
+Sist endret av Sindre 25.04.2017
 -->
 <?php
 //http://www.intechgrity.com/create-login-admin-logout-page-in-php-w/#
@@ -23,12 +24,21 @@ if(isset($username)) {
   $idbruker = $row['idbruker'];
   $subject = "Glemt passord";
 
-  $message = <a href="localhost/html/vikerfjell/PHP/EndrePassordfraMail?id=$idbruker">Endre Passord</a>;
+
+
+
+  // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11	
+  $message = "https://home.hbv.no/139953/PHP/EnderPassordframail.php?id=$idbruker";
+  // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+
+
+
   $headers = 'From: Your name <info@address.com>' . "\r\n";
+  
   if(mail($to, $subject, $message, $headers)){
-    echo "Your Password has been sent to your email id";
+    header("location:../form.php?id=instrukser er send på mail");
   }else{
-    echo "Failed to Recover your password, try again";
+    header("location:../form.php?id=noe gikk galt");
   }
 }
 ?>

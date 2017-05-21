@@ -1,7 +1,5 @@
 <?php
-/*Sist endret av Erik 02.03.2017-->
-<!--Sett over av Sindre 02.03.2017*/
-//Her lager vi hele headeren
+ob_start();
 echo("
 <!DOCTYPE html>
 <html>
@@ -21,6 +19,7 @@ echo("
 <body>
 <div class='row'>
   <header class='col-12 col-m-12'>
+  <a href='default.php'><img src='PHP/Bilder/logov2.png' class='headerbakgrunn'></a>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
 <ul>");

@@ -1,3 +1,6 @@
+<!--Utviklet av Sindre og Erik. Skreddersydd av Erlend.
+Sist endret: 07.05.2017
+-->
 <?php
 include 'mysqlcon.php';
 

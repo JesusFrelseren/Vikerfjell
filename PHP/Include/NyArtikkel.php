@@ -69,19 +69,37 @@ function lagSide2($idmenyen) {
 
 		 while ($row = $result->fetch_assoc()){
       $nyid = $row['idmeny'];
+      //Sjekker antall innhold
+      $antall = sjekk_ant($nyid);
       $subid = $row['idsubmeny'];
-      
-      if($nyid == 1) {
-          //Generere hovedside
-      } elseif(empty($subid)==false) {
-        $subid = "S".$subid;
-        lagSide2($subid);
-        $subid = "";
-      } elseif (empty($subid) == true){
-        lagSide2($nyid);
-        $nyid = "";
+      $sjekkSub = "S".$subid;
+      $antallSub = sjekk_ant($sjekkSub);
+      //Sjekk sub
+      if($antall == 1 ||$antallSub == 1) {
+        if($nyid != 1) {          
+           //Fikse for hovedside
+        } else {
+          koblemeny($nyid);
+        }
+       
+      } else {
+        if($nyid == 1) {
+          
+            //Generere hovedside
+        } elseif(empty($subid)==false) {
+          $subid = "S".$subid;
+          lagSide2($subid);
+          $subid = "";
+          
+        } elseif (empty($subid) == true){
+         
+          lagSide2($nyid);
+          $nyid = "";
       }
 		}
+     }
+     
+
 		}
 
 //Kaller en funksjon som får idmeny og menyoverskrift fra InnholdKontroll
@@ -198,5 +216,33 @@ function legg_til_oversikt($idmeny){
     echo("</div>");
     return $menyoverskrift;
   }
+}
+
+function sjekk_ant($menyid){
+  global $mysqli;
+  $count = 0;
+    if(strpos($menyid, "S") !== false) {
+      $id = substr($menyid, 1);
+      $sql9 = "SELECT * FROM vikerfjell.innhold WHERE idsubmeny = ?";
+      $stmt9 = $mysqli->prepare($sql9);
+      $stmt9->bind_param("s", $id);
+      $stmt9->execute();
+      $result9 = $stmt9->get_result();
+    while ($row9 = $result9->fetch_assoc()){
+      $count++;
+    }
+    return $count;
+  } else {
+    $sql9 = "SELECT * FROM vikerfjell.innhold WHERE idmeny = ?";
+    $stmt9 = $mysqli->prepare($sql9);
+    $stmt9->bind_param("s", $menyid);
+    $stmt9->execute();
+    $result9 = $stmt9->get_result();
+    while ($row9 = $result9->fetch_assoc()){
+      $count++;
+    }
+  return $count;
+  }
+  
 }
 ?>

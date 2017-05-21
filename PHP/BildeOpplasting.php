@@ -1,5 +1,5 @@
 <?php
-//Utviklet av Erlend
+//Utviklet av Erlend. Sist endret 07-05-2017.
 
 
 include('Include/mysqlcon.php');
@@ -33,19 +33,21 @@ if(isset($_POST['action_last_opp'])) {
             throw new RuntimeException('Invalid file format.');
         }
         $tmp_location = $_FILES['upload']['tmp_name'];
-        $perm_name_hash = md5_file($tmp_location);
         $filinfo = pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME);
-        $perm_name = sprintf('Bilder/%s.%s', $filinfo, $ext);
+        $perm_name = sprintf('Bilder/%s.%s', md5($filinfo), $ext);
+
 
         if (!(file_exists($perm_name))) {
             move_uploaded_file($tmp_location, $perm_name);
         } else {
             $kopi = 2;
+            $perm_name = sprintf('Bilder/%s.%s', md5($kopi.$filinfo), $ext);
             while (true) {
-                if (file_exists($perm_name . $kopi)) {
+                if (file_exists($perm_name)) {
                     $kopi++;
+                    $perm_name = sprintf('Bilder/%s.%s', md5($kopi.$filinfo), $ext);
                 } else {
-                    move_uploaded_file($tmp_location, $perm_name . $kopi);
+                    move_uploaded_file($tmp_location, $perm_name);
                     break;
                 }
             }
@@ -71,7 +73,16 @@ if(isset($_POST['action_last_opp'])) {
         }
 
         //Lag filsti for thumbnail
-        $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_" . $filinfo, $ext);
+        if(isset($kopi)) {
+            $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', $kopi."thumb_". md5($kopi.$filinfo), $ext);
+            $hvor = md5($kopi.$filinfo).".".$ext;
+            $thumb = $kopi."thumb_" . $hvor;
+        } else {
+            $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_" . md5($filinfo), $ext);
+            $hvor = md5($filinfo).".".$ext;
+            $thumb = "thumb_" . $hvor;
+            //$hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
+        }
 
         //Lag fullskalert bilde
         $image_src = lagFullskalert($perm_name, $ext);
@@ -90,8 +101,8 @@ if(isset($_POST['action_last_opp'])) {
 
         //Skriv metadata til databasen
         $tekst = $_POST['bildebeskrivelse'];
-        $thumb = "thumb_" . pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
-        $hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
+
+
         $bredde = $width_src;
         $høyde = $height_src;
         $tooltip = "";
@@ -101,7 +112,7 @@ if(isset($_POST['action_last_opp'])) {
         global $mysqli;
         $stmt = $mysqli->prepare(
             "INSERT INTO vikerfjell.bilder(hvor, tekst, thumb, bredde, hoyde, tooltip, alt)
-              VALUES(?, ?, ?, ?, ?, ?, ?)");
+              VALUES(?, ?, ?, ?, ?, ?, ?)") ;
 
         $stmt->bind_param('sssiiss', $hvor, $tekst, $thumb, $bredde, $høyde, $tooltip, $alt);
         $stmt->execute();

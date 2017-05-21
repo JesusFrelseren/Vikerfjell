@@ -1,13 +1,13 @@
 /*
-  Sist endret av Alex 01.04.2017
-  Sett over av Erik 01.04.2017
+  Sist endret av Erlend 07.05.2017
+
 */
 
 // Sindre 28.03.2017
 
+//Til senere bruk
 function saveScroll() {
     document.getElementById("scroll_pos").value = document.getElementById("scroll").scrollTop;
-
 }
 
 function innholdReturnId() {

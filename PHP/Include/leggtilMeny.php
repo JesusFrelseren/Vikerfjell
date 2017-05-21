@@ -54,7 +54,7 @@ elseif (!is_numeric($menyrekke))
 		include 'GenererAlleHtmlSider.php';
 		include 'NyArtikkel.php';
 		lagSide3();
-		header('Location: ../EndreMeny.php');
+		header('Location: ../EndreMeny.php?fylling=Menyen er lagt til.');
 
 		//Lager ny fil til en ny hovedmeny
 
@@ -72,7 +72,7 @@ elseif (!is_numeric($menyrekke))
 			include 'GenererAlleHtmlSider.php';
 			include 'NyArtikkel.php';
 			lagSide3();
-			header('Location: ../EndreMeny.php');
+			header('Location: ../EndreMeny.php?fylling=Menyen er lagt til.');
 
 			//Lager ny fil til en ny submeny
 

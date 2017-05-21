@@ -19,14 +19,13 @@ if($row) {
 	$row = $result->fetch_assoc();
 	$bilde = $row['hvor'];
 
-
-			echo("<div class='staticinnhold'>
-			<H1>$overskrift</h1>
-			<img src='$bilde' style='width=100%; height=auto;'>
-			<p>$text</p>
-			</div>");
-
-
+	echo("
+		<div class='staticinnhold'>
+	  <h1>$overskrift</h1>
+	  <img src='$bilde'>
+	  <p>$text</p>
+		</div>
+	");
 }
 
 ?>

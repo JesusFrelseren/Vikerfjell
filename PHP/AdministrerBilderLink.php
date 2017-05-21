@@ -1,6 +1,6 @@
 <!--
 Utviklet av Erlend
-Sist endret:
+Sist endret: 07-05-2017
 -->
 
 <?php
@@ -132,6 +132,7 @@ function vis_alle_bilder($søketekst) {
         $id_innhold = -1;
     }
     $img_result = hent_linkede_bilder($søketekst, $id_innhold);
+    $duplikater = array();
     $counter = 0;
 
     while($row = $img_result->fetch_assoc()) {
@@ -140,6 +141,7 @@ function vis_alle_bilder($søketekst) {
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
         $idbilder = $row['idbilder'];
+        $_idbilder = $row['_idbilder'];
         $idinnhold = $row['idinnhold'];
         $alt = $row['alt'];$get = "";
         if (isset($_GET['option_selected_index'])) {
@@ -176,10 +178,12 @@ function vis_alle_bilder($søketekst) {
             </form>
             </section>");
         $counter++;
+        $duplikater[$counter] = $_idbilder;
     }
-
 //Vis bilder som kan legges til i innhold
+
     $img_result = hent_ulinkede_bilder($søketekst);
+    $forrige_idbilde = 0;
     while($row = $img_result->fetch_assoc()) {
         $tekst = $row['tekst'];
         $hvor = 'Bilder/' . $row['hvor'];
@@ -187,13 +191,18 @@ function vis_alle_bilder($søketekst) {
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/'.$row['thumb'];
         $idbilder = $row['idbilder'];
-        $_idinnhold = $row['_idinnhold'];
         $get = "";
         if (isset($_GET['option_selected_index'])) {
             $get = "option_selected_index=".$_GET['option_selected_index']."&id=".$_GET['id'];
         }
-        if ($_idinnhold != $)
-        echo("
+        $duplikat = false;
+        foreach($duplikater as $dupe) {
+            if($dupe == $idbilder) {
+                $duplikat = true;
+            }
+        }
+        if($forrige_idbilde != $idbilder && $duplikat == false) {
+            echo("
             <section class='bildeinfo_container'>
             <div id='bilde_container' style='height: 100px; overflow: hidden; width: auto' onclick='visModal($counter)'>
                 <input type='hidden' value='$idbilder' name='id' id='id'>
@@ -206,25 +215,26 @@ function vis_alle_bilder($søketekst) {
             <p>$tekst</p> 
             <p style='margin-top: 0;'>$dimension</p>
             <br />"
-        );
+            );
 
-        if(isset($_GET['option_selected_index'])) {
+            if (isset($_GET['option_selected_index'])) {
 
-            echo('<form method="post" action="AdministrerBilderLink.php?'.$get.'">');
-        } else {
-            echo('<form method="post" action="AdministrerBilderLink.php">');
-        }
+                echo('<form method="post" action="AdministrerBilderLink.php?' . $get . '">');
+            } else {
+                echo('<form method="post" action="AdministrerBilderLink.php">');
+            }
 
-        echo("
+            echo("
             <input type='hidden' class='innhold_id' name='id_innhold' value='$id_innhold'>
             <input type='hidden' name='idbilder' id='idbilder' value='$idbilder'>
             <input type='hidden' name='legg_til_innhold' id='legg_til_innhold' value=''>
             <input type='submit' value='Inkluder i innhold' class='søk_knapp'>
             </form>
             </section>"
-        );
-        $counter++;
-
+            );
+            $counter++;
+        }
+        $forrige_idbilde = $idbilder;
     }
     echo("</section>");
 }

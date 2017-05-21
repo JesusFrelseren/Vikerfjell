@@ -20,7 +20,7 @@ if(isset($Menyelement) || $Menyelement=="") {
         $nymenyid = substr($Menyelement,3);
         //Select for å se om valgt meny har eksisterende innhold
         //DENNE FUNGERER IKKE ENDA
-        $innholdSjekk = "SELECT * FROM submeny LEFT JOIN innhold ON submeny.meny_idmeny = innhold.idmeny WHERE idsubmeny = ? 
+        $innholdSjekk = "SELECT * FROM submeny LEFT JOIN innhold ON submeny.meny_idmeny = innhold.idmeny WHERE submeny.idsubmeny = ? 
 	                        AND idinnhold IS NOT NULL;";
         $innholdStmt = $mysqli->prepare($innholdSjekk);
         $innholdStmt->bind_param('i', intval($nymenyid));
@@ -48,7 +48,7 @@ if(isset($Menyelement) || $Menyelement=="") {
         $stmt = $mysqli->prepare($sql);
         $stmt->bind_param('i', intval($nymenyid));
         $stmt->execute();
-        header("location:EndreMeny.php");
+        header("location:EndreMeny.php?feilslett=Menyen er slettet.");
         }
       }elseif(strpos($Menyelement, 'SUB') == false) {
          //Select for å se om valgt meny har eksisterende innhold
@@ -87,7 +87,7 @@ if(isset($Menyelement) || $Menyelement=="") {
           $stmt = $mysqli->prepare($sql);
           $stmt->bind_param('i', intval($Menyelement));
           $stmt->execute();
-          header("location:EndreMeny.php");
+          header("location:EndreMeny.php?feilslett=Menyen er slettet.");
       
       } 
         }

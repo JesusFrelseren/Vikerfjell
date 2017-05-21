@@ -26,7 +26,7 @@ function lagSide() {
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
 			if($row4) {
-				$overskrift4 = $row4['side'];
+				$overskrift4 = $row4['sub_tekst'].".html";
 
 				$sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";
 
@@ -51,6 +51,7 @@ function lagSide() {
 			$result4 = $stmt4->get_result();
 			$row4 = $result4->fetch_assoc();
 			if($row4) {
+
 				$overskrift4 = $row4['side'];
 				$stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
 				mysqli_set_charset($mysqli, "UTF8");

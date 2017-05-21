@@ -5,10 +5,6 @@ Sist sett på av Alex 03.02.2017
 .body_content {
   min-height: calc(100vh - 70px);
 }
-.wrap {
-  min-height: 100%;
-}
-
 footer{
 
   display: table;

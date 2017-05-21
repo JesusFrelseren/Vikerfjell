@@ -1,8 +1,7 @@
-<!--
-Utviklet av Erlend. Sist endret 30.04.2017
--->
-
 <?php
+/*Utviklet av Erlend. Sist endret 07.05.2017*/
+
+
 include 'startSession.php';
 include("Include/mysqlcon.php");
 include("BildeOpplasting.php");

@@ -2,13 +2,14 @@
     margin-left: auto;
     margin-right:auto;
     width: 48%; 
-    position: relative;
     border: black 2px; 
     border-style: solid; 
     left: 1%; 
     background-color: #F9F5F5;
-    top: 10px;
+    top: 235px;
+    position:absolute;
 }
 .tekst {padding: 0 16px;}
 .overskrift {text-align: center;}
 .input {width:100%;}
+.henWrap{min-height:100%}

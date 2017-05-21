@@ -1,5 +1,3 @@
-<!--Sist endret av Sindre 02.04.2017-->
-<!--Sett over av Alex 02.04.2017-->
 <?php
 include 'startSession.php';
 ?>
@@ -42,13 +40,13 @@ if (isset($_GET['id'])){
 	$idvariabel = $_GET['id'];
 	$sql = "SELECT * FROM  innhold
 					LEFT JOIN submeny
-					ON submeny.meny_idmeny = innhold.idmeny
-					WHERE idinnhold = ? AND idsubmeny IS NOT NULL;";
+					ON submeny.idsubmeny = innhold.idsubmeny
+					WHERE idinnhold = ? AND submeny.idsubmeny IS NOT NULL;";
 	$row = targetMeny($idvariabel, $sql);
 	if($row == true) {
 		$subID = $row['idsubmeny'];
 		$sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
-						WHERE innhold.idmeny = submeny.meny_idmeny AND idsubmeny = ?;";
+						WHERE innhold.idmeny = submeny.meny_idmeny AND submeny.idsubmeny = ?;";
 		$sql2 = "SELECT * FROM vikerfjell.innhold WHERE idinnhold = ?;";
 		$row = targetMeny($subID, $sql);
 		$row2 = targetMeny($idvariabel,$sql2);
@@ -91,7 +89,7 @@ if (isset($_GET['id'])){
 					<input name="endreInnhold" type="submit" value="Oppdater innhold">
 					<input name="id" type="hidden" value="<?php echo($_GET['id']) ?>">
 
-					<h3 style="position: absolute; bottom: 10%; left:5.2%;"><?php $msg = isset($_GET['feilslett']) ? $_GET['feilslett'] : '';
+					<h3 style="position: absolute; bottom: 0%; left:2%;"><?php $msg = isset($_GET['feilslett']) ? $_GET['feilslett'] : '';
 					                        echo ($msg)
 					                      ?></h3>
 				</form>
@@ -107,6 +105,9 @@ if (isset($_GET['id'])){
         <div class="containerknapper">
           <input name="slettInnhold" type="submit" value="Slett innhold" onclick="return confirm('Du sletter nå et innhold på nettsiden. Vil du fortsatt slette siden?')">
         </div>
+		<h3 style="position: absolute; bottom: 13%; left:2%;"><?php $msg = isset($_GET['slettInn']) ? $_GET['slettInn'] : '';
+					                        echo ($msg)
+					                      ?></h3>
       </form>
         <!--
         <div id="login">
@@ -146,6 +147,8 @@ if (isset($_GET['id'])){
 			</div>
 		</div>
 	</div>
+</body>
+
 <script type="text/javascript">
 	var idmeny = "<?php echo($idmeny); ?>"
 	<?php $idyolo = "";
@@ -169,21 +172,5 @@ if (isset($_GET['id'])){
 	    document.getElementById('url_input').value = js_array[selectBox];
 	}
 
-
 </script>
-
- <!--
- <div id="linkreg">
-                <h3>Formatering</h3>
-                    <div id="input_container">
-                        <input id="url_input" name="endreInnhold" type="text" placeholder="Legg inn link" size="40">
-                        <input type="submit" value="Lagre" id="innhold" onclick="formatTextLink();" />
-												<input type="button" value="Bold" onClick="formatText ('b');" />
-												<input type="button" value="Italic" onClick="formatText ('i');" />
-												<input type="button" value="Underline" onClick="formatText ('u')" />
-
-                    </div>
-            </div>
-						-->
-</body>
 </html>
