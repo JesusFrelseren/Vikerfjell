@@ -3,7 +3,7 @@ Sist endret av Sindre 17.03.2017
 Sett på av Erik 03.03.2017
 -->
   <?php
-  include("PHP/Include/header.php") ;
+  include("PHP/Include/header.php");
   include("PHP/Include/meny.php");
   ?>
 
