@@ -8,7 +8,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 if($row) {
 	$overskrift = $row['tittel'];
-	$text = $row['text'];
+	$text = $row['tekst'];
 	$id = $row['idinnhold'];
 
 

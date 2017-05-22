@@ -8,7 +8,7 @@ include("mysqlcon.php");
 
 function legg_til_side($tittel, $ingress, $tekst, $rekke, $side, $idmeny, $idsubmeny) {
     global $mysqli;
-    $sql = "insert into innhold(tittel, ingress, text, rekke, side, idmeny, idsubmeny)
+    $sql = "insert into innhold(tittel, ingress, tekst, rekke, side, idmeny, idsubmeny)
               values(?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('sssisii', $tittel, $ingress, $tekst, $rekke, $side, $idmeny, $idsubmeny);
@@ -27,7 +27,7 @@ SET tittel = $tittel
 WHERE idinnhold = $idinnhold;
 
 UPDATE innhold
-SET text = $tekst
+SET tekst = $tekst
 WHERE idinnhold = $idinnhold;
 
 UPDATE innhold
@@ -207,7 +207,7 @@ $idto = "";
 //Funksjon for endring av innhold
 function Endre_Innhold($tittel, $ingress, $text, $rekke, $idmeny, $idinnhold){
   global $mysqli;
-  $sql = "UPDATE vikerfjell.innhold SET tittel=?,ingress=?,text=?,rekke=?,idmeny=? WHERE idinnhold =?;";
+  $sql = "UPDATE vikerfjell.innhold SET tittel=?,ingress=?,tekst=?,rekke=?,idmeny=? WHERE idinnhold =?;";
   $stmt = $mysqli->prepare($sql);
   $stmt->bind_param('ssssss',$tittel,$ingress,$text,$rekke,$idmeny, $idinnhold);
   $stmt->execute();
@@ -228,7 +228,7 @@ function Endre_Innhold($tittel, $ingress, $text, $rekke, $idmeny, $idinnhold){
     if(strpos($idmeny, "SUB") !== false) {
       //Endrer hvis submeny er valgt
       $nyid = substr($idmeny, 3);
-      $sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
+      $sql = "SELECT tittel, ingress, tekst, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
               WHERE innhold.idmeny = submeny.meny_idmeny AND submeny.idsubmeny = ? ;";
       $stmt = $mysqli->prepare($sql);
       $stmt->bind_param("i", $nyid);

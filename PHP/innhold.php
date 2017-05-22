@@ -45,14 +45,14 @@ if (isset($_GET['id'])){
 	$row = targetMeny($idvariabel, $sql);
 	if($row == true) {
 		$subID = $row['idsubmeny'];
-		$sql = "SELECT tittel, ingress, text, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
+		$sql = "SELECT tittel, ingress, tekst, rekke, idmeny, submeny.idsubmeny FROM innhold, submeny
 						WHERE innhold.idmeny = submeny.meny_idmeny AND submeny.idsubmeny = ?;";
 		$sql2 = "SELECT * FROM vikerfjell.innhold WHERE idinnhold = ?;";
 		$row = targetMeny($subID, $sql);
 		$row2 = targetMeny($idvariabel,$sql2);
 		$overskrift = $row2['tittel'];
 		$ingress = $row2['ingress'];
-		$text = $row2['text'];
+		$text = $row2['tekst'];
 		$rekke = $row2['rekke'];
 		$subid = $row['idsubmeny'];
 		$sjekkvariabel = 2;
@@ -62,7 +62,7 @@ if (isset($_GET['id'])){
 
 		$overskrift = $row['tittel'];
 		$ingress = $row['ingress'];
-		$text = $row['text'];
+		$text = $row['tekst'];
 		$rekke = $row['rekke'];
 		$idmeny = $row['idmeny'];
 		$sjekkvariabel = 1;

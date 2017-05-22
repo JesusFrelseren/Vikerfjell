@@ -9,7 +9,7 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
 $overskrift = $row['tittel'];
-$text = $row['text'];
+$text = $row['tekst'];
 $id = $row['idinnhold'];
 
 
