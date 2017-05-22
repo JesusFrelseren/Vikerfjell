@@ -150,7 +150,7 @@ if (isset($_GET['id'])){
 </body>
 
 <script type="text/javascript">
-	var idmeny = "<?php echo($idmeny); ?>"
+	var idmeny = "<?php echo($idmeny); ?>";
 	<?php $idyolo = "";
 	if(isset($_GET['id'])){
 		$idyolo = $_GET['id'];};?>
