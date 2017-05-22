@@ -6,16 +6,16 @@ Sist sett på av Erlend 30.03.2017
 
 include("mysqlcon.php");
 
-function legg_til_side($tittel, $ingress, $tekst, $rekke, $side, $idmeny, $idsubmeny) {
+function legg_til_side($tittel, $ingress, $tekst, $rekke, $side, $idmeny) {
     global $mysqli;
-    $sql = "insert into innhold(tittel, ingress, tekst, rekke, side, idmeny, idsubmeny)
-              values(?, ?, ?, ?, ?, ?, ?)";
+    $sql = "insert into innhold(tittel, ingress, tekst, rekke, side, idmeny)
+              values(?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('sssisii', $tittel, $ingress, $tekst, $rekke, $side, $idmeny, $idsubmeny);
+    $stmt->bind_param('sssisi', $tittel, $ingress, $tekst, $rekke, $side, $idmeny);
     $stmt->execute();
 }
 
-function rediger_side(string $tittel, string $ingress, string $tekst, $side, int $idinnhold) {
+function rediger_side($tittel, $ingress, $tekst, $side, $idinnhold) {
     global $mysqli;
     $sql = "
 UPDATE innhold

@@ -18,7 +18,7 @@ function hent_linkede_bilder($søketekst, $idinnhold) {
     global $mysqli;
     $stmt = $mysqli->prepare("select idbilder, hvor, alt, bilder.tekst, thumb, bredde, hoyde, _idbilder, idinnhold
 from innhold inner join(bilderinnhold inner join bilder ON _idbilder = idbilder) on `_idinnhold` = idinnhold 
-WHERE tekst like '%$søketekst%' AND _idinnhold = $idinnhold");
+WHERE bilder.tekst like '%$søketekst%' AND _idinnhold = $idinnhold");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
     $img_linked_result = $stmt->get_result();
