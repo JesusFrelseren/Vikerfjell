@@ -7,6 +7,7 @@
  * todo: bug: første thumbnail vises ikke
  * todo: linkmodus-knapp: Fiks getter
  * todo: skriv .jpeg til basen
+ * todo: redesign bildeopplast container
  *
  *
  * generelt:

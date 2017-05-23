@@ -75,13 +75,15 @@ include ('Include/mysqlcon.php');
     <form class="search_form">
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
-    </div>
+
+    <!-- Vis opplastingsboks -->
+    <input type="button" class="søk_knapp" value="Last opp.." onclick="toggleOpplastBoks()">
 
 </section>
 
 <!-- Opplastingsboks -->
 <section id="#content">
-<section class='bildeopplast_container'>
+<section class='bildeopplast_container' id="bildeopplast_container" style="display: none">
     <form method="post" enctype="multipart/form-data" action="AdministrerBilder.php">
         <section id="bildeopplast_section">
             <p>Støttede formater er png, jpg eller gif</p>
@@ -101,6 +103,7 @@ include ('Include/mysqlcon.php');
         <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php?option_selected_index=0&id=1">
     </form>
 </section>
+
 <?php
 $søketekst = "";
 if (isset($_POST["søk_bilde_search_box"])) {

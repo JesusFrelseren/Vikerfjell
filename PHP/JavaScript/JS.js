@@ -15,6 +15,16 @@ function innholdReturnId() {
     document.forms["submit_select"].submit();
 }
 
+function toggleOpplastBoks() {
+    var opplastBoks = document.getElementById("bildeopplast_container");
+
+    if(opplastBoks.style.display == 'none') {
+        opplastBoks.style.display = 'inline-block';
+    } else {
+        opplastBoks.style.display = 'none';
+    }
+}
+
 //OnChange funksjon for Select(ListeInnhold).
 
 function changeFunc() {
