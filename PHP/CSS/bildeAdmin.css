@@ -1,6 +1,6 @@
 /*Utviklet av Erlend. Sist endret 07.05.17*/
 
-#bilder_kontrollpanel, .bildeinfo_container, .bildeopplast_container, #søkewrapper {
+#bilder_kontrollpanel, .bildeinfo_container, #søkewrapper {
     display: inline-block;
     width: 330px;
     height: auto;
@@ -9,6 +9,25 @@
     font-weight: bold;
     text-align: center;
     background-color: white;
+}
+
+.bildeopplast_container {
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    border: black solid 2px;
+}
+
+textarea {
+    resize: none;
+}
+
+#bildebeskrivelse_section, #tooltip_section, #bildeopplast_section {
+    display: inline-block;
+    border: 1px solid black;
+    height: 100%;
 }
 
 #søkewrapper {
@@ -57,7 +76,7 @@
         text-align: center;
     }
 
-    #bilder_kontrollpanel, .bildeinfo_container, .bildeopplast_container {
+    #bilder_kontrollpanel, .bildeinfo_container{
         width: 90%;
         overflow: hidden;
     }

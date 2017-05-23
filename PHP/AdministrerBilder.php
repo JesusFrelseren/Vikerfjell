@@ -82,18 +82,24 @@ include ('Include/mysqlcon.php');
 <!-- Opplastingsboks -->
 <section id="#content">
 <section class='bildeopplast_container'>
-    <p style="margin-top: 24px; margin-bottom: 0">Last opp nytt bilde</p>
     <form method="post" enctype="multipart/form-data" action="AdministrerBilder.php">
-        Støttede formater er png, jpg eller gif
+        <section id="bildeopplast_section">
+            <p>Støttede formater er png, jpg eller gif</p>
         <input type='file' id='upload' name='upload' value="Last opp">
-        <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
-        <label for="bildebeskrivelse"></label>
-        <input type='text' name="bildebeskrivelse" id='bildebeskrivelse' size="30" placeholder="Maks 45 tegn" maxlength="45">
+    </section>
+        <section id="bildebeskrivelse_section">
+            <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
+            <label for="bildebeskrivelse"></label>
+            <textarea maxlength="45" rows="7" cols="30"  name="bildebeskrivelse" id='bildebeskrivelse' placeholder="Maks 45 tegn"></textarea>
+        </section>
+        <section id="tooltip_section">
+            <p>Gi bildet en tooltip (Valgfri)</p>
+            <textarea rows="7" cols="30" maxlength="100" placeholder="Maks 100 tegn"></textarea>
+        </section>
         <input type='hidden' name="action_last_opp" id="action_last_opp">
         <input type='submit' class="søk_knapp" value='Last opp'>
         <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php?option_selected_index=0&id=1">
     </form>
-
 </section>
 <?php
 $søketekst = "";
