@@ -6,6 +6,7 @@
  * todo: endre bilde
  * todo: bug: første thumbnail vises ikke
  * todo: linkmodus-knapp: Fiks getter
+ * todo: skriv .jpeg til basen
  *
  *
  * generelt:
