@@ -90,6 +90,8 @@ function vis_alle_bilder($søketekst) {
 
         $idbilder = $row['idbilder'];
         $hvor = 'Bilder/' . $row['hvor'];
+        $tekst1 = substr($row['tekst'], 0, 33);
+        $tekst2 = substr($row['tekst'], 33);
         $tekst = $row['tekst'];
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
@@ -118,7 +120,8 @@ function vis_alle_bilder($søketekst) {
      
 </div>
 
-<p>$tekst</p>
+<p>$tekst1<br>$tekst2</p>
+
 $dimension 
 <form action='AdministrerBilder.php' method='post'>
     <input type='hidden' value='$idbilder' name='id' id='id'>
