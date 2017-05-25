@@ -20,7 +20,9 @@ include 'startSession.php';
 	<?php
 		include 'Include/backendmeny.php';
 	?>
-	</nav><!-- Hovedinnhold-->
+	</nav>
+
+    <!-- Hovedinnhold-->
 	<div class="containor">
 		<div class="venstreside">
 			<div class="bilde">
@@ -41,75 +43,5 @@ include 'startSession.php';
 			</div>
 		</div>
 	</div>
-
-	<!--<div class="row">
-		<div class="col-12">
-			<article>
-				12 kolonner fullbredde
-			</article>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-10">
-			<article>
-				10 kolonner article
-				<div class="row">
-					<div class="col-6">
-						<section>
-							6 kolonner section
-						</section>
-					</div>
-					<div class="col-6">
-						<section>
-							6 kolonner section
-						</section>
-					</div>
-					<div class="col-6">
-						<section>
-							6 kolonner section
-						</section>
-					</div>
-					<div class="col-6">
-						<section>
-							6 kolonner section
-						</section>
-					</div>
-				</div>
-			</article>
-		</div>
-		<div class="col-2">
-			<aside>
-				2 kolonner aside
-			</aside>
-			<aside>
-				2 kolonner aside
-			</aside>
-			<aside>
-				2 kolonner aside
-			</aside>
-			<aside>
-				2 kolonner aside
-			</aside>
-			<aside>
-				2 kolonner aside
-			</aside>
-			<aside>
-				2 kolonner aside
-			</aside>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-6">
-			<article>
-				6 kolonner
-			</article>
-		</div>
-		<div class="col-6">
-			<article>
-				6 kolonner
-			</article>
-		</div>
-	</div>
-	-->
 </body>
 </html>
