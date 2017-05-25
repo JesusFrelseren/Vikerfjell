@@ -1,5 +1,8 @@
 
 <?php
+include("NyesteInnhold.php");
+
+$idinnhold = getIdinnhold();
 /* Sist endret av Alex 06.02.2017-->
 <!--Sett over av Erlend 06.02.2017 */
 //Her lager vi backendmenyen
@@ -25,7 +28,7 @@ echo("<header>
 			    <a href='AdministrerBilder.php' class='dropbtn'>Bilder</a>
                     <div class='dropdown-content'>
                         <a href='AdministrerBilder.php'>Opplasting</a>
-                        <a href='AdministrerBilderLink.php'>Linking</a>
+                        <a href='AdministrerBilderLink.php?option_selected_index=0&id=$idinnhold'>Linking</a>
                     </div>
 			</li>
 			<li id='logutid'>
