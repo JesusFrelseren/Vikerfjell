@@ -1,8 +1,14 @@
 <?php
-//Utviklet av Erlend. Sist endret 07-05-2017.
 
 
+/*
+ * Utviklet av Erlend. Sist endret 07-05-2017.
+ * Ansvarlig for å laste opp bilder til webserver og skrive metadata til basen
+ * Ansvarlig endre bildetittel og tooltip
+ * Ansvarlig for å slette bilder og deres metadata
+ */
 include('Include/mysqlcon.php');
+
 
 if(isset($_POST['action_last_opp'])) {
     try {
@@ -118,6 +124,47 @@ if(isset($_POST['action_last_opp'])) {
     } catch (RuntimeException $e) {
         throw new RuntimeException($e->getMessage());
     }
+
+    //Endring av bildetekst og tooltip i databasen
+} elseif (isset($_POST['action_endre'])) {
+    global $mysqli;
+    $tekst = $_POST['tekst'];
+    $tooltip = $_POST['tooltip'];
+    $idbilder = $_POST['idbilder'];
+
+    $stmt = $mysqli->prepare("UPDATE Bilder SET tekst = ?, tooltip = ? WHERE idbilder = ?");
+    $stmt->bind_param("ssi", $tekst, $tooltip, $idbilder);
+    $stmt->execute();
+    $mysqli->close();
+
+} elseif(isset($_POST['slett'])) {
+    //Sletting av bilde
+    global $mysqli;
+    $idbilder = $_POST['id'];
+
+    //Slett fra masselager
+    $stmt = $mysqli->prepare("select hvor, thumb from bilder where idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+    $img = $stmt->get_result();
+    $row = $img->fetch_assoc();
+
+    $hvor = $row['hvor'];
+    $thumb = $row['thumb'];
+    unlink("Bilder/$hvor");
+    unlink("Bilder/thumbs/$thumb");
+
+    //Slett fra bilderinnhold
+    $stmt = $mysqli->prepare("delete from bilderinnhold where _idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+
+    //Slett fra bilder
+    $stmt = $mysqli->prepare("delete from bilder where idbilder = ?");
+    $stmt->bind_param('i', $idbilder);
+    $stmt->execute();
+
+
 
 }
 

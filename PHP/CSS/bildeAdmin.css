@@ -51,7 +51,7 @@ textarea {
 }
 
 .søk_knapp:hover {
-    background: #61aa74;
+    background: #318e18;
     color: white;
 }
 .search_form {
@@ -64,7 +64,7 @@ textarea {
 }
 
 .lenkerDropdown {
-    width: 100% !important;
+    width: 25% !important;
     margin: 0 !important;
 }
 

@@ -102,7 +102,11 @@ input {
   border: none;
   position: absolute;
   left: 5.2%;
-  bottom: 15%;
+  bottom: 11%;
+}
+
+#liste input[type="submit"]:hover {
+    background-color: #16aa56;
 }
 
 /* Her skal vi fikse slik at listen blir vist øverst og lag ny bruker kommer rett under */
@@ -116,7 +120,7 @@ input {
 @media only screen and (max-width: 468px) {
   .brukertekst{font-size: 14px;}
   #login input[type="text"] {width: 200px;}
-  #login input[type="password"] {width: 200px};
-  #login input[type="mail"] {width: 200px};
+  #login input[type="password"] {width: 200px;}
+  #login input[type="mail"] {width: 200px;}
   #login  input[type="submit"] {width: 61.5%;}
 }

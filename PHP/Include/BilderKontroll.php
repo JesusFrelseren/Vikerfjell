@@ -1,5 +1,9 @@
 <?php
-//Utviklet av Erlend. Sist endret 07.05.2017
+/*
+ * Utviklet av Erlend. Sist endret 07.05.2017
+ * Ansvarlig for å hente opp bilder sin metadata fra databasen
+ *
+ */
 
 
 require("mysqlcon.php");
@@ -41,9 +45,11 @@ where tekst like '%$søketekst%'");
 
 function hent_filterte_bilder($søketekst) {
     global $mysqli;
-    $stmt = $mysqli->prepare("select idbilder, alt, hvor, tekst, thumb, bredde, hoyde from vikerfjell.bilder where tekst like '%$søketekst%'");
+    $stmt = $mysqli->prepare("select idbilder, alt, hvor, tooltip, tekst, thumb, bredde, hoyde from vikerfjell.bilder where tekst like '%$søketekst%'");
     mysqli_set_charset($mysqli, "UTF8");
     $stmt->execute();
     $img_result = $stmt->get_result();
     return $img_result;
 }
+
+

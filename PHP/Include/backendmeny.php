@@ -5,7 +5,8 @@
 //Her lager vi backendmenyen
 echo("<header>
 		<a href='admin.php'><img class='headerbakgrunn' src='Bilder/logov2_admin.png'></a>
-	</header><!--Rad 2: Menybar-->
+	</header>
+	<!--Rad 2: Menybar-->
 	<nav class='topnav' id='myTopnav'>
 		<ul>
 			<li>
@@ -20,8 +21,12 @@ echo("<header>
 			<li>
 				<a class='aktivlenke' href='brukere.php'>Brukere</a>
 			</li>
-			<li>
-				<a href='AdministrerBilder.php'>Bilder</a>
+			<li class='dropdown'>
+			    <a href='AdministrerBilder.php' class='dropbtn'>Bilder</a>
+                    <div class='dropdown-content'>
+                        <a href='AdministrerBilder.php'>Opplasting</a>
+                        <a href='AdministrerBilderLink.php'>Linking</a>
+                    </div>
 			</li>
 			<li id='logutid'>
 				<a href='loggut.php'>Logg ut</a>
@@ -29,12 +34,11 @@ echo("<header>
 			<li class='dropdown' id='brukerid'>
 				<a class='dropbtn' href='#'>")
             ?>
-
 <?php
     echo($_SESSION['name'])
 ?>
 <?php
-    echo(" </a><div class='dropdown-content'>
+    echo("</a><div class='dropdown-content'>
             <a href='Endre.php'>Endre passord</a> <a href='#'>Innstillinger</a>
         </div>
     </li>

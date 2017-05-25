@@ -127,9 +127,26 @@ input[type=number]{
   position: absolute;
 }
 
+input[type="submit"]:hover{
+    background: #318e18;
+}
+
+
+#endre input[type="submit"]:hover  {
+    background: #318e18;
+}
+
+#style input[type="submit"]:hover {
+    background: #318e18;
+}
+
+#innhold  input[type="submit"]:hover {
+    background: #318e18
+}
+
+
 #style input[type="submit"] {
   background: #16aa56;
-
   width: 25%;
   margin-right: 1%;
   border-radius: 3px;

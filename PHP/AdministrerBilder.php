@@ -4,41 +4,9 @@
 
 include 'startSession.php';
 include("Include/mysqlcon.php");
-include("BildeOpplasting.php");
+include("BilderMetadata.php");
 include("Include/BilderKontroll.php");
-var_dump($_POST);
 
-
-//Sletting av bilde
-if(isset($_POST['id']) && isset($_POST['slett'])) {
-
-    global $mysqli;
-    $idbilder = $_POST['id'];
-
-    //Slett fra masselager
-    $stmt = $mysqli->prepare("select hvor, thumb from bilder where idbilder = ?");
-    $stmt->bind_param('i', $idbilder);
-    $stmt->execute();
-    $img = $stmt->get_result();
-    $row = $img->fetch_assoc();
-
-    $hvor = $row['hvor'];
-    $thumb = $row['thumb'];
-    unlink("Bilder/$hvor");
-    unlink("Bilder/thumbs/$thumb");
-
-    //Slett fra bilderinnhold
-    $stmt = $mysqli->prepare("delete from bilderinnhold where _idbilder = ?");
-    $stmt->bind_param('i', $idbilder);
-    $stmt->execute();
-
-    //Slett fra bilder
-    $stmt = $mysqli->prepare("delete from bilder where idbilder = ?");
-    $stmt->bind_param('i', $idbilder);
-    $stmt->execute();
-
-
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +45,6 @@ include ('Include/mysqlcon.php');
     <form class="search_form">
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
-
     <!-- Vis opplastingsboks -->
     <input type="button" class="søk_knapp" value="Last opp.." onclick="toggleOpplastBoks()">
 
@@ -102,9 +69,10 @@ include ('Include/mysqlcon.php');
         </section>
         <input type='hidden' name="action_last_opp" id="action_last_opp">
         <input type='submit' class="søk_knapp" value='Last opp'>
-        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
+
     </form>
 </section>
+
 
 <?php
 $søketekst = "";
@@ -114,8 +82,6 @@ if (isset($_POST["søk_bilde_search_box"])) {
 } else {
     vis_alle_bilder($søketekst);
 }
-
-
 
 function vis_alle_bilder($søketekst) {
     $img_result = hent_filterte_bilder($søketekst);
@@ -127,6 +93,7 @@ function vis_alle_bilder($søketekst) {
         $tekst = $row['tekst'];
         $dimension = $row['hoyde'] . 'x' . $row['bredde'];
         $thumb = 'Bilder/thumbs/' . $row['thumb'];
+        $tooltip = $row['tooltip'];
         $alt = $row['alt'];
 
         echo("
@@ -140,6 +107,16 @@ function vis_alle_bilder($søketekst) {
 <div id='bilde_modal$counter' class='modal'>
     <span class='close' onclick='skjulModal($counter)'>&times;</span>
     <img src='$hvor' id='img01' class='modal-content' alt='$alt'>
+    
+    <form action='AdministrerBilder.php' method='post'>
+        <input type='hidden' name='action_endre'>
+        <input type='hidden' value='$idbilder' name='idbilder'>
+        <textarea name='tekst' maxlength='45' rows=\"7\" cols=\"45\" style='margin: 5px' placeholder='Maks 45 tegn'>$tekst</textarea> <br>
+        <textarea name='tooltip' maxlength='100' rows=\"7\" cols=\"45\" style='margin: 5px' placeholder='Maks 100 tegn'>$tooltip</textarea><br>
+        <input type='submit'  class='søk_knapp' value='Lagre endringer'>
+    </form>
+    
+    
 </div>
 
 <input type='text' value='$tekst' size='35' maxlength='45' style='margin: 5px'>
@@ -147,7 +124,6 @@ $dimension
 <form action='AdministrerBilder.php' method='post'>
     <input type='hidden' value='$idbilder' name='id' id='id'>
     <input type='hidden' id='slett' name='slett'>
-    <input type='submit' class='søk_knapp' id='rediger' name='rediger' value='Endre' >
     <input type='submit' value='Slett' class='søk_knapp'>
 </form></section>");
 $counter++;
@@ -155,8 +131,6 @@ $counter++;
     }
 echo("</section>");
 }
-
-
 
 
 ?>
