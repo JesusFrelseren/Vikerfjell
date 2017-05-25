@@ -5,8 +5,9 @@ Sett på av Erik 03.03.2017
   <?php
   include("PHP/Include/header.php");
   include("PHP/Include/meny.php");
+  echo("</div>")
   ?>
-
+<div id="row">
   <div id="sliderbox1" class="slidercontainer">
     <div class="wrapperOverskrift">
       <h1>Visit Vikerfjell</h1>
@@ -16,7 +17,7 @@ Sett på av Erik 03.03.2017
       </div>-->
     </div>
     <div class="sliderbox">
-        <img src="PHP/Bilder/slider/teste4.jpg">
+        <img src="PHP/Bilder/teste4.jpg">
 
         <!--<li><img class="mySlides" src="Bilder/slider/toppen.jpg"></li>-->
         <!--<li><img class="mySlides" src="Bilder/slider/vann_utsikt.jpg"></li>-->
@@ -27,9 +28,11 @@ Sett på av Erik 03.03.2017
   </ul>
 -->
 </div>
+</div>
 
 
 <!-- notasjon: lage mediaquery: 1480px-->
+<div class="row">
 <div class="col-12 innholdswrapper">
   <section>
     <h2>Aktiviteter</h2>
@@ -44,21 +47,22 @@ Sett på av Erik 03.03.2017
     <p>Se live oppdatering av skisporene på vikerfjell: <a href="https://skisporet.no/buskerud/vikerfjell">Skisporet.no</a></p>
   </section>
 </div>
+</div>
 
 
 
+<div class="row">
 
-<div class="col-12 nyhetswrapper">
-  <section class="colsection">
+  <section class="col-3">
     <div class="colsectioncontent">
-      <a href="#" alt="Bilde1">
+      <a href="#" alt="Bilde1" >
         <img src="PHP/Bilder/img_kjope.jpg">
       </a>
       <h2 class="contentheaders">Hytter til salgs</h2>
       <p class="colsectioncontent"> Vil du bo på Vikerfjells sykeste hytter? Sjekk ut her da vel brusjanen skaosdkoakd</p>
     </div>
   </section>
-  <section class="colsection">
+  <section class="col-3">
     <div class="colsectioncontent">
       <a href="#" alt="Bilde2">
         <img src="PHP/Bilder/img_utleie.jpg">
@@ -67,7 +71,7 @@ Sett på av Erik 03.03.2017
       <p class="colsectioncontent"> Her kan du leie noen syke hytter, de er drit fete og ligger rett ved bakken!.</p>
     </div>
   </section>
-  <section class="colsection">
+  <section class="col-3">
     <div class="colsectioncontent">
       <a href="#" alt="Bilde3">
         <img src="PHP/Bilder/img_hyttetomt.jpg">
@@ -76,7 +80,7 @@ Sett på av Erik 03.03.2017
       <p class="colsectioncontent"> Her kan du kjøpe noen syke hyttetomter, de er drit fete sjekk dem ut om du gidder.</p>
     </div>
   </section>
-  <section class="colsection">
+  <section class="col-3">
     <div class="colsectioncontent">
       <a href="#" alt="Bilde3">
         <img src="PHP/Bilder/img_webcam.jpg">
@@ -87,6 +91,7 @@ Sett på av Erik 03.03.2017
   </section>
 
 </div>
+
 
 <!--Footer-->
 <?php include('PHP/Include/footer.php'); ?>

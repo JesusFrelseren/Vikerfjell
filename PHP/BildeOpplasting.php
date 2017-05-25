@@ -101,12 +101,10 @@ if(isset($_POST['action_last_opp'])) {
 
         //Skriv metadata til databasen
         $tekst = $_POST['bildebeskrivelse'];
-
-
         $bredde = $width_src;
         $høyde = $height_src;
-        $tooltip = "";
         $alt = "Bildet ble ikke funnet :´(";
+        $tooltip = $_POST['tooltip'];
 
         //Skriv meta til base
         global $mysqli;

@@ -6,6 +6,7 @@ include 'startSession.php';
 include("Include/mysqlcon.php");
 include("BildeOpplasting.php");
 include("Include/BilderKontroll.php");
+var_dump($_POST);
 
 
 //Sletting av bilde
@@ -59,6 +60,7 @@ if(isset($_POST['id']) && isset($_POST['slett'])) {
 
 <?php
 include ("Include/backendmeny.php");
+echo("</nav>");
 include ('Include/mysqlcon.php');
 
 ?>
@@ -96,11 +98,11 @@ include ('Include/mysqlcon.php');
         </section>
         <section id="tooltip_section">
             <p>Gi bildet en tooltip (Valgfri)</p>
-            <textarea rows="7" cols="30" maxlength="100" placeholder="Maks 100 tegn"></textarea>
+            <textarea rows="7" cols="30" maxlength="100" placeholder="Maks 100 tegn" name="tooltip" id="tooltip"></textarea>
         </section>
         <input type='hidden' name="action_last_opp" id="action_last_opp">
         <input type='submit' class="søk_knapp" value='Last opp'>
-        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php?option_selected_index=0&id=1">
+        <input type='submit' class="søk_knapp" value="Linkmodus" formaction="AdministrerBilderLink.php">
     </form>
 </section>
 
@@ -112,6 +114,7 @@ if (isset($_POST["søk_bilde_search_box"])) {
 } else {
     vis_alle_bilder($søketekst);
 }
+
 
 
 function vis_alle_bilder($søketekst) {
@@ -139,11 +142,12 @@ function vis_alle_bilder($søketekst) {
     <img src='$hvor' id='img01' class='modal-content' alt='$alt'>
 </div>
 
-<p>$tekst</p>
-<p style='margin-top: 0;'>$dimension</p> 
+<input type='text' value='$tekst' size='35' maxlength='45' style='margin: 5px'>
+$dimension 
 <form action='AdministrerBilder.php' method='post'>
     <input type='hidden' value='$idbilder' name='id' id='id'>
     <input type='hidden' id='slett' name='slett'>
+    <input type='submit' class='søk_knapp' id='rediger' name='rediger' value='Endre' >
     <input type='submit' value='Slett' class='søk_knapp'>
 </form></section>");
 $counter++;
@@ -151,6 +155,10 @@ $counter++;
     }
 echo("</section>");
 }
+
+
+
+
 ?>
 
 

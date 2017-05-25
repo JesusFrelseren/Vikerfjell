@@ -99,7 +99,6 @@ p {
   }
 
   .colsection{
-    width: 25.00%;
     float:left;
     padding: 0;
     padding-top: 15px;
@@ -160,12 +159,7 @@ p {
     padding: 15px;
   }
 
-  [class*="col-12"] {
-    float: left;
-    padding: 0px;
-
-  }
-
-  .overflowtest{
+  /*.overflowtest{
     clear:both;
   }
+*/
