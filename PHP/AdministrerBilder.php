@@ -115,11 +115,10 @@ function vis_alle_bilder($søketekst) {
         <textarea name='tooltip' maxlength='100' rows=\"7\" cols=\"45\" style='margin: 5px' placeholder='Maks 100 tegn'>$tooltip</textarea><br>
         <input type='submit'  class='søk_knapp' value='Lagre endringer'>
     </form>
-    
-    
+     
 </div>
 
-<input type='text' value='$tekst' size='35' maxlength='45' style='margin: 5px'>
+<p>$tekst</p>
 $dimension 
 <form action='AdministrerBilder.php' method='post'>
     <input type='hidden' value='$idbilder' name='id' id='id'>

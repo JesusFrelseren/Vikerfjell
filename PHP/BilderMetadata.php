@@ -41,7 +41,7 @@ if(isset($_POST['action_last_opp'])) {
         $tmp_location = $_FILES['upload']['tmp_name'];
         $filinfo = pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME);
         $perm_name = sprintf('Bilder/%s.%s', md5($filinfo), $ext);
-
+        echo($ext);
 
         if (!(file_exists($perm_name))) {
             move_uploaded_file($tmp_location, $perm_name);
@@ -87,7 +87,6 @@ if(isset($_POST['action_last_opp'])) {
             $perm_thumb_location = sprintf('Bilder/thumbs/%s.%s', "thumb_" . md5($filinfo), $ext);
             $hvor = md5($filinfo).".".$ext;
             $thumb = "thumb_" . $hvor;
-            //$hvor = pathinfo($_FILES['upload']['name'], PATHINFO_BASENAME);
         }
 
         //Lag fullskalert bilde

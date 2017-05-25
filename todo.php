@@ -1,10 +1,7 @@
 <?php
 /*
  * For bildeside:
- * todo: linkmodus-knapp: Fiks getter
- * todo: skriv .jpeg til basen
  * todo: redesign bildeopplast container
- *
  *
  * generelt:
  * todo: Linux-kompatibel
@@ -18,7 +15,6 @@
  * todo: fiks hamburgermeny scrolling
  * todo: breaking på administrer innhold
  * todo: mer innhold på hjem
- * todo: knapper highlight i backend
  * todo: bug: første thumbnail vises ikke
  */
 

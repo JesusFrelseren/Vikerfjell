@@ -23,25 +23,30 @@ include 'startSession.php';
 	</nav>
 
     <!-- Hovedinnhold-->
-	<div class="containor">
-		<div class="venstreside">
-			<div class="bilde">
-				<img src="Bilder/logov2.png" width=100% height=auto>
-			</div>
-			<div class="ingress">
-				Du er nå inne i back-end delen av Visit Vikerfjell, her kan du gjøre endringer og oppdateringer på nettstedet.
-			</div>
-		</div>
-		<div class="hoyreside">
-			<div class="oversikt">
-				<h2 style="margin-left: 1%;">Snarveier</h2>
-				<ul>
-				  <li><a href="brukere.php">Lag en ny bruker</a></li>
-				  <li><a href="innhold.php">Legg til nytt innhold</a></li>
-				  <li><a href="EndreMeny.php">Legg nytt menyelement</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div id="presentation">
+            <div class="col-3"></div>
+            <div class="col-3">
+                        <img src="Bilder/logov2.png" height="100%" width="320">
+                        <p style="margin-top: 0">Du er nå inne i back-end delen av Visit Vikerfjell, <br>her kan du gjøre endringer og oppdateringer på nettstedet.</p>
+            </div>
+            <div class="col-3">
+                <h2 style="margin-left: 1%;">Snarveier</h2>
+                <ul>
+                    <li><a href="brukere.php">Lag en ny bruker</a></li>
+                    <li><a href="innhold.php">Legg til nytt innhold</a></li>
+                    <li><a href="EndreMeny.php">Legg nytt menyelement</a></li>
+                    <li><a href="AdministrerBilder.php">Legg til bilder</a></li>
+                </ul>
+            </div>
+
+            <div class="col-3"></div>
+
+            </div>
+        </div>
+
+
+    </div>
+
 </body>
 </html>
