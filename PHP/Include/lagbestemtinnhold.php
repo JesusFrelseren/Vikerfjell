@@ -19,7 +19,7 @@ mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$bilde = $row['hvor'];
+$bilde = "PHP/Bilder/".$row['hvor'];
 
 
 		echo("<div class='staticinnhold'>

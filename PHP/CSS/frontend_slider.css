@@ -16,6 +16,12 @@ p {
   font-family:sans-serif;
 }
 
+#slider-text {
+  position: relative;
+  left: 200px;
+  top: 60px;
+}
+
 .slidercontainer{
   position: relative;
   overflow: hidden;
@@ -127,7 +133,7 @@ p {
   }
 
   /*S�KEBAR - Tas i bruk senere */
-  .righttest{
+  .righttest {
     position:absolute;
     right:20px;
     top: 47%;
@@ -155,9 +161,16 @@ p {
 
 
   [class*="col-"] {
-    /*float: left;*/
+    float: left;
     padding: 15px;
   }
+
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
   /*.overflowtest{
     clear:both;

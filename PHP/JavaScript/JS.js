@@ -30,7 +30,7 @@ function toggleOpplastBoks() {
 function changeFunc() {
     var selectBox = document.getElementById("listeinnhold");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/html/Vikerfjell/PHP/innhold.php?id="+selectedValue);
+    window.location.assign("http://localhost/Vikerfjell/PHP/innhold.php?id="+selectedValue);
 
    // var selectedValue = document.getElementById("listeinnhold").options[document.getElementById("listeinnhold").selectedIndex].value;
 }
@@ -38,7 +38,7 @@ function changeFunc() {
 function changeMenyFunc() {
     var selectBox = document.getElementById("listetest");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/html/Vikerfjell/PHP/EndreMeny.php?id="+selectedValue);
+    window.location.assign("http://localhost/Vikerfjell/PHP/EndreMeny.php?id="+selectedValue);
 }
 
 //OnChange funksjon for select i endring av meny
