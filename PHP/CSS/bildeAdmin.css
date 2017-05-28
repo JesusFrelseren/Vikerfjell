@@ -1,6 +1,6 @@
 /*Utviklet av Erlend. Sist endret 07.05.17*/
 
-#bilder_kontrollpanel, .bildeinfo_container, #søkewrapper {
+#bilder_kontrollpanel, .bildeinfo_container, #søkewrapper, .bildeopplast_container {
     display: inline-block;
     width: 330px;
     height: auto;
@@ -12,12 +12,12 @@
 }
 
 .bildeopplast_container {
-    text-align: left;
+    text-align: center;
     width: 100%;
     padding: 0;
     margin: 0;
     background-color: white;
-    border: black solid 2px;
+    border: 0;
 }
 
 textarea {

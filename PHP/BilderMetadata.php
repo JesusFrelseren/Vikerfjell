@@ -67,11 +67,11 @@ if(isset($_POST['action_last_opp'])) {
         if ($width_src > $height_src) {
             $width_thumb = 150;
             $height_thumb = 100;
-        //Hvis bildet er portrett
+            //Hvis bildet er portrett
         } elseif($width_src < $height_src) {
             $width_thumb = 100;
             $height_thumb = 150;
-        //Hvis bildet er kvadaratisk
+            //Hvis bildet er kvadaratisk
         } else {
             $width_thumb = 100;
             $height_thumb = 100;

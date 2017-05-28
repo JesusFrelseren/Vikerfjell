@@ -11,34 +11,34 @@ $msg = '';
 
 
 if(isset($username)) {
-  include 'mysqlcon.php';
+    include 'mysqlcon.php';
 
-  $stmt = $mysqli->prepare("SELECT ePost,idbruker FROM bruker WHERE brukerNavn=?");
-  $stmt->bind_param("s",$username);
-  $stmt->execute();
+    $stmt = $mysqli->prepare("SELECT ePost,idbruker FROM bruker WHERE brukerNavn=?");
+    $stmt->bind_param("s",$username);
+    $stmt->execute();
 
-  $result = $stmt->get_result();
-  $row = $result->fetch_assoc();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
 
-  $to = $row["ePost"];
-  $idbruker = $row['idbruker'];
-  $subject = "Glemt passord";
-
-
-
-
-  // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11	
-  $message = "https://home.hbv.no/139953/PHP/EnderPassordframail.php?id=$idbruker";
-  // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+    $to = $row["ePost"];
+    $idbruker = $row['idbruker'];
+    $subject = "Glemt passord";
 
 
 
-  $headers = 'From: Your name <info@address.com>' . "\r\n";
-  
-  if(mail($to, $subject, $message, $headers)){
-    header("location:../form.php?id=instrukser er send på mail");
-  }else{
-    header("location:../form.php?id=noe gikk galt");
-  }
+
+    // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+    $message = "https://home.hbv.no/139953/PHP/EnderPassordframail.php?id=$idbruker";
+    // må endres til gunnar sin!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+
+
+
+    $headers = 'From: Your name <info@address.com>' . "\r\n";
+
+    if(mail($to, $subject, $message, $headers)){
+        header("location:../form.php?id=instrukser er send på mail");
+    }else{
+        header("location:../form.php?id=noe gikk galt");
+    }
 }
 ?>

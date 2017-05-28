@@ -256,6 +256,6 @@ gjør vi justeringer på menybar forhold til mobile enheter*/
 @media only screen and (max-width: 720px) {
 
   header img {
-  height: 96px;
-}
+    height: 96px;
+  }
 }

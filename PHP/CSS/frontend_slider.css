@@ -93,77 +93,77 @@ p {
 
 
 
-  .nyhetswrapper{
-    height: 100%;
-    overflow: auto;
-    margin: 0 auto;
-    background-color: white;
-  }
+.nyhetswrapper{
+  height: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  background-color: white;
+}
 
-  .contentheaders{
-    margin: 0;
-  }
+.contentheaders{
+  margin: 0;
+}
 
-  .colsection{
-    float:left;
-    padding: 0;
-    padding-top: 15px;
-  }
+.colsection{
+  float:left;
+  padding: 0;
+  padding-top: 15px;
+}
 
-  .colsectioncontent{
-    margin: 0 auto;
-    display: table;
-    padding: 3px;
-    padding-top: 0.5px;
-  }
+.colsectioncontent{
+  margin: 0 auto;
+  display: table;
+  padding: 3px;
+  padding-top: 0.5px;
+}
 
-  .colsection img{
-    height: auto;
-    max-width: 100%;
-  }
+.colsection img{
+  height: auto;
+  max-width: 100%;
+}
 
-  section{
-    margin: 0;
-    padding: 0;
-  }
+section{
+  margin: 0;
+  padding: 0;
+}
 
-  .headerbilde img{
-    max-width:100%;
-    height: auto;
-  }
+.headerbilde img{
+  max-width:100%;
+  height: auto;
+}
 
-  /*S�KEBAR - Tas i bruk senere */
-  .righttest {
-    position:absolute;
-    right:20px;
-    top: 47%;
-  }
+/*S�KEBAR - Tas i bruk senere */
+.righttest {
+  position:absolute;
+  right:20px;
+  top: 47%;
+}
 
-  .pageheight{
-    height:auto;
-  }
+.pageheight{
+  height:auto;
+}
 
-  /*
-  Her har vi hentet kode fra: http://www.w3schools.com/css/css_rwd_grid.asp
-  */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
+/*
+Her har vi hentet kode fra: http://www.w3schools.com/css/css_rwd_grid.asp
+*/
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
 
 
-  [class*="col-"] {
-    float: left;
-    padding: 15px;
-  }
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
 
 
 .row::after {
@@ -172,7 +172,7 @@ p {
   display: table;
 }
 
-  /*.overflowtest{
-    clear:both;
-  }
+/*.overflowtest{
+  clear:both;
+}
 */

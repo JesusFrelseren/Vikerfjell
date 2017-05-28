@@ -90,17 +90,49 @@ h3 {
 definerer vi 11 seperate kolonne-diver */
 @media only screen and (min-width: 600px) {
   /* Desktop: */
-  .fcol-1 {width: 8.33%;}
-  .fcol-2 {width: 16.66%;}
-  .fcol-3 {width: 25%;}
-  .fcol-4 {width: 33.33%;}
-  .fcol-5 {width: 41.66%;}
-  .fcol-6 {width: 50%;}
-  .fcol-7 {width: 58.33%;}
-  .fcol-8 {width: 66.66%;}
-  .fcol-9 {width: 75%;}
-  .fcol-10 {width: 83.33%;}
-  .fcol-11 {width: 91.66%;}
+  .fcol-1 {
+    width: 8.33%;
+  }
+
+  .fcol-2 {
+    width: 16.66%;
+  }
+
+  .fcol-3 {
+    width: 25%;
+  }
+
+  .fcol-4 {
+    width: 33.33%;
+  }
+
+  .fcol-5 {
+    width: 41.66%;
+  }
+
+  .fcol-6 {
+    width: 50%;
+  }
+
+  .fcol-7 {
+    width: 58.33%;
+  }
+
+  .fcol-8 {
+    width: 66.66%;
+  }
+
+  .fcol-9 {
+    width: 75%;
+  }
+
+  .fcol-10 {
+    width: 83.33%;
+  }
+
+  .fcol-11 {
+    width: 91.66%;
+  }
 
   [class*="fcol-"] {
     float: left;
@@ -123,15 +155,19 @@ definerer vi 11 seperate kolonne-diver */
     padding-top: 0;
   }
 
-/*
-Fiks for footer plassering - hkjhasd
-*/
-html, body {height: 100%;}
+  /*
+  Fiks for footer plassering - hkjhasd
+  */
+  html, body {
+    height: 100%;
+  }
+
   .rowfooter::after {
-     content: "";
+    content: "";
     clear: both;
     display: table;
     position: relative;
-  margin-top: 0px; /* negative value of footer height */
-  height: 0px;
-    }
+    margin-top: 0px; /* negative value of footer height */
+    height: 0px;
+  }
+}

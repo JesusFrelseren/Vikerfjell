@@ -7,17 +7,17 @@ Sist sett på av Alex 28.03.2017
 .menyreg {width: 48%; position: absolute; border: black 2px; border-style: solid; top: 5%; height: 310px; right: 1%; background-color: #F9F5F5;}
 
 .brukertekst {
-  padding: 0px;
-  margin: 0;
+    padding: 0px;
+    margin: 0;
 }
 .menynavn {
-  position: absolute;
-  top: 15%;
-  left: 80%;
+    position: absolute;
+    top: 15%;
+    left: 80%;
 }
 body {
-  background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
-  font-family: sans-serif;
+    background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
+    font-family: sans-serif;
 }
 
 /*select{
@@ -49,13 +49,13 @@ body {
     line-height: 1;
     border: 1px solid #000;
     margin-bottom: 10px;
-  }
+}
 
 .endreInnhold{
     margin-left: 2%;
     position: absolute;
     width: 65%;
-	max-height: 200px;
+    max-height: 200px;
     padding: 4px;
     font-family: sans-serif;
     font-size: 16px;
@@ -68,32 +68,32 @@ body {
 }
 
 .lenkerDropdown{
-  margin-left: 0%;
-  width: 35%;
-  padding: 4px;
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1;
-  border: 1px solid #000;
-  margin-bottom: 10px;
-  margin-right: auto;
+    margin-left: 0%;
+    width: 35%;
+    padding: 4px;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    margin-right: auto;
 }
 
 .containerknapper{
-  right: 0%;
-  margin-right: 2%;
-  padding:0;
-  width: 29%;
-  height: 150px;
-  position: absolute;
+    right: 0%;
+    margin-right: 2%;
+    padding:0;
+    width: 29%;
+    height: 150px;
+    position: absolute;
 }
 
 input {
-  border :1px solid #000;
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.5em;
-  padding: 0;
+    border :1px solid #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    padding: 0;
 }
 
 input[type=number]{
@@ -101,30 +101,30 @@ input[type=number]{
 }
 
 #innhold  input[type="submit"] {
-  background: #16aa56;
-  border: 0;
-  width: 200px;
-  margin-left: 2%;
-  height: 26px;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  color: white;
-  cursor: pointer;
-  border: none;
+    background: #16aa56;
+    border: 0;
+    width: 200px;
+    margin-left: 2%;
+    height: 26px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    color: white;
+    cursor: pointer;
+    border: none;
 }
 
 #endre input[type="submit"] {
-  background: #16aa56;
-  border: 0;
-  width: 100%;
-  margin-right: 1%;
-  height: 26px;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  color: white;
-  cursor: pointer;
-  border: none;
-  position: absolute;
+    background: #16aa56;
+    border: 0;
+    width: 100%;
+    margin-right: 1%;
+    height: 26px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    position: absolute;
 }
 
 input[type="submit"]:hover{
@@ -146,38 +146,38 @@ input[type="submit"]:hover{
 
 
 #style input[type="submit"] {
-  background: #16aa56;
-  width: 25%;
-  margin-right: 1%;
-  border-radius: 3px;
-  margin-bottom: 8px;
-  color: white;
-  cursor: pointer;
-  border: none;
+    background: #16aa56;
+    width: 25%;
+    margin-right: 1%;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    color: white;
+    cursor: pointer;
+    border: none;
 
 }
 
 #innhold input[type="text"] {
-  background-color: #FFF;
-  border-radius: 0px 3px 3px 0px;
-  color: #000;
-  margin-bottom: 1em;
-  margin-left:2%;
-  padding: 0 6px;
-  width: 95%;
-  height: 35px;
+    background-color: #FFF;
+    border-radius: 0px 3px 3px 0px;
+    color: #000;
+    margin-bottom: 1em;
+    margin-left:2%;
+    padding: 0 6px;
+    width: 95%;
+    height: 35px;
 }
 
 #innhold textarea{
-  background-color: #FFF;
-  border-radius: 0px 3px 3px 0px;
-  margin-left:2%;
-  padding: 4px;
-  width: 95%;
-  border :1px solid #000;
-  font-family: sans-serif;
-  font-size: 16px;
-  resize:none;
+    background-color: #FFF;
+    border-radius: 0px 3px 3px 0px;
+    margin-left:2%;
+    padding: 4px;
+    width: 95%;
+    border :1px solid #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    resize:none;
 }
 
 
@@ -192,23 +192,23 @@ input[type="submit"]:hover{
     background-color: #F9F5F5;
 }
 #formateringstyle {
-  width:85%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+    width:85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 #buttonstyle {
-  padding:5px;
+    padding:5px;
 
 }
 
 #knappestyle {
-  width:83%;
-  margin: 0 auto;
-  display: flex;
+    width:83%;
+    margin: 0 auto;
+    display: flex;
 
 }
 

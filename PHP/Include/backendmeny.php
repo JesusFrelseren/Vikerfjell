@@ -36,12 +36,12 @@ echo("<header>
 			</li>
 			<li class='dropdown' id='brukerid'>
 				<a class='dropbtn' href='#'>")
-            ?>
-<?php
-    echo($_SESSION['name'])
 ?>
 <?php
-    echo("</a><div class='dropdown-content'>
+echo($_SESSION['name'])
+?>
+<?php
+echo("</a><div class='dropdown-content'>
             <a href='Endre.php'>Endre passord</a> <a href='#'>Innstillinger</a>
         </div>
     </li>

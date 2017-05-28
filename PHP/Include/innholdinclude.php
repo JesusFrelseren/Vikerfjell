@@ -7,19 +7,19 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 if($row) {
-	$overskrift = $row['tittel'];
-	$text = $row['tekst'];
-	$id = $row['idinnhold'];
+    $overskrift = $row['tittel'];
+    $text = $row['tekst'];
+    $id = $row['idinnhold'];
 
 
-	$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder on _idbilder = idbilder where _idinnhold = $id;");
-	mysqli_set_charset($mysqli, "UTF8");
-	$stmt->execute();
-	$result = $stmt->get_result();
-	$row = $result->fetch_assoc();
-	$bilde = "PHP/Bilder/".$row['hvor'];
+    $stmt = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder on _idbilder = idbilder where _idinnhold = $id;");
+    mysqli_set_charset($mysqli, "UTF8");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $bilde = "PHP/Bilder/".$row['hvor'];
 
-	echo("
+    echo("
 		<div class='staticinnhold'>
 	  <h1>$overskrift</h1>
 	  <img src='$bilde'>

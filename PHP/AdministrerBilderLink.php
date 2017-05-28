@@ -46,21 +46,21 @@ if (isset($_GET['option_selected_index'])) {
 
 <section id="søkewrapper">
     <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
-    <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
-    <div id="btn_group">
-        
-        <input type="submit" class="søk_knapp" value="Søk">
-        <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
-            <input type="submit" class="søk_knapp" value="Vis alle">
-        </form>
-    </div>
-</form>
+        <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
+        <div id="btn_group">
 
-        <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
-        <form id="submit_select" action="AdministrerBilderLink.php" method="get">
-            <input type="hidden" id="option_selected_index" name="option_selected_index" value="">
-            <?php include("Include/BilderVelgInnholdDropdown.php")?>
-        </form>
+            <input type="submit" class="søk_knapp" value="Søk">
+            <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
+                <input type="submit" class="søk_knapp" value="Vis alle">
+            </form>
+        </div>
+    </form>
+
+    <p style="margin-top: 24px; margin-bottom: 0">Velg innhold</p>
+    <form id="submit_select" action="AdministrerBilderLink.php" method="get">
+        <input type="hidden" id="option_selected_index" name="option_selected_index" value="">
+        <?php include("Include/BilderVelgInnholdDropdown.php")?>
+    </form>
 </section>
 
 

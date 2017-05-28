@@ -3,53 +3,53 @@ include("mysqlcon.php");
 $stmt = $mysqli->prepare("select * from vikerfjell.meny ORDER BY rekke");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
-$result = $stmt->get_result(); 
+$result = $stmt->get_result();
 
 while($row = $result->fetch_assoc()){
 
-  $menyid = $row['idmeny'];
-  $tekst = $row['tekst'];
-  $side = $row['side'];
+    $menyid = $row['idmeny'];
+    $tekst = $row['tekst'];
+    $side = $row['side'];
 
-  $stmt = $mysqli->prepare("select meny_idmeny from submeny where meny_idmeny = $menyid");
-  $stmt->execute();
-  $stmt->store_result();
+    $stmt = $mysqli->prepare("select meny_idmeny from submeny where meny_idmeny = $menyid");
+    $stmt->execute();
+    $stmt->store_result();
 
-  if ($stmt->num_rows == 0) {
-    echo("<li><a href='$side'>$tekst</a></li>");
+    if ($stmt->num_rows == 0) {
+        echo("<li><a href='$side'>$tekst</a></li>");
 
-  } else {
+    } else {
 
-    $sub_stmt = $mysqli->prepare(
-    "select * from submeny where meny_idmeny = " .$menyid
-      );
+        $sub_stmt = $mysqli->prepare(
+            "select * from submeny where meny_idmeny = " .$menyid
+        );
 
-    $sub_stmt->execute();
-    $sub_result = $sub_stmt->get_result();
+        $sub_stmt->execute();
+        $sub_result = $sub_stmt->get_result();
 
-    $submenu_html = '';
+        $submenu_html = '';
 
-    while($sub_row = $sub_result->fetch_assoc()) {
+        while($sub_row = $sub_result->fetch_assoc()) {
 
-      $sub_tekst = $sub_row['sub_tekst'];
-      $sub_side = $sub_row['sub_side'];
-      $submenu_html .= "<a href='$sub_side'>$sub_tekst</a>";
+            $sub_tekst = $sub_row['sub_tekst'];
+            $sub_side = $sub_row['sub_side'];
+            $submenu_html .= "<a href='$sub_side'>$sub_tekst</a>";
 
-    }
+        }
 
-    echo("<li class='dropdown'>
+        echo("<li class='dropdown'>
         <a href='#' class='dropbtn'>$tekst</a>
         <div class='dropdown-content'>
           $submenu_html
         </div>
         </li>
         ");
-    $submenu_html = '';
+        $submenu_html = '';
     }
 
-  }
+}
 
-  echo("
+echo("
    <li class='icon'>
 	<a href='javascript:void(0);' style='font-size:15px;' onclick='myFunction()'>☰</a>
    </li>

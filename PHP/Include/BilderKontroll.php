@@ -33,7 +33,7 @@ WHERE bilder.tekst like '%$søketekst%' AND _idinnhold = $idinnhold");
 function hent_ulinkede_bilder($søketekst) {
     global $mysqli;
     $stmt = $mysqli->prepare(
-"select idbilder, hvor, alt, tekst, thumb, bredde, hoyde, _idbilder, _idinnhold
+        "select idbilder, hvor, alt, tekst, thumb, bredde, hoyde, _idbilder, _idinnhold
 from bilder left join bilderinnhold on idbilder = _idbilder
 where tekst like '%$søketekst%'");
     mysqli_set_charset($mysqli, "UTF8");

@@ -7,11 +7,11 @@ $message = $_POST["Comment"];
 
 if(empty($subject) || empty($mail) || empty($message)){
     // header('Location: ../../henvendelser.html');
-        header("location: ../../PHP/henvendelser.php?feilslett=Fyll ut alle felt før du sender.");
-    } else {
-        mail($to, $subject, $message, "From: <" . $mail . ">" );
-        //header('Location: ../../henvendelser.html');
-        header("location: ../../PHP/henvendelser.php?feilslett=Meldingen er sendt.");
-              
-    }
+    header("location: ../../PHP/henvendelser.php?feilslett=Fyll ut alle felt før du sender.");
+} else {
+    mail($to, $subject, $message, "From: <" . $mail . ">" );
+    //header('Location: ../../henvendelser.html');
+    header("location: ../../PHP/henvendelser.php?feilslett=Meldingen er sendt.");
+
+}
 ?>

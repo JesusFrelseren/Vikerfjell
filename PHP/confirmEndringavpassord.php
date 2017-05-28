@@ -12,14 +12,14 @@ $confirm = sha1($salt.$confirm);
 
 
 if($newPW != '' && $confirm != '' & $newPW == $confirm ) {
-			$stmt = $mysqli->prepare("UPDATE bruker SET passord =? WHERE idbruker=?");
-     		$stmt->bind_param("ss",$newPW,$mailid);
-      		$stmt->execute();
-      		header("location:form.php?msg=Passord endret");
-			
+    $stmt = $mysqli->prepare("UPDATE bruker SET passord =? WHERE idbruker=?");
+    $stmt->bind_param("ss",$newPW,$mailid);
+    $stmt->execute();
+    header("location:form.php?msg=Passord endret");
+
 
 }else{
-	 header('location:EnderPassordframail.php?msg=passordene var ikke like&id=$_REQUEST["id"]');
+    header('location:EnderPassordframail.php?msg=passordene var ikke like&id=$_REQUEST["id"]');
 }
 
 

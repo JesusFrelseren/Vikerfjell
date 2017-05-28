@@ -12,33 +12,33 @@ $nr = 0;
 echo("<select autofocus class='listegammelMeny' id='listetest' name='menylistephp' size='12' onchange='changeMenyFunc()'>");
 
 if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-	$id = "";
-  while($row = mysqli_fetch_assoc($result)) {
-    if($row["idmeny"] == $id){
-     if ($row["meny_idmeny"] != null) {
-    	
-    echo "<option value=". "SUB".$row["idsubmeny"] .">
+    // output data of each row
+    $id = "";
+    while($row = mysqli_fetch_assoc($result)) {
+        if($row["idmeny"] == $id){
+            if ($row["meny_idmeny"] != null) {
+
+                echo "<option value=". "SUB".$row["idsubmeny"] .">
     - Submenytekst: " . $row["sub_tekst"]."
     </option><br>";
-    $nr++;
-    }
-	}else{
+                $nr++;
+            }
+        }else{
 
-		echo "<option value=". $row["idmeny"] .">
+            echo "<option value=". $row["idmeny"] .">
     	Menytekst: " . $row["tekst"]."
     	</option><br>";
-    	if ($row["meny_idmeny"] != null) {
-    		echo "<option value=". "SUB".$row["idsubmeny"] .">
+            if ($row["meny_idmeny"] != null) {
+                echo "<option value=". "SUB".$row["idsubmeny"] .">
     		- Submenytekst: " . $row["sub_tekst"]."
    			 </option><br>";
-    	}
-    }
+            }
+        }
 
-    $id = $row["idmeny"];
-  }
+        $id = $row["idmeny"];
+    }
 } else {
-  echo "";
+    echo "";
 }
 echo("</select>");
 /*
