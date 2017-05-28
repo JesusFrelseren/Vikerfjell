@@ -137,6 +137,7 @@ if(isset($_POST['action_last_opp'])) {
     $mysqli->close();
 
 } elseif(isset($_POST['slett'])) {
+
     //Sletting av bilde
     global $mysqli;
     $idbilder = $_POST['id'];
