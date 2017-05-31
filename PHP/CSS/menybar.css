@@ -2,7 +2,9 @@
 Siset endret av Erik 02.03.2017
 Sist sett på av Erlend 03.03.2017
 */
-
+#myTopnav {
+  font-family: Arial, Helvetica, sans-serif;
+}
 #myTopnav.topnav ul{
   background-color: #333;
   text-align: center;

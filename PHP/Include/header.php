@@ -20,7 +20,6 @@ echo("
 <div class='row'>
   <header class='col-12 col-m-12'>
   <a href='default.php'><img src='PHP/Bilder/logov2.png' class='headerbakgrunn'></a>
-  <a href='default.php'><img src='PHP/Bilder/logo.png' class='headerbakgrunnmobil'></a>
 <div class='row'>
 <nav id='myTopnav' class='topnav'>
 <ul>");

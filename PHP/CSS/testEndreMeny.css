@@ -8,7 +8,7 @@ Sist sett på av Sindre 03.03.2017
 .brukertekst {
   padding: 0px;
   margin: 0;
-  font-family:sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .menynavn {
   position: absolute;
@@ -21,25 +21,24 @@ body {
   background:#D0D5D6 url(http://4.bp.blogspot.com/-H7ZxXnigCl8/TzGq-jUoLyI/AAAAAAAAEO8/kCgRnSGSWgc/s000/pattern.png);
 }
 select {
-  padding: 5px;
-  font-size: 14px;
-  line-height: 1;
-  overflow: auto;
-  border-radius: 5px;
-  -webkit-appearance: none;
-  background-position-x: 244px;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1;
+    overflow: auto;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    background-position-x: 244px;
 
 }
 
 
 input {
   border :1px solid #000;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5em;
   padding: 0;
 }
-
 
 #login {
   margin: 50px auto;
@@ -56,10 +55,6 @@ input {
   padding: 0 5px;
   width: 285px;
   height: 25px;
-}
-
-#liste input[type="submit"]:hover {
-  background-color: #16aa56;
 }
 #login input[type="number"] {
   background-color: #FFF;
@@ -151,27 +146,27 @@ input {
 .leggetilNyMeny {width:285px;height:36px;}
 .listegammelMeny {right: 5%; left:5%; width:  50%; top: 15%; position:absolute;}
 .nymeny {width:100%;
-  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
 }
 .regmeny {width:285px; height:30px;}
-.slettmenycss {position: absolute; left: 5.2%; bottom: 11%; width:50%;}
+.slettmenycss {position: absolute; left: 5.2%; bottom: 15%; width:50%;}
 .endremenycss {width:100%;}
 /* SINDRE MÅ SE PÅ DISSE ETTERPÅ */
 .listemenyer {width: 100%}
 
 /* Her skal vi fikse slik at listen blir vist øverst og lag ny bruker kommer rett under */
 @media only screen and (max-width: 778px) {
-  .menyreg {width: 90%; top: 11%; left: 5%;}
-  .menyliste {width: 90%; top: 58%; right: 5%;}
-  .container {height: 800px;}
+    .menyreg {width: 90%; top: 11%; left: 5%;}
+    .menyliste {width: 90%; top: 58%; right: 5%;}
+    .container {height: 800px;}
 }
 
 /* Gjør inputfelt litt mindre */
 @media only screen and (max-width: 468px) {
   .brukertekst{font-size: 14px;}
   #login input[type="text"] {width: 200px;}
-  #login input[type="password"] {width: 200px;}
-  #login input[type="mail"] {width: 200px;}
+  #login input[type="password"] {width: 200px};
+  #login input[type="mail"] {width: 200px};
   #login  input[type="submit"] {width: 61.5%;}
 }
 

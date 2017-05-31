@@ -22,7 +22,7 @@ header h1 {
   position: relative;
   top: 50px;
   text-align: center;
-  font-family: times, Times New Roman, times-roman, georgia, serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: #444;
   margin: 0;
   padding: 0px 0px 0px 0px;
@@ -37,7 +37,7 @@ header h2 {
   position: relative;
   top: 50px;
   text-align: center;
-  font-family: Gill Sans, Verdana;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 11px;
   line-height: 14px;
   text-transform: uppercase;
@@ -78,3 +78,4 @@ Endret høyde og ny bakgrunn - Erlend 25.02.2017
   clear: both;
   display: table;
 }
+.row {min-height:100%;}

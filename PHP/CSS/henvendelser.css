@@ -1,15 +1,15 @@
 .boxHenvendelser {
     margin-left: auto;
     margin-right:auto;
-    width: 48%;
-    border: black 2px;
-    border-style: solid;
-    left: 1%;
+    width: 48%; 
+    border: black 2px; 
+    border-style: solid; 
+    left: 1%; 
     background-color: #F9F5F5;
     top: 235px;
     position:absolute;
 }
-.tekst {padding: 0 16px;}
-.overskrift {text-align: center;}
+.tekst {padding: 0 16px;font-family: Arial, Helvetica, sans-serif;}
+.overskrift {text-align: center; font-family: Arial, Helvetica, sans-serif;}
 .input {width:100%;}
 .henWrap{min-height:100%}

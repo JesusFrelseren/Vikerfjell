@@ -17,26 +17,26 @@ if(!empty($_POST['namemenu'])) {
         if(!is_numeric($rekke)) {
             header('Location: ../EndreMeny.php?feilendring=Rekke må være tall.');
         } else {
-            $stmt = $mysqli->prepare('UPDATE vikerfjell.submeny SET submeny.sub_tekst = ?, submeny.sub_rekke = ? WHERE submeny.idsubmeny = ?');
-            $stmt->bind_param("sii", $menyNavn, $rekke, $id);
+            $stmt = $mysqli->prepare('UPDATE vikerfjell.submeny SET submeny.sub_tekst = ?, submeny.sub_rekke = ? WHERE submeny.idsubmeny = ?');  
+            $stmt->bind_param("sii", $menyNavn, $rekke, $id);   
             $stmt->execute();
             header("location: ../EndreMeny.php");
         }
     } elseif ($sjekkres == 1) {
-        if(isset($_POST["endre"])) {
-            $menyNavn = mysqli_real_escape_string($mysqli, $_POST["namemenu"]);
-            $rekke = mysqli_real_escape_string($mysqli, $_POST["rowmenu"]);
-            $id = mysqli_real_escape_string($mysqli, $_POST["getID"]);
-            //Sjekker om rekke er tall
-            if(!is_numeric($rekke)) {
-                header('Location: ../EndreMeny.php?feilendring=Rekke må være tall.');
-            } else {
-                $stmt = $mysqli->prepare('UPDATE vikerfjell.meny SET meny.tekst = ?, meny.rekke = ? WHERE meny.idmeny = ?');
-                $stmt->bind_param("sii", $menyNavn, $rekke, $id);
-                $stmt->execute();
-                header("location: ../EndreMeny.php");
-            }
-        } else {die();}
-    }
+    if(isset($_POST["endre"])) {
+        $menyNavn = mysqli_real_escape_string($mysqli, $_POST["namemenu"]);
+        $rekke = mysqli_real_escape_string($mysqli, $_POST["rowmenu"]);
+        $id = mysqli_real_escape_string($mysqli, $_POST["getID"]);
+        //Sjekker om rekke er tall
+        if(!is_numeric($rekke)) {
+            header('Location: ../EndreMeny.php?feilendring=Rekke må være tall.');         
+        } else {
+            $stmt = $mysqli->prepare('UPDATE vikerfjell.meny SET meny.tekst = ?, meny.rekke = ? WHERE meny.idmeny = ?');  
+            $stmt->bind_param("sii", $menyNavn, $rekke, $id);   
+            $stmt->execute();
+            header("location: ../EndreMeny.php");
+        }
+} else {die();}
+}
 }
 ?>

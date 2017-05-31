@@ -9,18 +9,18 @@ $sql = "SELECT idbruker, brukerNavn, ePost FROM vikerfjell.bruker";
 $result = mysqli_query($mysqli, $sql);
 echo("<select name='listephp' size='12'>");
 if (mysqli_num_rows($result) > 0) {
-    // utdata for hver rad
-    while($row = mysqli_fetch_assoc($result)) {
-        //Lager listen
-        echo "<option value=". $row["idbruker"] .">
+  // utdata for hver rad
+  while($row = mysqli_fetch_assoc($result)) {
+    //Lager listen
+    echo "<option value=". $row["idbruker"] .">
     " . $row["idbruker"]. "
     Brukernavn: " . $row["brukerNavn"].
-            " - Mail:  " . $row["ePost"]. "
+    " - Mail:  " . $row["ePost"]. "
     </option><br>";
 
-    }
+  }
 } else {
-    echo "0 results";
+  echo "0 results";
 }
 echo("</select>");
 

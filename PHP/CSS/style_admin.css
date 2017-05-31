@@ -17,10 +17,6 @@
 .ingress {width: 60%; position: relative; height: auto; margin-left: 30%;}
 .oversikt {width: 100%; position: relative; margin-top: 15%; height: auto;}
 
-#presentation {
-  background-color: white;
-}
-
 header img {
   height: 121px;
 }
@@ -47,7 +43,7 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*Header markup*/
@@ -157,7 +153,7 @@ aside {
   cursor: pointer;
   background: #333 no-repeat center center;
   color: white;
-  font-family: "Kreon";
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   padding: 15px;
   text-align: center;
@@ -256,6 +252,6 @@ gjør vi justeringer på menybar forhold til mobile enheter*/
 @media only screen and (max-width: 720px) {
 
   header img {
-    height: 96px;
-  }
+  height: 96px;
+}
 }

@@ -7,12 +7,12 @@
 var header = document.getElementById("nav_bar");
 window.onscroll = function(e) {
 
-    console.log(window.pageYOffset);
-    if (window.pageYOffset > 88) {
-        header.className = "nottop";
-    } else {
-        header.className = "";
-    }
+  console.log(window.pageYOffset);
+  if (window.pageYOffset > 88) {
+    header.className = "nottop";
+  } else {
+    header.className = "";
+  }
 }
 
 

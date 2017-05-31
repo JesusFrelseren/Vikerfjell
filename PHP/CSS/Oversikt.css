@@ -6,7 +6,7 @@
 .content100Prosent {
   width: 100%;
   background-color: #F5F5F5;
-  font-family:sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   overflow:auto;
 }
 
@@ -74,6 +74,6 @@
 }
 
 .contentTekst {
-  font-family:sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.85vw;
 }
