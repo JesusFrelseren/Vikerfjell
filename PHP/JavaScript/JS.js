@@ -18,7 +18,7 @@ function innholdReturnId() {
 function toggleOpplastBoks() {
     var opplastBoks = document.getElementById("bildeopplast_container");
 
-    if(opplastBoks.style.display == 'none') {
+    if(opplastBoks.style.display === 'none') {
         opplastBoks.style.display = 'inline-block';
     } else {
         opplastBoks.style.display = 'none';
@@ -126,8 +126,6 @@ function BilderSettAktivDropdown(aktivIndex) {
     dropdown.value = aktivIndex;
 }
 
-
-
 function populateMenu() {
     var dropdown = document.getElementById("listetest");
     var field = document.getElementById("idtest");
@@ -144,59 +142,3 @@ function populateMenu() {
     }
 
 }
-
-
-
-/*
- var mytimer = 5000;
- var x = document.getElementsByClassName("mySlides");
- var myIndex = 0;
- function carousel() { // av Alex hentet fra W3schools.     gjort endring i "setTimeout"
- var i;
- var x = document.getElementsByClassName("mySlides");
- for (i = 0; i < x.length; i++) {
- x[i].style.display = "none";
- }
- myIndex++;
- if (myIndex > x.length) {myIndex = 1}
- x[myIndex-1].style.display = "block";
- setTimeout(carousel, mytimer);
-
- }
-
-
-
- function MinusSlides(){
-
- for (i = 0; i < x.length; i++) {
- x[i].style.display = "none";
- }
- if(myIndex == 0){
- myIndex = x.length-1;
- myIndex++;
- }
-
- myIndex--;
- x[myIndex].style.display = "block";
- mytimer = 999999999;
-
-
- }
-
- function plusSlides(){
-
- for (i = 0; i < x.length; i++) {
- x[i].style.display = "none";
- }
- if(myIndex == x.length-1){
- myIndex = 0;
- myIndex--;
- }
-
- myIndex++;
- x[myIndex].style.display = "block";
- mytimer = 999999999;
-
-
- }
- */

@@ -48,6 +48,6 @@ echo("</a><div class='dropdown-content'>
     <li class='icon'>
         <a href='javascript:void(0);' onclick='myFunction()' style='font-size:15px;'>☰</a>
     </li>
-    </ul>")
+    </ul>");
 
 ?>
