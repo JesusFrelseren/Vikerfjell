@@ -4,10 +4,7 @@
  * Ansvarlig for å hente opp bilder sin metadata fra databasen
  *
  */
-
-
-require("mysqlcon.php");
-
+include("mysqlcon.php");
 function hent_alle_bilder() {
     global $mysqli;
     $stmt = $mysqli->prepare("select idbilder, hvor, tekst, thumb, bredde, hoyde, _idbilder from vikerfjell.bilder 

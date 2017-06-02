@@ -1,7 +1,8 @@
 <?php
 include 'mysqlcon.php';
 //LEGGE TIL GENERERING AV SUBMENYER
-$stmt33 = $mysqli->prepare("SELECT * FROM meny LEFT JOIN submeny ON meny.idmeny = submeny.meny_idmeny ORDER BY idmeny;");
+$stmt33 = $mysqli->prepare("SELECT * FROM meny LEFT JOIN submeny ON meny.idmeny = submeny.meny_idmeny 
+                                    ORDER BY idmeny;");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt33->execute();
 $result33 = $stmt33->get_result();
@@ -9,6 +10,7 @@ include ("createInnholdFile.php");
 $menyid;
 $array = [];
 $int = 0;
+
 
 while ($row33 = $result33->fetch_assoc()){
     $menyid = $row33['idmeny'];

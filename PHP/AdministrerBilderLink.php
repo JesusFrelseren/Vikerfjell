@@ -8,9 +8,7 @@ Sist endret: 07-05-2017
 include 'startSession.php';
 include('Include/mysqlcon.php');
 include("Include/BilderKontroll.php");
-var_dump($_GET);
-echo("<br>");
-var_dump($_POST);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

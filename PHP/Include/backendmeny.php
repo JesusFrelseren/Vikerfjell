@@ -1,5 +1,6 @@
 
 <?php
+
 include("NyesteInnhold.php");
 
 $idinnhold = getIdinnhold();

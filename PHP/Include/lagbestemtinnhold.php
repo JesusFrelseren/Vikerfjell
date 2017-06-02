@@ -14,17 +14,23 @@ $id = $row['idinnhold'];
 
 
 
-$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder on _idbilder = idbilder where _idinnhold = $id;");
+$stmt = $mysqli->prepare("SELECT * FROM vikerfjell.bilderinnhold join bilder 
+                            on _idbilder = idbilder where _idinnhold = $id;");
 mysqli_set_charset($mysqli, "UTF8");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$bilde = "PHP/Bilder/".$row['hvor'];
+$img_ut = "";
+
+while($row = $result->fetch_assoc()) {
+    $bilde = "PHP/Bilder/".$row['hvor'];
+    $img_ut .= "<img src=$bilde width=100% height=auto>";
+}
 
 
 echo("<div class='staticinnhold'>
 		<H1>$overskrift</h1>
-		<img src=$bilde width=100% height=auto>
+		$img_ut
 		<p>$text</p>
 		</div>");
 

@@ -19,7 +19,6 @@ include("Include/BilderKontroll.php");
     <link href="CSS/bildeAdmin.css" rel="stylesheet">
     <link href="CSS/style_admin.css" rel="stylesheet">
     <link href="CSS/bilde_modal.css" rel="stylesheet">
-    <link href="CSS/animations.css" rel="stylesheet">
     <script defer src="JavaScript/JS.js">
     </script>
     <script defer src="JavaScript/bilde_modal.js"></script>
