@@ -8,7 +8,7 @@ Sist sett på av Sindre 03.03.2017
 .brukertekst {
   padding: 0px;
   margin: 0;
-  font-family:sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .menynavn {
   position: absolute;
@@ -34,12 +34,11 @@ select {
 
 input {
   border :1px solid #000;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5em;
   padding: 0;
 }
-
 
 #login {
   margin: 50px auto;
@@ -56,10 +55,6 @@ input {
   padding: 0 5px;
   width: 285px;
   height: 25px;
-}
-
-#liste input[type="submit"]:hover {
-  background-color: #16aa56;
 }
 #login input[type="number"] {
   background-color: #FFF;
@@ -154,7 +149,7 @@ input {
   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
 }
 .regmeny {width:285px; height:30px;}
-.slettmenycss {position: absolute; left: 5.2%; bottom: 11%; width:50%;}
+.slettmenycss {position: absolute; left: 5.2%; bottom: 15%; width:50%;}
 .endremenycss {width:100%;}
 /* SINDRE MÅ SE PÅ DISSE ETTERPÅ */
 .listemenyer {width: 100%}

@@ -15,8 +15,48 @@ function legg_til_side($tittel, $ingress, $tekst, $rekke, $side, $idmeny, $idsub
     $stmt->execute();
 }
 
+function rediger_side(string $tittel, string $ingress, string $tekst, $side, int $idinnhold) {
+    global $mysqli;
+    $sql = "
+UPDATE innhold
+SET ingress = $ingress
+WHERE idinnhold = $idinnhold;
+
+UPDATE innhold
+SET tittel = $tittel
+WHERE idinnhold = $idinnhold;
+
+UPDATE innhold
+SET tekst = $tekst
+WHERE idinnhold = $idinnhold;
+
+UPDATE innhold
+SET side = $side
+WHERE idinnhold = $idinnhold;";
+
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('sssi', $tittel, $ingress, $tekst, $idinnhold);
+    $stmt->execute();
+}
 
 // Sist endret av Sindre og Alex 29.03.2017
+function skriv_bilder_til_base($POST, $FILES, $width_src, $height_src)  {
+    global $mysqli;
+    $tekst = $POST['bildebeskrivelse'];
+    $thumb = "thumb_".pathinfo($FILES['upload']['name'], PATHINFO_BASENAME);
+    $hvor = pathinfo($FILES['upload']['name'], PATHINFO_BASENAME);
+    $bredde = $width_src;
+    $høyde = $height_src;
+    $tooltip = "Fuck tooltips";
+    $alt = "Bildet ble ikke funnet :´(";
+    $stmt = $mysqli->prepare("
+      INSERT INTO vikerfjell.bilder(hvor, tekst, thumb, bredde, hoyde, tooltip, alt)
+      VALUES(?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param('sssiiss', $hvor, $tekst, $thumb, $bredde, $høyde, $tooltip, $alt);
+    $stmt->execute();    $mysqli->close();
+}
+
 function Endre_Rekke($idmeny, $rekke){
     global $mysqli;
     $sql = "SELECT * FROM vikerfjell.innhold WHERE idmeny = ? and rekke >= ?";
@@ -37,11 +77,6 @@ function Endre_Rekke($idmeny, $rekke){
 //Slett innhold funksjon
 function Slett_Innhold($idinnhold){
     global $mysqli;
-
-    $sql = "DELETE FROM bilderinnhold WHERE _idinnhold = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('i', $idinnhold);
-    $stmt->execute();
 
     $sql = "DELETE FROM innhold WHERE idinnhold = ?";
     $stmt = $mysqli->prepare($sql);
@@ -147,7 +182,7 @@ if(isset($_POST['slettInnhold'])){
         $idto = $iden;
     }
     Slett_Innhold($id);
-    unlink('C:\xampp\htdocs\html\Vikerfjell/'.$navnito);
+    unlink('../../../Vikerfjell/'.$navnito);
     //HER SETTER VI INN FUNKSJON
     include 'NyArtikkel.php';
     include 'createInnholdFile.php';
@@ -217,4 +252,14 @@ if(isset($_POST['endreInnhold'])){
     header("location: ../innhold.php?feilslett=Innholdet er endret.");
 }
 
+function legg_til_link(string $url, string $tekst, string $idmeny, string $idsubmeny) {
+    global $mysqli;
+    $stmt = $mysqli->prepare(
+        "INSERT INTO link(url, link_tekst, idmeny, idsubmeny)
+              VALUES(?, ?, ?, ?)");
+
+    $stmt->bind_param('ii', $idmeny, $idsubmeny);
+    $stmt->execute();
+
+}
 ?>

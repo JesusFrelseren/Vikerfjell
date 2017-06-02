@@ -1,4 +1,4 @@
-<!--Sist endret av Alex Hall 14.02.2017-->
+<!--Sist endret av Alex 14.02.2017-->
 <!--Sett over av Sindre 14.02.2017-->
 
 
@@ -13,4 +13,4 @@ header("location:../default.php");
 
 
 
-
+?>

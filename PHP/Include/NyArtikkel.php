@@ -49,7 +49,7 @@ function lagSide2($idmenyen) {
     } else {
         $id = $idmenyen;
         global $mysqli;
-        $stmt6 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+        $stmt6 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id AND idmeny <> 1;");
         mysqli_set_charset($mysqli, "UTF8");
         $stmt6->bind_param("s",$overskrift4);
         $stmt6->execute();
@@ -106,6 +106,7 @@ function lagSide3(){
 function legg_til_oversikt($idmeny){
     //Spørring for å få ut navnet på menyelementet for å fylle ut overskrift på siden.
     global $mysqli;
+    $innholdet = "";
     if(strpos($idmeny, "S") !== false) {
         //submeny
         $idmeny = substr($idmeny, 1);
@@ -132,10 +133,24 @@ function legg_til_oversikt($idmeny){
             if(empty($idinnhold) == false) {
                 $overskrift = $rowInnhold['tittel'];
                 $ingress = $rowInnhold['ingress'];
+
                 // IF test på innhold og text osv for at dritten ikke crasher
                 //Tar bort denne kommentaren når databasen er klar.
-                //$innhold = explode(".", $row['text'], 3);
-                //$innholdet = $innhold[0].".".$innhold[1].".";
+
+                $subSjekk = $row['tekst'];
+                $subCount = substr_count($subSjekk, '.');
+                if($subCount >= 3) {
+                    $innhold = explode(".", $row['text'], 3);
+                    $innholdet = $innhold[0].".".$innhold[1].".";
+                } else if($subCount>=2) {
+                    $innhold = explode(".", $row['text'], 2);
+                    $innholdet = $innhold[0].".".$innhold[1].".";
+                } else {
+                    $innhold = explode(".", $row['text'], 1);
+                    $innholdet = $innhold[0].".".$innhold[1].".";
+                }
+
+
                 $id = $rowInnhold['idinnhold'];
                 $side = $rowInnhold['side'];
 
@@ -146,14 +161,18 @@ function legg_til_oversikt($idmeny){
                     $stmt1->execute();
                     $result1 = $stmt1->get_result();
                     $row1 = $result1->fetch_assoc();
-                    $bilde = $row1['hvor'];
+                    if(!empty($row1['hvor'])) {
+                        $bilde = $row1['hvor'];
+                    } else {
+                        $bilde = 'oversiktbilde.jpg';
+                    }
                     //NOTASJON: LEGG TIL $INNHOLDET i stedet for hei når databasen er klar.
                     echo ("<div class='contentArtikkel'>
             <div class='contentBilde'><img src='PHP/Bilder/$bilde'></div>
             <div class='contentTekst'>
               <h2>$overskrift</h2>
               <p>$ingress</p>
-              <p>hei</p><a href='$side'>Les mer..</a>            
+              <p>$innholdet</p><a href='$side'>Les mer..</a>            
             </div>
           </div>
           ");
@@ -192,6 +211,19 @@ function legg_til_oversikt($idmeny){
             //Tar bort denne kommentaren når databasen er klar.
             //$innhold = explode(".", $row['text'], 3);
             //$innholdet = $innhold[0].".".$innhold[1].".";
+
+            $subSjekk = $row['tekst'];
+            $subCount = substr_count($subSjekk, '.');
+            if($subCount >= 3) {
+                $innhold = explode(".", $row['tekst'], 3);
+                $innholdet = $innhold[0].".".$innhold[1].".";
+            } else if($subCount>=2) {
+                $innhold = explode(".", $row['tekst'], 2);
+                $innholdet = $innhold[0].".".$innhold[1].".";
+            } else {
+                $innholdet = $row['tekst'];
+            }
+
             $id = $row['idinnhold'];
             $side = $row['side'];
 
@@ -201,14 +233,20 @@ function legg_til_oversikt($idmeny){
             $stmt1->execute();
             $result1 = $stmt1->get_result();
             $row1 = $result1->fetch_assoc();
-            $bilde = $row1['hvor'];
+
+            if(!empty($row1['hvor'])) {
+                $bilde = $row1['hvor'];
+            } else {
+                $bilde = 'oversiktbilde.jpg';
+            }
+
             //NOTASJON: LEGG TIL $INNHOLDET i stedet for hei når databasen er klar.
             echo ("  <div class='contentArtikkel'>
               <div class='contentBilde'><img src='PHP/Bilder/$bilde'></div>
               <div class='contentTekst'>
                 <h2>$overskrift</h2>
                 <p>$ingress</p>
-                <p>hei</p><a href='$side'>Les mer..</a>
+                <p>$innholdet</p><a href='$side'>Les mer..</a>
               </div>
             </div>
             ");

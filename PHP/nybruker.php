@@ -1,13 +1,15 @@
 <?php
 /* Sist endret av Erik 14.02.2017-->
 <!--Sett over av Sindre 14.02.2017 */
+
+include 'Include/konstant.php';
 include 'Include/mysqlcon.php';
+
 //Lager variabler utifra tekst bruker har skrevet og salter og hasher passordet
 $username = mysqli_real_escape_string($mysqli, $_POST["username"]);
 $password = mysqli_real_escape_string($mysqli, $_POST["password"]);
 $mail = mysqli_real_escape_string($mysqli, $_POST["mail"]);
-$salt = "IT2_2017";
-$password = sha1($salt.$password);
+$password = sha1(constant("SALT").$password);
 
 //Spørring for å se om brukernavn finnes
 $stmt = $mysqli->prepare("SELECT brukerNavn FROM vikerfjell.bruker WHERE brukerNavn=?");
@@ -25,11 +27,4 @@ if (!$row){
 } else {
     header("location:Brukere.php?msg=Brukernavn finnes fra før.");
 }
-
-
-
-
-
-
-
 ?>

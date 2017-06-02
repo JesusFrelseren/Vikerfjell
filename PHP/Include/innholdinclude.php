@@ -17,12 +17,17 @@ if($row) {
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
-    $bilde = "PHP/Bilder/".$row['hvor'];
+
+    if(!empty($row['hvor'])) {
+        $bilde = $row['hvor'];
+    } else {
+        $bilde = 'innholdbilde.jpg';
+    }
 
     echo("
 		<div class='staticinnhold'>
 	  <h1>$overskrift</h1>
-	  <img src='$bilde'>
+	  <img src='PHP/Bilder/$bilde'>
 	  <p>$text</p>
 		</div>
 	");

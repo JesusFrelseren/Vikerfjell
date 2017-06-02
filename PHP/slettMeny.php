@@ -41,7 +41,7 @@ if(isset($Menyelement) || $Menyelement=="") {
                 //Trenger ikke substring om vi ikke skal ha ./ i filnavne i databasen - Må se
                 $rest = substr($selectID, 2);
                 //Må endres, kan ikke linke direkte
-                unlink('C:\xampp\htdocs\html\Vikerfjell/'.$rest);
+                unlink("../../Vikerfjell/".$rest);
                 //Sletter fra submeny med idsubmeny som parameter
 
                 $sql = "DELETE FROM submeny WHERE idsubmeny = ?";
@@ -81,7 +81,7 @@ if(isset($Menyelement) || $Menyelement=="") {
                     $selectResult = $selectStmt->get_result();
                     $selectRow = mysqli_fetch_assoc($selectResult);
                     $selectID = $selectRow['side'];
-                    unlink('C:\xampp\htdocs\html\Vikerfjell/'.$selectID);
+                    unlink("../../Vikerfjell/".$selectID);
                     //Sletter fra meny
                     $sql = "DELETE FROM meny WHERE idmeny = ?";
                     $stmt = $mysqli->prepare($sql);

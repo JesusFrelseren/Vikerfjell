@@ -53,7 +53,7 @@ function koblemeny($id){
         if($row4) {
 
             $overskrift4 = $row4['side'];
-            $stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+            $stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id AND idmeny <> 1;");
             mysqli_set_charset($mysqli, "UTF8");
             $stmt5->bind_param("s",$overskrift4);
             $stmt5->execute();

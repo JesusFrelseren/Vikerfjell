@@ -3,6 +3,7 @@
 <?php
 include 'startSession.php';
 include 'Include/mysqlcon.php';
+include 'Include/konstant.php';
 
 $oldPw = mysqli_real_escape_string($mysqli, $_POST['oldpw']);
 $newPW = mysqli_real_escape_string($mysqli, $_POST['newpw']);
@@ -15,12 +16,12 @@ $stmt->execute();
 
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$salt = 'IT2_2017';
 
 
-$PW = sha1($salt.$oldPw);
-$newPW = sha1($salt.$newPW);
-$confirm = sha1($salt.$confirm);
+
+$PW = sha1(constant("SALT").$oldPw);
+$newPW = sha1(constant("SALT").$newPW);
+$confirm = sha1(constant("SALT").$confirm);
 
 $dbOldPw = $row['passord'];
 

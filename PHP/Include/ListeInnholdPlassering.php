@@ -1,6 +1,5 @@
 <?php
-/* Sist endret av Alex 28.03.2017-->
-<!--Sett over av Sindre 28.03.2017 */
+/* Sist endret av Alex og sindre 28.03.2017 */
 include 'mysqlcon.php';
 
 

@@ -13,7 +13,7 @@ h2{
 }
 
 p {
-  font-family:sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #slider-text {
@@ -68,7 +68,7 @@ p {
 }
 .overskriftVæret{
   text-align: center;
-  font-family: "Kreon";
+  font-family: Arial, Helvetica, sans-serif;
   color:white;
 }
 

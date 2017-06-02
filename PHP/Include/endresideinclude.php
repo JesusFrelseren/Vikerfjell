@@ -20,6 +20,9 @@ if(!empty($_POST['namemenu'])) {
             $stmt = $mysqli->prepare('UPDATE vikerfjell.submeny SET submeny.sub_tekst = ?, submeny.sub_rekke = ? WHERE submeny.idsubmeny = ?');
             $stmt->bind_param("sii", $menyNavn, $rekke, $id);
             $stmt->execute();
+            include 'GenererAlleHtmlSider.php';
+            include 'NyArtikkel.php';
+            lagSide3();
             header("location: ../EndreMeny.php");
         }
     } elseif ($sjekkres == 1) {
@@ -31,9 +34,12 @@ if(!empty($_POST['namemenu'])) {
             if(!is_numeric($rekke)) {
                 header('Location: ../EndreMeny.php?feilendring=Rekke må være tall.');
             } else {
-                $stmt = $mysqli->prepare('UPDATE vikerfjell.meny SET meny.tekst = ?, meny.rekke = ? WHERE meny.idmeny = ?');
+                $stmt = $mysqli->prepare('UPDATE vikerfjell.meny SET meny.tekst = ?, meny.rekke = ? WHERE meny.idmeny = ? AND meny.idmeny <> 1');
                 $stmt->bind_param("sii", $menyNavn, $rekke, $id);
                 $stmt->execute();
+                include 'GenererAlleHtmlSider.php';
+                include 'NyArtikkel.php';
+                lagSide3();
                 header("location: ../EndreMeny.php");
             }
         } else {die();}
