@@ -192,7 +192,6 @@ function lagFullskalert($perm_name, $ext) {
             return imagecreatefromgif($perm_name);
 
     }
-    echo("fail");
     return null;
 
 

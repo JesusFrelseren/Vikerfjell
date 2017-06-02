@@ -15,9 +15,11 @@ while($row = $result->fetch_assoc()){
     $stmt->execute();
     $stmt->store_result();
 
+
     if ($stmt->num_rows == 0) {
         echo("<li><a href='$side'>$tekst</a></li>");
 
+    //Hvis resultset returnerer flere rader har vi en submeny
     } else {
 
         $sub_stmt = $mysqli->prepare(

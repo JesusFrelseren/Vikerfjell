@@ -8,7 +8,6 @@ $stmt = $mysqli->prepare("
             SELECT *
             FROM innhold;");
 
-//$stmt->bind_param('i', $id);
 $stmt->execute();
 $result = $stmt->get_result();
 $array = [];
