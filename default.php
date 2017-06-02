@@ -1,4 +1,4 @@
 <?php
 
-header("Location: Default.html");
+header("Location: default.html");
 die();
