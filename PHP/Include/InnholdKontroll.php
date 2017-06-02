@@ -38,6 +38,11 @@ function Endre_Rekke($idmeny, $rekke){
 function Slett_Innhold($idinnhold){
     global $mysqli;
 
+    $sql = "DELETE FROM bilderinnhold WHERE _idinnhold = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param('i', $idinnhold);
+    $stmt->execute();
+
     $sql = "DELETE FROM innhold WHERE idinnhold = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $idinnhold);

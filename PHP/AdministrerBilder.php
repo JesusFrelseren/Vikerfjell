@@ -19,6 +19,7 @@ include("Include/BilderKontroll.php");
     <link href="CSS/bildeAdmin.css" rel="stylesheet">
     <link href="CSS/style_admin.css" rel="stylesheet">
     <link href="CSS/bilde_modal.css" rel="stylesheet">
+    <link href="CSS/animations.css" rel="stylesheet">
     <script defer src="JavaScript/JS.js">
     </script>
     <script defer src="JavaScript/bilde_modal.js"></script>
@@ -35,34 +36,39 @@ include ('Include/mysqlcon.php');
 
 
 <!-- Søkeboks -->
+
 <section id="søkewrapper">
+
     <form class="search_form" action="AdministrerBilder.php" method="post">
+        <p style="margin: 0">Søk etter bilde</p>
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
         <div id="btn_group">
             <input type="submit" class="søk_knapp" value="Søk">
 
     </form>
+
     <form class="search_form">
+
         <input type="submit" class="søk_knapp" value="Vis alle">
     </form>
     <!-- Vis opplastingsboks -->
-    <input type="button" class="søk_knapp" value="Last opp.." onclick="toggleOpplastBoks()">
+    <input type="button" class="søk_knapp" value="Vis opplast.." onclick="toggleOpplastBoks()">
 
-    <section class='bildeopplast_container' id="bildeopplast_container" style="display: none">
+    <section class='bildeopplast_container' id="bildeopplast_container" style="display: none; ">
         <form method="post" enctype="multipart/form-data" action="AdministrerBilder.php">
-            <section id="bildeopplast_section">
+            <section id="bildeopplast_section" style="border: none; background: white">
                 <p style="margin-top: 115px; margin-bottom: 0">Støttede formater er png, jpg eller gif</p>
                 <input type='file' id='upload' name='upload' value="Last opp">
             </section>
-            <section id="bildebeskrivelse_section">
+            <section id="bildebeskrivelse_section" style="border: none; background: white">
                 <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en beskrivelse</p>
                 <label for="bildebeskrivelse"></label>
                 <textarea maxlength="45" rows="7" cols="30"  name="bildebeskrivelse" id='bildebeskrivelse' placeholder="Maks 45 tegn"></textarea>
             </section>
-            <section id="tooltip_section">
+            <section id="tooltip_section" style="border: none; background: white" >
                 <p style="margin-top: 30px; margin-bottom: 0">Gi bildet en tooltip (Valgfri)</p>
                 <textarea rows="7" cols="30" maxlength="100" placeholder="Maks 100 tegn" name="tooltip" id="tooltip"></textarea>
-            </section>
+            </section><br>
             <input type='hidden' name="action_last_opp" id="action_last_opp">
             <input type='submit' class="søk_knapp" value='Last opp'>
         </form>

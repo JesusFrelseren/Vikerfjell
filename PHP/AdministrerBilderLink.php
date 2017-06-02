@@ -8,7 +8,9 @@ Sist endret: 07-05-2017
 include 'startSession.php';
 include('Include/mysqlcon.php');
 include("Include/BilderKontroll.php");
-
+var_dump($_GET);
+echo("<br>");
+var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,12 +47,19 @@ if (isset($_GET['option_selected_index'])) {
 ?>
 
 <section id="søkewrapper">
-    <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
+
+    <p style="margin: 0">Søk etter bilde</p>
+    <?php echo("<form class='search_form' action='AdministrerBilderLink.php?$get' method='post'>");?>
         <input type="text" name="søk_bilde_search_box" id="søk_bilde_search_box" size="40">
         <div id="btn_group">
 
             <input type="submit" class="søk_knapp" value="Søk">
-            <form class="search_form" action="AdministrerBilderLink.php?'.$get.'" method="post">
+
+            <?php
+            echo("<form class='search_form' action='AdministrerBilderLink.php?$get' 
+                    method='post'>");
+                ?>
+
                 <input type="submit" class="søk_knapp" value="Vis alle">
             </form>
         </div>
