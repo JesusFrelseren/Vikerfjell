@@ -4,9 +4,7 @@ Sist endret: 07-05-2017
 -->
 
 <?php
-//todo: ta vare på scroll position
 include 'startSession.php';
-include('Include/mysqlcon.php');
 include("Include/BilderKontroll.php");
 
 ?>

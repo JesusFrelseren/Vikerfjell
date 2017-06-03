@@ -7,9 +7,9 @@
  * Ansvarlig endre bildetittel og tooltip
  * Ansvarlig for å slette bilder og deres metadata
  */
+
+
 include('Include/mysqlcon.php');
-
-
 if(isset($_POST['action_last_opp'])) {
     try {
         //Sjekk $_FILES[error] feilkodene
@@ -100,7 +100,7 @@ if(isset($_POST['action_last_opp'])) {
         imagecopyresampled($image_thumb, $image_src, 0, 0, 0, 0, $width_thumb, $height_thumb,
             $width_src, $height_src);
 
-        //Skriv $image_thumb til masselager med 50% kvalitet
+        //Skriv $image_thumb til masselager
         createImage($ext, $image_thumb, $perm_thumb_location);
 
 

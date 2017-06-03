@@ -3,7 +3,6 @@
 
 
 include 'startSession.php';
-include("Include/mysqlcon.php");
 include("BilderMetadata.php");
 include("Include/BilderKontroll.php");
 
@@ -29,8 +28,11 @@ include("Include/BilderKontroll.php");
 <?php
 include ("Include/backendmeny.php");
 echo("</nav>");
-include ('Include/mysqlcon.php');
 
+//Skal egentlig ikke ligge en slik her, men ellers blir $mysqli udefinert i BilderKontroll.php.
+// Usikker på hvorfor det er slik
+include ('Include/mysqlcon.php');
+//
 ?>
 
 

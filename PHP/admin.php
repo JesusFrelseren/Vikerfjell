@@ -30,6 +30,9 @@ include 'startSession.php';
 				Du er nå inne i back-end delen av Visit Vikerfjell, her kan du gjøre endringer og oppdateringer på nettstedet.
 			</div>
 		</div>
+        <form action="Include/leggtilMeny.php" method="post">
+            <input type="submit" value="Oppdater">
+        </form>
 		<div class="hoyreside">
 			<div class="oversikt">
 				<h2 style="margin-left: 1%;">Snarveier</h2>

@@ -12,6 +12,7 @@ function lagSide() {
     return $includes;
 }
 
+
 function koblemeny($id){
     global $mysqli;
     mysqli_set_charset($mysqli, "UTF8");

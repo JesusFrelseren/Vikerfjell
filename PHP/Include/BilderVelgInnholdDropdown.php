@@ -2,8 +2,8 @@
 Sist endret: 07.05.2017
 -->
 <?php
-include('mysqlcon.php');
-global $mysqli;
+include("mysqlcon.php");
+
 $stmt = $mysqli->prepare("
             SELECT *
             FROM innhold;");

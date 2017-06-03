@@ -4,7 +4,7 @@ Laget av Alex
 Sist endret 01.06.2017
 */
 include 'include/mysqlcon.php';
-include 'konstant.php';
+include 'Include/konstant.php';
 
 // tar imot variabler fra inputfelt.
 $newPW = mysqli_real_escape_string($mysqli, $_POST['newpw']);
