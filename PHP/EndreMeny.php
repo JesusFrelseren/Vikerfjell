@@ -84,7 +84,7 @@ include ("Include/backendmeny.php");
                 <p class="brukertekst">Menynavn</p>
                 <input placeholder="Menynavn" autofocus="" name="menuname" title="Skriv inn menynavn" type="text"><br style="margin-bottom:12px;">
                 <p class="brukertekst">Rekke</p>
-                <input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="number" min="1">
+                <input placeholder="Rekke" name="menurow" title="Skriv inn menyrekke" type="number" min="2">
 
                 <div class="regmeny">
                     <input class="listemenyer" name="send" type="submit" value="Registrer meny">
@@ -121,7 +121,7 @@ include ("Include/backendmeny.php");
 
                 <br style="margin-bottom:12px;">
                 <p class="brukertekst"> Rekke </p>
-                <input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="number">
+                <input value="<?php echo($Rekke) ?>" id='idrowmenu' class="meny3" placeholder="Rekke" autofocus="" name="rowmenu" title="Skriv inn meny rekke" type="number" min="2">
 
                 <br style="margin-bottom:12px;">
                 <input onclick="return confirm('Sikker på at du vil endre menyen?')" class="endremenycss" name="endre" type="submit" value="Endre meny">

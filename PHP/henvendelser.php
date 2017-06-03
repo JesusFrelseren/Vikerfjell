@@ -30,7 +30,7 @@
     <div class='row'>
         <nav id='myTopnav' class='topnav'>
             <ul>
-                <li><a href="../default.php">Tilbake </a></li>
+                <li><a href="../Rapport/default.php">Tilbake </a></li>
                 <li class='icon'>
                     <a href='javascript:void(0);' style='font-size:15px;' onclick='myFunction()'>☰</a>
                 </li>

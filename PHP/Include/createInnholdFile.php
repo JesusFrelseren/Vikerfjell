@@ -13,7 +13,7 @@ function lagSide() {
 }
 
 
-function koblemeny($id){
+function koblemeny($id) {
     global $mysqli;
     mysqli_set_charset($mysqli, "UTF8");
     //Test ny substring sub id
@@ -27,7 +27,7 @@ function koblemeny($id){
         $result4 = $stmt4->get_result();
         $row4 = $result4->fetch_assoc();
         if($row4) {
-            $overskrift4 = $row4['sub_tekst'].".html";
+            $overskrift4 = $row4['sub_tekst'] . ".html";
 
             $sql = "UPDATE vikerfjell.submeny set sub_side = ? WHERE idsubmeny = $nymenyid";
 
@@ -36,11 +36,35 @@ function koblemeny($id){
             $stmt->bind_param('s', $overskrift4);
             $stmt->execute();
 
-            $sideInsert = "../../".$overskrift4;
+            $sideInsert = "../../" . $overskrift4;
             $fh = fopen($sideInsert, 'w', 'w');
             $includes = lagSide();
             fwrite($fh, $includes);
         }
+
+            //Lag default.html
+        } elseif ($id = 1) {
+
+            $stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = 1;");
+
+            $stmt4->bind_param("i",$id);
+            $stmt4->execute();
+            $result4 = $stmt4->get_result();
+            $row4 = $result4->fetch_assoc();
+            if($row4) {
+
+                $overskrift4 = "default.html";
+                $stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+                mysqli_set_charset($mysqli, "UTF8");
+                $stmt5->bind_param("s",$overskrift4);
+                $stmt5->execute();
+
+                $sideInsert = "../../".$overskrift4;
+                $fh = fopen($sideInsert, 'w');
+                $includes = lagDefault();
+                fwrite($fh, $includes);
+        }
+
 
 
     } else {
@@ -85,5 +109,16 @@ function lagBestemtSide($idinnold){
 
 }
 
+function lagDefault() {
+    ob_start();
+    include 'header.php';
+    include 'meny.php';
+    include 'default_template.html';
+    include 'footer.php';
+    $andreinclude = ob_get_clean();
+    $includes = $andreinclude;
+    if (ob_get_length() > 0) { ob_end_clean(); }
+    return $includes;
+}
 
 ?>

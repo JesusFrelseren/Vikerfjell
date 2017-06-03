@@ -11,6 +11,8 @@ $menyid;
 $array = [];
 $int = 0;
 
+
+
 while ($row33 = $result33->fetch_assoc()){
     $menyid = $row33['idmeny'];
     if($menyid != 1) {
@@ -37,7 +39,7 @@ while ($row33 = $result33->fetch_assoc()){
             koblemeny($menyid);
         }
     } else {
-        //Fikse for hovedside
+            koblemeny($menyid);
     }
     // lager oversikt til innhold
     //	include("NyArtikkel.php");
