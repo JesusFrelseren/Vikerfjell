@@ -9,6 +9,7 @@
     <link type='text/css' href='CSS/frontend_slider.css?v=12345' rel='stylesheet'>
     <link type='text/css' href='CSS/frontend_mediaquerys.css?v=12345' rel='stylesheet'>
     <link type='text/css' href='CSS/frontend_footer_new.css?v=12345' rel='stylesheet'>
+    <link href="CSS/bilde_modal.css" rel="stylesheet">
     <link href="CSS/henvendelser.css" rel="stylesheet">
     <link type='text/css' href='CSS/menybar.css?v=12345' rel='stylesheet'>
     <script src='JavaScript/JS.js?v=12345' type='text/javascript' defer></script>

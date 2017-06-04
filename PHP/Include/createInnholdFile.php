@@ -42,28 +42,27 @@ function koblemeny($id) {
             fwrite($fh, $includes);
         }
 
-            //Lag default.html
-        } elseif ($id = 1) {
-
-            $stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = 1;");
-
+            //Hvis $id == 1, genereres default.html
+        } elseif ($id == 1) {
+            /*
+            $stmt4 = $mysqli->prepare("SELECT * FROM vikerfjell.meny WHERE idmeny = ?;");
             $stmt4->bind_param("i",$id);
             $stmt4->execute();
             $result4 = $stmt4->get_result();
-            $row4 = $result4->fetch_assoc();
-            if($row4) {
+            $row4 = $result4->fetch_assoc();*/
 
-                $overskrift4 = "default.html";
-                $stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
-                mysqli_set_charset($mysqli, "UTF8");
-                $stmt5->bind_param("s",$overskrift4);
-                $stmt5->execute();
 
-                $sideInsert = "../../".$overskrift4;
-                $fh = fopen($sideInsert, 'w');
-                $includes = lagDefault();
-                fwrite($fh, $includes);
-        }
+            $overskrift4 = "default.html";
+            $stmt5 = $mysqli->prepare("UPDATE vikerfjell.meny set side =?  where idmeny = $id;");
+            mysqli_set_charset($mysqli, "UTF8");
+            $stmt5->bind_param("s",$overskrift4);
+            $stmt5->execute();
+
+            $sideInsert = "../../".$overskrift4;
+            $fh = fopen($sideInsert, 'w');
+            $includes = lagDefault();
+            fwrite($fh, $includes);
+
 
 
 

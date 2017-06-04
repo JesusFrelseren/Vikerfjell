@@ -30,7 +30,7 @@ function toggleOpplastBoks() {
 function changeFunc() {
     var selectBox = document.getElementById("listeinnhold");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/Vikerfjell/PHP/innhold.php?id="+selectedValue);
+    window.location.assign("PHP/innhold.php?id="+selectedValue);
 
     // var selectedValue = document.getElementById("listeinnhold").options[document.getElementById("listeinnhold").selectedIndex].value;
 }
@@ -38,14 +38,14 @@ function changeFunc() {
 function changeMenyFunc() {
     var selectBox = document.getElementById("listetest");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/Vikerfjell/PHP/EndreMeny.php?id="+selectedValue);
+    window.location.assign("PHP/EndreMeny.php?id="+selectedValue);
 }
 
 //OnChange funksjon for select i endring av meny
 function visInnholdForMenyLinkmodus(modus) {
     var selectBox = document.getElementById("listetest");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-    window.location.assign("http://localhost/vikerfjell/PHP/AdministrerBilderLink.php?id="+selectedValue);
+    window.location.assign("PHP/AdministrerBilderLink.php?id="+selectedValue);
 }
 
 // Redigere innhold med bold/italic/underline
@@ -140,5 +140,15 @@ function populateMenu() {
         var sub = trim.substring(11);
         field.value = sub;
     }
+
+}
+
+function oppdaterSide(oppdaterAlt) {
+    var modal = document.getElementById('modalProgress');
+    modal.style.display = "block";
+
+    document.getElementById("myTopnav").style.display = "none";
+    oppdaterAlt.submit();
+
 
 }

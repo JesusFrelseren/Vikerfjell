@@ -62,6 +62,12 @@ else
         //$sql3 = "SELECT * FROM vikerfjell.meny LEFT JOIN vikerfjell.innhold USING(idmeny);"
         //$result = mysqli_query($mysqli, $sql3);
 
+    } elseif($typemeny == 'dummy') {
+        include 'GenererAlleHtmlSider.php';
+        include 'NyArtikkel.php';
+        lagSide3();
+        $forrigeurl = $_SERVER['HTTP_REFERER'];
+        header("Location: $forrigeurl");
     }
     else
     {

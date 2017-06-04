@@ -10,6 +10,7 @@ include 'Include/konstant.php';
     <link href="CSS/style_admin.css" rel="stylesheet">
     <link href="CSS/menybar.css" rel="stylesheet">
     <link href="CSS/style_innhold.css" rel="stylesheet">
+    <link href="CSS/bilde_modal.css" rel="stylesheet">
     <script defer src="JavaScript/JS.js">
     </script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">

@@ -6,6 +6,7 @@
     <meta charset="ns_4551-1-krutf-8">
     <title>Admin Vikerfjell - Glemt passord</title>
     <link href="CSS/form.css" rel="stylesheet">
+    <link href="CSS/bilde_modal.css" rel="stylesheet">
 </head>
 <body>
 <img src="Bilder/logov2.png">

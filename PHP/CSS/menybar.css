@@ -2,6 +2,10 @@
 Siset endret av Erik 02.03.2017
 Sist sett på av Erlend 03.03.2017
 */
+
+
+
+
 #myTopnav {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -145,4 +149,14 @@ li.dropdown {display: inline-block;}
     padding: 14px 11px;
     font-size: 14px;
   }
+}
+
+#oppdaterAlt{
+  background-color: #16aa56 !important;
+  border-radius: 3px;
+
+}
+
+#oppdaterAlt:hover{
+  background-color: #318e18 !important;
 }

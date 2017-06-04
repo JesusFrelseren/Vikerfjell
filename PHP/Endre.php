@@ -12,6 +12,7 @@ include 'startSession.php';
     <link rel="stylesheet" href="CSS/style_admin.css">
     <link rel="stylesheet" href="CSS/menybar.css">
     <link rel="stylesheet" href="CSS/brukere.css">
+    <link href="CSS/bilde_modal.css" rel="stylesheet">
     <script src="JavaScript/JS.js" defer></script>
     <script src="JavaScript/JS.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

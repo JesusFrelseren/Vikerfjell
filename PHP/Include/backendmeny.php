@@ -7,9 +7,17 @@ $idinnhold = getIdinnhold();
 /* Sist endret av Alex 06.02.2017-->
 <!--Sett over av Erlend 06.02.2017 */
 //Her lager vi backendmenyen
-echo("<header>
+echo("
+
+<div id='modalProgress'>
+    <p style='color: #5ce638'>Jobber..</p>
+</div>
+<header>
 		<a href='admin.php'><img class='headerbakgrunn' src='Bilder/logov2_admin.png'></a>
+		
+
 	</header>
+	
 	<!--Rad 2: Menybar-->
 	<nav class='topnav' id='myTopnav'>
 		<ul>
@@ -32,6 +40,24 @@ echo("<header>
                         <a href='AdministrerBilderLink.php?option_selected_index=0&id=$idinnhold'>Linking</a>
                     </div>
 			</li>
+			<li id='oppdaterAlt'>
+	            <form action=\"Include/leggtilMeny.php\" method=\"post\" id='oppdaterAlt'>
+
+
+                <input  name=\"menuname\" id=menuname\" type=\"hidden\" value=\"temp\">
+            
+                <input name=\"menurow\" id=\"menurow\" type=\"hidden\" value=\"10\">
+            
+                <input name=\"menyliste\" id=\"menyliste\" type=\"hidden\" value=\"dummy\">
+            
+                <a href='javascript:;' onclick='oppdaterSide(parentNode)' name='oppdaterAlt' id='oppdaterAlt'>Lagre endringer</a>
+        
+                </form>
+             </li>
+    
+    
+</form>
+</li>
 			<li id='logutid'>
 				<a href='loggut.php'>Logg ut</a>
 			</li>
